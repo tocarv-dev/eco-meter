@@ -10,21 +10,20 @@ export default function Provider({ children }: FormProviderProps) {
   const route = useRouter();
 
   const methods = useAppForm({
-    name: '',
+    gender: '',
     age: 25,
-    email: '',
-    phone: '',
+    municipality: '',
     plan: 'arcade',
     billing: 'monthly',
     addons: {
       online: false,
       storage: false,
       profile: false,
-    },
+    }
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const isValid = !!(data.name && data.email && data.phone);
+    const isValid = !!(data.gender && data.age && data.municipality);
 
     if (isValid) {
       route.push('/survey/thank-you');
