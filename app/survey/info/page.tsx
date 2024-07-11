@@ -37,7 +37,7 @@ export default function InfoPage() {
   };
 
   const Genders = Object.values(genders).map((gender) => (
-    <option value={gender.name} > 
+    <option value={gender.name} key={gender.name} > 
       {gender.displayName}
     </option>
   ));
