@@ -14,7 +14,7 @@ export default function SurveySidebar() {
     | 'home'
     | 'transportation'
     | 'food'
-    | 'waste'
+    | 'trash'
     | 'profile';
 
   const steps: {
