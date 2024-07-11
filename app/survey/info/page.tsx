@@ -30,10 +30,10 @@ export default function InfoPage() {
       displayName: string;
     };
   } = {
-    female: { name: 'female', icon: femaleIcon, displayName: "Female" },
-    male: { name: 'male', icon: maleIcon, displayName: "Male" },
-    other: { name: 'other', icon: otherIcon, displayName: "Other" },
-    unspecified: { name: 'unspecified', icon: unspecifiedIcon, displayName: "Rather not say" },
+    female: { name: 'female', icon: femaleIcon, displayName: 'Female' },
+    male: { name: 'male', icon: maleIcon, displayName: 'Male' },
+    other: { name: 'other', icon: otherIcon, displayName: 'Other' },
+    unspecified: { name: 'unspecified', icon: unspecifiedIcon, displayName: 'Rather not say' },
   };
 
   const Genders = Object.values(genders).map((gender) => (
@@ -69,9 +69,7 @@ export default function InfoPage() {
               'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('gender', {
-              required: 'This field is required',
-            })}
+            { ...register('gender', { required: 'This field is required' }) }
             onChange={(e) => setValue('gender', e.target.value)}
             autoComplete="gender"
           >
