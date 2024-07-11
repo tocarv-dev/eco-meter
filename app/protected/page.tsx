@@ -4,12 +4,10 @@ export default async function ProtectedPage() {
   let session = await auth();
 
   return (
-    <div className="flex h-screen bg-black">
-      <div className="w-screen h-screen flex flex-col space-y-5 justify-center items-center text-white">
+      <div className="lg:bg-white w-full flex flex-col lg:flex-row px-4 lg:p-4 rounded-2xl lg:shadow-lg">
         You are logged in as {session?.user?.email}
         <SignOut />
       </div>
-    </div>
   );
 }
 

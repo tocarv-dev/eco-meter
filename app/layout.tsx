@@ -1,6 +1,7 @@
-import './globals.css';
-
-import { GeistSans } from 'geist/font/sans';
+import clsx from 'clsx';
+// Styles
+import '@/stylesheets/globals.css';
+import '@/stylesheets/fonts.css';
 
 let title = 'Next.js + Postgres Auth Starter';
 let description =
@@ -23,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={GeistSans.variable}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className="bg-magnolia font-ubuntu h-full flex flex-col justify-start lg:justify-center items-center">
+        <main className="font-normal relative w-full max-w-lg lg:max-w-[940px]">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

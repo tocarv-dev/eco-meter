@@ -6,11 +6,13 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
       "@/app/*": ["app/*"],
+      "@/components/*": ["components/*"],
+      "@/fonts/*": ["fonts/*"],
+      "@/images/*": ["images/*"],
       "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
+      "@/stylesheets/*": ["stylesheets/*"],
+      "@/types/*": ["types/*"]
     },
     "strict": true,
     "forceConsistentCasingInFileNames": true,
