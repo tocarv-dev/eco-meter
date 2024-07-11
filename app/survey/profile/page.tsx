@@ -113,7 +113,7 @@ export default function SummaryPage() {
               {plan} ({billing})
             </span>
             <Link
-              href="/survey/plan"
+              href="/survey/info"
               className="text-cool-gray hover:text-purplish-blue transition duration-300 underline text-sm font-medium decoration-2"
             >
               Change
@@ -139,7 +139,7 @@ export default function SummaryPage() {
       </div>
       <FormActions>
         <Link
-          href="/survey/addons"
+          href="/survey/trash"
           className="text-cool-gray font-medium lg:font-bold text-sm lg:text-base"
         >
           Go Back

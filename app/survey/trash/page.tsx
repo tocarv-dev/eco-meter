@@ -160,7 +160,7 @@ export default function PlanPage() {
       {/* <div className="mt-auto flex justify-between items-center"> */}
       <FormActions>
         <Link
-          href="/survey/info"
+          href="/survey/food"
           className="text-cool-gray transition duration-300 hover:text-marine-blue font-medium lg:font-bold text-sm lg:text-base"
         >
           Go Back

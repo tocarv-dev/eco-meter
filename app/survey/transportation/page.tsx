@@ -127,7 +127,7 @@ export default function AddonsPage() {
       <div className="flex flex-col w-full gap-4 mt-6">{Addons}</div>
       <FormActions>
         <Link
-          href="/survey/plan"
+          href="/survey/home"
           className="text-cool-gray transition duration-300 hover:text-marine-blue font-medium lg:font-bold text-sm lg:text-base"
         >
           Go Back

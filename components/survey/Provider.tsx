@@ -13,6 +13,12 @@ export default function Provider({ children }: FormProviderProps) {
     gender: '',
     age: 25,
     municipality: '',
+    residents: 2,
+    electricitySpend: 30,
+    useGas: false,
+    gasType: '',
+    gasSpend: 30,
+    useWood: false,
     plan: 'arcade',
     billing: 'monthly',
     addons: {

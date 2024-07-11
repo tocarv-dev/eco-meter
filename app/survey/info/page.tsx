@@ -370,7 +370,7 @@ export default function InfoPage() {
       description="Please tell us a bit about yourself"
     >
       <div className="flex flex-col mt-6">
-      <label className="flex flex-col">
+        <label className="flex flex-col">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
               gender

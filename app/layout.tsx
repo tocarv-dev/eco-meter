@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import '@/stylesheets/globals.css';
 import '@/stylesheets/fonts.css';
 
-let title = 'Next.js + Postgres Auth Starter';
+let title = 'Cooler World - Carbon Footprint Calculator';
 let description =
-  'This is a Next.js starter kit that uses NextAuth.js for simple email + password login and a Postgres database to persist the data.';
+  'This is a carbon footprint calculator for Portuguese residents.';
 
 export const metadata = {
   title,
