@@ -19,7 +19,7 @@ export default function Provider({ children }: FormProviderProps) {
     gasType: '',
     gasSpend: 30,
     useWood: false,
-    plan: 'arcade',
+    profile: 'profile_c',
     billing: 'monthly',
     addons: {
       online: false,
