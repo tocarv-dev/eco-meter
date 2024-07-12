@@ -105,7 +105,7 @@ export default function ResidencePage() {
           </div>
           <input
             type="number"
-            placeholder="2"
+            placeholder="30"
             className={clsx(
               'border',
               errors.electricitySpend
@@ -180,7 +180,7 @@ export default function ResidencePage() {
           </div>
           <input
             type="number"
-            placeholder="2"
+            placeholder="30"
             className={clsx(
               'border',
               errors.gasSpend

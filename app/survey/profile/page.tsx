@@ -6,12 +6,13 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 // Icons
-import profile_aIcon from '@/images/icon-arcade.svg';
-import profile_bIcon from '@/images/icon-advanced.svg';
-import profile_cIcon from '@/images/icon-pro.svg';
-import profile_dIcon from '@/images/icon-pro.svg';
-import profile_eIcon from '@/images/icon-pro.svg';
-import profile_fIcon from '@/images/icon-pro.svg';
+import profile_aIcon from '@/images/profile_a.png';
+import profile_bIcon from '@/images/profile_b.png';
+import profile_cIcon from '@/images/profile_c.png';
+import profile_dIcon from '@/images/profile_d.png';
+import profile_eIcon from '@/images/profile_d.png';
+import profile_fIcon from '@/images/profile_d.png';
+import profile_gIcon from '@/images/profile_d.png';
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
 
@@ -21,7 +22,6 @@ export default function ProfilePage() {
   const { isValid } = formState;
 
   const selectedProfile = watch('profile');
-  const selectedBilling = watch('billing');
 
   const validateStep = async () => {
     await trigger();
@@ -32,7 +32,7 @@ export default function ProfilePage() {
 
   const profiles: {
     [key: string]: {
-      name: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d' | 'profile_e' | 'profile_f' ;
+      name: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d' | 'profile_e' | 'profile_f' | 'profile_g' ;
       icon: any;
       displayName: string,
     };
@@ -41,14 +41,6 @@ export default function ProfilePage() {
     profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Profile B" },
     profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Profile C" },
     profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Profile D" },
-  };
-
-  const toggleBilling = () => {
-    if (selectedBilling === 'monthly') {
-      setValue('billing', 'yearly');
-    } else {
-      setValue('billing', 'monthly');
-    }
   };
 
   const Profiles = Object.values(profiles).map((profile) => (

@@ -393,6 +393,7 @@ export default function InfoPage() {
             )}
             { ...register('gender', { required: 'This field is required' }) }
             onChange={(e) => setValue('gender', e.target.value)}
+            onBlur={() => trigger('gender')}
             autoComplete="gender"
           >
             {Genders}
@@ -460,6 +461,7 @@ export default function InfoPage() {
             )}
             { ...register('municipality', { required: 'This field is required' }) }
             onChange={(e) => setValue('municipality', e.target.value)}
+            onBlur={() => trigger('municipality')}
             autoComplete="municipality"
           >
             {Municipalities}
