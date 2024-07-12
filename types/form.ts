@@ -8,7 +8,7 @@ export interface FormValues {
   gasType: string;
   gasSpend: number;
   useWood: boolean;
-  plan: 'arcade' | 'advanced' | 'pro';
+  profile: 'profile_a' | 'profile_b' | 'profile_c';
   billing: 'monthly' | 'yearly';
   addons: {
     online: boolean;

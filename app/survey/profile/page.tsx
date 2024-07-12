@@ -6,9 +6,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 // Icons
-import arcadeIcon from '@/images/icon-arcade.svg';
-import advancedIcon from '@/images/icon-advanced.svg';
-import proIcon from '@/images/icon-pro.svg';
+import profile_aIcon from '@/images/icon-arcade.svg';
+import profile_bIcon from '@/images/icon-advanced.svg';
+import profile_cIcon from '@/images/icon-pro.svg';
+import profile_dIcon from '@/images/icon-pro.svg';
+import profile_eIcon from '@/images/icon-pro.svg';
+import profile_fIcon from '@/images/icon-pro.svg';
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
 
@@ -17,7 +20,7 @@ export default function ProfilePage() {
   const { register, trigger, formState, watch, setValue } = useAppFormContext();
   const { isValid } = formState;
 
-  const selectedPlan = watch('plan');
+  const selectedProfile = watch('profile');
   const selectedBilling = watch('billing');
 
   const validateStep = async () => {
@@ -29,25 +32,15 @@ export default function ProfilePage() {
 
   const profiles: {
     [key: string]: {
-      name: 'profile_a' | 'profile_b' | 'profile_c' ;
+      name: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d' | 'profile_e' | 'profile_f' ;
       icon: any;
-      pricePerMonth: number;
-      pricePerYear: number;
+      displayName: string,
     };
   } = {
-    arcade: {
-      name: 'arcade',
-      icon: arcadeIcon,
-      pricePerMonth: 9,
-      pricePerYear: 90,
-    },
-    advanced: {
-      name: 'advanced',
-      icon: advancedIcon,
-      pricePerMonth: 12,
-      pricePerYear: 120,
-    },
-    pro: { name: 'pro', icon: proIcon, pricePerMonth: 15, pricePerYear: 150 },
+    profile_a: { name: 'profile_a', icon: profile_aIcon, displayName:"Profile A", },
+    profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Profile B" },
+    profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Profile C" },
+    profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Profile D" },
   };
 
   const toggleBilling = () => {
@@ -58,38 +51,28 @@ export default function ProfilePage() {
     }
   };
 
-  const Plans = Object.values(profiles).map((plan) => (
+  const Profiles = Object.values(profiles).map((profile) => (
     <label
-      key={plan.name}
+      key={profile.name}
       className={clsx(
         'flex flex-row gap-x-4 lg:flex-col items-start',
         'cursor-pointer px-4 py-4 lg:pt-5 border',
         'w-full rounded-md transition-colors duration-300',
-        selectedPlan === plan.name
-          ? 'border-purplish-blue bg-alabaster'
-          : 'border-light-gray bg-transparent hover:border-purplish-blue'
+        selectedProfile === profile.name
+          ? 'border-dark-green bg-faint-green'
+          : 'border-light-gray bg-transparent hover:border-mid-green hover:bg-white-green'
       )}
     >
-      <Image src={plan.icon} alt="" />
+      <Image src={profile.icon} alt="" />
       <div className="flex flex-col lg:mt-10">
         <span className="capitalize font-bold text-deep-green">
-          {plan.name}
+          {profile.displayName}
         </span>
-        <span className="lg:font-medium text-sm text-cool-gray">
-          {selectedBilling === 'monthly'
-            ? `$${plan.pricePerMonth}/mo`
-            : `$${plan.pricePerYear}/yr`}
-        </span>
-        {selectedBilling === 'yearly' && (
-          <span className="text-deep-green mt-1 text-xs font-medium lg:font-bold">
-            2 months free
-          </span>
-        )}
       </div>
       <input
-        {...register('plan', { required: 'Please select a plan' })}
+        {...register('profile', { required: 'Please select a profile' })}
         type="radio"
-        value={plan.name}
+        value={profile.name}
         className="hidden"
       />
     </label>
@@ -101,61 +84,7 @@ export default function ProfilePage() {
       description="Which of these profiles best describes you?"
     >
       <div className="flex flex-col mt-5 lg:mt-6">
-        <div className="flex gap-x-4 gap-y-3 flex-col lg:flex-row">{Plans}</div>
-        <div className="flex justify-center items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4">
-          <label>
-            <span
-              className={clsx(
-                'text-sm lg:text-base font-bold transition duration-300',
-                selectedBilling === 'monthly'
-                  ? 'text-deep-green'
-                  : 'text-cool-gray'
-              )}
-            >
-              Monthly
-            </span>
-            <input
-              {...register('billing', {
-                required: 'Please select your preferred billing-cycle',
-              })}
-              type="radio"
-              value="monthly"
-              className="hidden"
-            />
-          </label>
-          <button
-            className={clsx(
-              'h-[20px] w-[40px] bg-marine-blue rounded-full p-1 flex',
-              selectedBilling === 'monthly' ? 'justify-start' : 'justify-end'
-            )}
-            onClick={toggleBilling}
-            type="button"
-          >
-            <div
-              className={clsx('h-full rounded-full aspect-square bg-white')}
-            />
-          </button>
-          <label>
-            <span
-              className={clsx(
-                'text-sm lg:text-base font-bold transition duration-300',
-                selectedBilling === 'yearly'
-                  ? 'text-deep-green'
-                  : 'text-cool-gray'
-              )}
-            >
-              Yearly
-            </span>
-            <input
-              {...register('billing', {
-                required: 'Please select your preferred billing-cycle',
-              })}
-              type="radio"
-              value="yearly"
-              className="hidden"
-            />
-          </label>
-        </div>
+        <div className="flex gap-x-4 gap-y-3 flex-col lg:flex-row">{Profiles}</div>
       </div>
       {/* <div className="mt-auto flex justify-between items-center"> */}
       <FormActions>
