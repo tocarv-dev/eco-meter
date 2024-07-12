@@ -65,7 +65,7 @@ export default function ResidencePage() {
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               house members
             </span>
             {errors.residents && (
@@ -83,7 +83,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('residents', { required: 'This field is required', })}
@@ -94,7 +94,7 @@ export default function ResidencePage() {
         </label>
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               monthly household electricity spend
             </span>
             {errors.electricitySpend && (
@@ -112,7 +112,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('electricitySpend', { required: 'This field is required', })}
@@ -121,7 +121,7 @@ export default function ResidencePage() {
             autoComplete="electricitySpend"
           />
         </label>
-        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4">
+        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
               Do you use gas at home?
@@ -130,7 +130,7 @@ export default function ResidencePage() {
           <button
             className={clsx(
               'h-[20px] w-[40px] rounded-full p-1 flex',
-              usesGas === true ? 'justify-end bg-deep-green' : 'justify-start bg-cool-gray'
+              usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
             )}
             onClick= {toggleUseGas}
             type="button"
@@ -140,7 +140,7 @@ export default function ResidencePage() {
         </div>
         <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')} >
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               Type of gas
             </span>
             {errors.gasType && (
@@ -156,7 +156,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             { ...register('gasType', { required: 'This field is required' }) }
@@ -169,7 +169,7 @@ export default function ResidencePage() {
         </label>
         <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               monthly household gas spend
             </span>
             {errors.gasSpend && (
@@ -187,7 +187,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('gasSpend', { required: 'This field is required', })}
@@ -196,7 +196,7 @@ export default function ResidencePage() {
             autoComplete="gasSpend"
           />
         </label>
-        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4">
+        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx(' text-sm lg:text-base font-bold transition duration-300',) }>
               Do you use wood at home?
@@ -219,13 +219,13 @@ export default function ResidencePage() {
       <FormActions>
         <Link
           href="/survey/info"
-          className="text-cool-gray transition duration-300 hover:text-marine-blue font-medium lg:font-bold text-sm lg:text-base"
+          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
         >
           Go Back
         </Link>
         <button
           type="button"
-          className="bg-marine-blue transition duration-300 hover:opacity-80 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
+          className="bg-dark-green transition duration-300 hover:opacity-80 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={validateStep}
         >
           Next Step

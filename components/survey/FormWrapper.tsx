@@ -13,7 +13,7 @@ export default function FormWrapper({
         'bg-white lg:bg-transparent rounded-lg lg:rounded-none shadow-lg lg:shadow-none'
       )}
     >
-      <h1 className="text-2xl lg:text-[34px] font-bold text-marine-blue">
+      <h1 className="text-2xl lg:text-[34px] font-bold text-dark-green">
         {heading}
       </h1>
       <p className="text-cool-gray mt-1">{description}</p>

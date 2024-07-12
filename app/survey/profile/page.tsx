@@ -1,153 +1,174 @@
 'use client';
 
+import clsx from 'clsx';
 import useAppFormContext from '@/lib/hooks/useAppFormContext';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+// Icons
+import arcadeIcon from '@/images/icon-arcade.svg';
+import advancedIcon from '@/images/icon-advanced.svg';
+import proIcon from '@/images/icon-pro.svg';
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
 
-export default function SummaryPage() {
+export default function ProfilePage() {
   const router = useRouter();
-  const { watch } = useAppFormContext();
+  const { register, trigger, formState, watch, setValue } = useAppFormContext();
+  const { isValid } = formState;
 
-  const {
-    //  name, phone,
-    plan,
-    billing,
-    addons,
-  } = watch();
+  const selectedPlan = watch('plan');
+  const selectedBilling = watch('billing');
 
-  // if (!(!!name && !!phone && !!plan)) {
-  //   router.replace('/survey/info');
-  // }
+  const validateStep = async () => {
+    await trigger();
+    if (isValid) {
+      router.push('/survey/profile');
+    }
+  };
 
-  const prices = {
-    plans: {
-      arcade: {
-        monthly: 9,
-        yearly: 90,
-      },
-      advanced: {
-        monthly: 12,
-        yearly: 120,
-      },
-      pro: {
-        monthly: 15,
-        yearly: 150,
-      },
+  const profiles: {
+    [key: string]: {
+      name: 'profile_a' | 'profile_b' | 'profile_c' ;
+      icon: any;
+      pricePerMonth: number;
+      pricePerYear: number;
+    };
+  } = {
+    arcade: {
+      name: 'arcade',
+      icon: arcadeIcon,
+      pricePerMonth: 9,
+      pricePerYear: 90,
     },
-    addons: {
-      online: {
-        monthly: 1,
-        yearly: 10,
-      },
-      storage: {
-        monthly: 2,
-        yearly: 20,
-      },
-      profile: {
-        monthly: 2,
-        yearly: 20,
-      },
+    advanced: {
+      name: 'advanced',
+      icon: advancedIcon,
+      pricePerMonth: 12,
+      pricePerYear: 120,
     },
+    pro: { name: 'pro', icon: proIcon, pricePerMonth: 15, pricePerYear: 150 },
   };
 
-  const displayPrice = (value: number) => {
-    return `$${value}/${billing === 'monthly' ? 'mo' : 'yr'}`;
+  const toggleBilling = () => {
+    if (selectedBilling === 'monthly') {
+      setValue('billing', 'yearly');
+    } else {
+      setValue('billing', 'monthly');
+    }
   };
 
-  const total =
-    prices.plans[plan][billing] +
-    Object.entries(addons)
-      .filter(([addon, selected]) => selected)
-      .map(
-        ([addon]) =>
-          prices.addons[addon as 'online' | 'storage' | 'profile'][billing]
-      )
-      .reduce((total, price) => total + price, 0);
-
-  const display = {
-    plan: displayPrice(prices.plans[plan][billing]),
-    addons: [
-      {
-        id: 'online',
-        title: 'Online service',
-        price: displayPrice(prices.addons.online[billing]),
-      },
-      {
-        id: 'storage',
-        title: 'Larger storage',
-        price: displayPrice(prices.addons.storage[billing]),
-      },
-      {
-        id: 'profile',
-        title: 'Customizable profile',
-        price: displayPrice(prices.addons.profile[billing]),
-      },
-    ],
-    total: displayPrice(total),
-  };
-
-  const Addons = display.addons
-    .filter((addon) => addons[addon.id as 'online' | 'storage' | 'profile'])
-    .map((addon) => (
-      <div key={addon.id} className="flex justify-between items-center">
-        <span className="text-cool-gray text-sm">{addon.title}</span>
-        <span className="text-marine-blue font-medium text-sm">
-          +{addon.price}
+  const Plans = Object.values(profiles).map((plan) => (
+    <label
+      key={plan.name}
+      className={clsx(
+        'flex flex-row gap-x-4 lg:flex-col items-start',
+        'cursor-pointer px-4 py-4 lg:pt-5 border',
+        'w-full rounded-md transition-colors duration-300',
+        selectedPlan === plan.name
+          ? 'border-purplish-blue bg-alabaster'
+          : 'border-light-gray bg-transparent hover:border-purplish-blue'
+      )}
+    >
+      <Image src={plan.icon} alt="" />
+      <div className="flex flex-col lg:mt-10">
+        <span className="capitalize font-bold text-deep-green">
+          {plan.name}
         </span>
+        <span className="lg:font-medium text-sm text-cool-gray">
+          {selectedBilling === 'monthly'
+            ? `$${plan.pricePerMonth}/mo`
+            : `$${plan.pricePerYear}/yr`}
+        </span>
+        {selectedBilling === 'yearly' && (
+          <span className="text-deep-green mt-1 text-xs font-medium lg:font-bold">
+            2 months free
+          </span>
+        )}
       </div>
-    ));
-
-  const hasAddons = Object.values(addons).some((addon) => addon === true);
+      <input
+        {...register('plan', { required: 'Please select a plan' })}
+        type="radio"
+        value={plan.name}
+        className="hidden"
+      />
+    </label>
+  ));
 
   return (
     <FormWrapper
-      heading="Finishing up"
-      description="Double-check everything looks OK before confirming."
+      heading="Select your Profile"
+      description="Which of these profiles best describes you?"
     >
-      <div className="flex flex-col bg-alabaster rounded-lg px-4 lg:px-6 mt-6 w-full shrink-0">
-        <div className="flex items-center justify-between pt-4 pb-3 lg:pb-5">
-          <div className="flex flex-col">
-            <span className="capitalize text-marine-blue font-bold text-sm lg:text-base">
-              {plan} ({billing})
-            </span>
-            <Link
-              href="/survey/info"
-              className="text-cool-gray hover:text-purplish-blue transition duration-300 underline text-sm font-medium decoration-2"
+      <div className="flex flex-col mt-5 lg:mt-6">
+        <div className="flex gap-x-4 gap-y-3 flex-col lg:flex-row">{Plans}</div>
+        <div className="flex justify-center items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4">
+          <label>
+            <span
+              className={clsx(
+                'text-sm lg:text-base font-bold transition duration-300',
+                selectedBilling === 'monthly'
+                  ? 'text-deep-green'
+                  : 'text-cool-gray'
+              )}
             >
-              Change
-            </Link>
-          </div>
-          <span className="text-marine-blue font-bold text-sm lg:text-[16px]">
-            {display.plan}
-          </span>
+              Monthly
+            </span>
+            <input
+              {...register('billing', {
+                required: 'Please select your preferred billing-cycle',
+              })}
+              type="radio"
+              value="monthly"
+              className="hidden"
+            />
+          </label>
+          <button
+            className={clsx(
+              'h-[20px] w-[40px] bg-marine-blue rounded-full p-1 flex',
+              selectedBilling === 'monthly' ? 'justify-start' : 'justify-end'
+            )}
+            onClick={toggleBilling}
+            type="button"
+          >
+            <div
+              className={clsx('h-full rounded-full aspect-square bg-white')}
+            />
+          </button>
+          <label>
+            <span
+              className={clsx(
+                'text-sm lg:text-base font-bold transition duration-300',
+                selectedBilling === 'yearly'
+                  ? 'text-deep-green'
+                  : 'text-cool-gray'
+              )}
+            >
+              Yearly
+            </span>
+            <input
+              {...register('billing', {
+                required: 'Please select your preferred billing-cycle',
+              })}
+              type="radio"
+              value="yearly"
+              className="hidden"
+            />
+          </label>
         </div>
-        {hasAddons && (
-          <div className="flex flex-col pt-3 lg:pt-4 pb-4 lg:pb-6 gap-3 border-t border-light-gray">
-            {Addons}
-          </div>
-        )}
       </div>
-      <div className="flex justify-between items-center px-6 mt-6">
-        <span className="text-cool-gray text-sm">
-          Total (per {billing === 'monthly' ? 'month' : 'year'})
-        </span>
-        <span className="text-purplish-blue text-lg lg:text-xl font-bold">
-          +{display.total}
-        </span>
-      </div>
+      {/* <div className="mt-auto flex justify-between items-center"> */}
       <FormActions>
         <Link
           href="/survey/trash"
-          className="text-cool-gray font-medium lg:font-bold text-sm lg:text-base"
+          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
         >
           Go Back
         </Link>
         <button
           type="submit"
           // className="bg-purplish-blue text-magnolia font-medium ml-auto mt-auto px-8 py-3 rounded-lg"
-          className="bg-purplish-blue transition duration-300 hover:opacity-70 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
+          className="bg-light-green transition duration-300 hover:opacity-70 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         >
           Confirm
         </button>

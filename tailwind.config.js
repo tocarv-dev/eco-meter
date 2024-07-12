@@ -15,8 +15,9 @@ module.exports = {
       'strawberry-red': 'hsl(354, 84%, 57%)',
       // Neutral
       'cool-gray': 'hsl(231, 11%, 63%)',
-      'faint-green': 'hsl(124, 19.6%, 80%)',
-      'light-green': 'hsl(179, 71%, 36%)',
+      'white-green': 'hsl(165, 40%, 98%)',
+      'faint-green': 'hsl(164, 38.5%, 92.4%)',
+      'light-green': 'hsl(179, 70.5%, 35.9%)',
       'mid-green': 'hsl(179, 70%, 25%)',
       'dark-green': 'hsl(179, 70%, 18%)',
       'deep-green': 'hsl(175, 68.4%, 3.7%)',

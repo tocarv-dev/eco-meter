@@ -372,7 +372,7 @@ export default function InfoPage() {
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               gender
             </span>
             {errors.gender && (
@@ -388,7 +388,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             { ...register('gender', { required: 'This field is required' }) }
@@ -400,7 +400,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               age
             </span>
             {errors.age && (
@@ -418,7 +418,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('age', {
@@ -439,7 +439,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col mt-4">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-marine-blue lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               municipality
             </span>
             {errors.municipality && (
@@ -455,7 +455,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-marine-blue placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             { ...register('municipality', { required: 'This field is required' }) }
@@ -469,7 +469,7 @@ export default function InfoPage() {
       <FormActions>
         <button
           type="button"
-          className="bg-marine-blue hover:opacity-80 transition duration-300 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
+          className="bg-dark-green hover:opacity-80 transition duration-300 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={validateStep}
         >
           Next Step
