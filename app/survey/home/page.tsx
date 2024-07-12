@@ -130,7 +130,7 @@ export default function ResidencePage() {
           <button
             className={clsx(
               'h-[20px] w-[40px] rounded-full p-1 flex',
-              usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+              usesGas === true ? 'justify-end bg-deep-green' : 'justify-start bg-cool-gray'
             )}
             onClick= {toggleUseGas}
             type="button"
