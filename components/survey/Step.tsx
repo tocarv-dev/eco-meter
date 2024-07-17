@@ -2,6 +2,7 @@
 
 import useAppFormContext from '@/lib/hooks/useAppFormContext';
 import clsx from 'clsx';
+
 // Components
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -18,8 +19,15 @@ export default function Step({ step, segment }: StepProps) {
   //   }
   // };
 
+  let disabled = false; 
+
   return (
-    <Link href={`/survey/${step.segment}`}>
+    <Link
+    href={`/survey/${step.segment}`}
+    className={disabled ? 'pointer-events-none': ''} 
+    aria-disabled={disabled} 
+    tabIndex={disabled ? -1 : undefined}
+    >
       {/* <button type="button" onClick={() => validateStep(`/${step}`)}> */}
       <div className="flex items-center gap-4">
         <button

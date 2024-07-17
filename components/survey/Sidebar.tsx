@@ -1,6 +1,7 @@
 'use client';
 
 import { useSelectedLayoutSegment } from 'next/navigation';
+
 // Components
 import Image from 'next/image';
 import Step from './Step';
@@ -9,6 +10,7 @@ import bgSidebarDesktop from '@/images/bg-sidebar-desktop.svg';
 import bgSidebarMobile from '@/images/bg-sidebar-mobile.svg';
 
 export default function SurveySidebar() {
+
   const segment = useSelectedLayoutSegment() as
     | 'info'
     | 'home'
@@ -55,7 +57,12 @@ export default function SurveySidebar() {
   ];
 
   const Steps = steps.map((step) => (
-    <Step key={step.number} step={step} segment={segment} />
+    
+    <Step
+    key={step.number}
+    step={step}
+    segment={segment}
+    />
   ));
 
   return (

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import useAppFormContext from '@/lib/hooks/useAppFormContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import {Slider} from "@nextui-org/react";
 import Image from 'next/image';
 
 // Icons
@@ -29,7 +30,32 @@ export default function TransportationPage() {
       heading="Your Travels"
       description="Tell us more about your transportation habits."
     >
-      <div className="flex flex-col w-full gap-4 mt-6"></div>
+      <div className="flex flex-col w-full gap-4 mt-6">
+      <Slider 
+      label="Select a value" 
+      showTooltip={true}
+      step={0.1} 
+      formatOptions={{style: "percent"}}
+      maxValue={1}
+      minValue={0}
+      marks={[
+        {
+          value: 0.2,
+          label: "20%",
+        },
+        {
+          value: 0.5,
+          label: "50%",
+        },
+        {
+          value: 0.8,
+          label: "80%",
+        },
+      ]}
+      defaultValue={0.2}
+      className="max-w-md"
+    />
+      </div>
       <FormActions>
         <Link
           href="/survey/home"

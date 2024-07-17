@@ -7,12 +7,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.2",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "10.4.14",
     "bcrypt-ts": "^5.0.0",
     "drizzle-orm": "^0.29.2",
+    "framer-motion": "^11.3.6",
     "geist": "^1.2.0",
     "next": "^14.0.4",
     "postgres": "^3.4.3",
