@@ -6,7 +6,12 @@ import clsx from 'clsx';
 // Components
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { IoRestaurantOutline } from "react-icons/io5";
+import { TbHomeHeart } from "react-icons/tb";
+import { RiUser5Line } from "react-icons/ri";
+import { IoCarOutline} from "react-icons/io5";
+import { MdOutlineRestaurant } from "react-icons/md";
+import { FiTrash2 } from "react-icons/fi";
+import { GiGreenhouse } from "react-icons/gi";
 
 export default function Step({ step, segment }: StepProps) {
   // const router = useRouter();
@@ -47,17 +52,17 @@ export default function Step({ step, segment }: StepProps) {
             'w-[33px] h-[33px] rounded-full border',
             'transition-colors duration-300',
             step.segment === segment
-              ? 'bg-light-blue text-marine-blue border-transparent'
+              ? 'bg-faint-green text-deep-green border-transparent'
               : 'bg-transparent text-white border-white',
             'font-bold text-sm flex justify-center items-center'
           )}
         >
-          { step.number === 1 && <IoRestaurantOutline size="1.5em" /> }
-          { step.number === 2 && step.number }
-          { step.number === 3 && step.number }
-          { step.number === 4 && step.number }
-          { step.number === 5 && step.number }
-          { step.number === 6 && step.number }
+          { step.number === 1 && <RiUser5Line size="1.5em" /> }
+          { step.number === 2 && <TbHomeHeart size="1.5em" />}
+          { step.number === 3 && <IoCarOutline size="1.5em" />}
+          { step.number === 4 && <MdOutlineRestaurant size="1.5em" /> }
+          { step.number === 5 && <FiTrash2 size="1.5em" /> }
+          { step.number === 6 && <GiGreenhouse size="1.5em" /> }
         </button>
         <div className="hidden lg:flex flex-col uppercase">
           <h3 className={clsx('font-normal text-[13px] text-cool-gray')}>
