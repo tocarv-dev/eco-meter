@@ -6,6 +6,7 @@ import clsx from 'clsx';
 // Components
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { IoRestaurantOutline } from "react-icons/io5";
 
 export default function Step({ step, segment }: StepProps) {
   // const router = useRouter();
@@ -19,7 +20,18 @@ export default function Step({ step, segment }: StepProps) {
   //   }
   // };
 
-  let disabled = false; 
+  let disabled = false;
+
+  let icons = (step: number) => {
+    switch(step) {
+      case 1: 
+        <Home size={20}/>
+      break;
+
+      default: 
+        step;
+    }
+  }
 
   return (
     <Link
@@ -37,10 +49,15 @@ export default function Step({ step, segment }: StepProps) {
             step.segment === segment
               ? 'bg-light-blue text-marine-blue border-transparent'
               : 'bg-transparent text-white border-white',
-            'font-bold text-sm'
+            'font-bold text-sm flex justify-center items-center'
           )}
         >
-          {step.number}
+          { step.number === 1 && <IoRestaurantOutline size="1.5em" /> }
+          { step.number === 2 && step.number }
+          { step.number === 3 && step.number }
+          { step.number === 4 && step.number }
+          { step.number === 5 && step.number }
+          { step.number === 6 && step.number }
         </button>
         <div className="hidden lg:flex flex-col uppercase">
           <h3 className={clsx('font-normal text-[13px] text-cool-gray')}>

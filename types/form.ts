@@ -2,6 +2,13 @@ export interface FormValues {
   gender: string;
   age: number;
   municipality: string;
+  veganMeals: number;
+  redMeatMeals: number;
+  unsortedBags: number;
+  paperBags: number;
+  plasticBags: number;
+  glassBags: number;
+  organicBags: number;
   residents: number;
   electricitySpend: number;
   useGas: boolean;
@@ -9,10 +16,4 @@ export interface FormValues {
   gasSpend: number;
   useWood: boolean;
   profile: 'profile_a' | 'profile_b' | 'profile_c';
-  billing: 'monthly' | 'yearly';
-  addons: {
-    online: boolean;
-    storage: boolean;
-    profile: boolean;
-  };
 }

@@ -15,12 +15,6 @@ export default function Provider({ children }: FormProviderProps) {
     useGas: false,
     gasType: '',
     useWood: false,
-    billing: 'monthly',
-    addons: {
-      online: false,
-      storage: false,
-      profile: false,
-    }
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {

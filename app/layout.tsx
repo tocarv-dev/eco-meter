@@ -27,9 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <NextUIProvider>
       <html lang="en" className="h-full">
-        <body className="bg-faint-green font-ubuntu h-full flex flex-col justify-start lg:justify-center items-center">
+        <body className="lg:bg-faint-green font-ubuntu h-full flex flex-col justify-start lg:justify-center items-center">
           <Providers>
             <main className="font-normal relative w-full max-w-lg lg:max-w-[940px]">
               {children}
@@ -37,6 +36,6 @@ export default function RootLayout({
           </Providers>
         </body>
       </html>
-    // </NextUIProvider>
   );
 }
+  
