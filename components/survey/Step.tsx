@@ -22,7 +22,7 @@ export default function Step({ step, segment }: StepProps) {
 
   let disabled = false;
 
-  let icons = (step: number) => {
+/*  let icons = (step: number) => {
     switch(step) {
       case 1: 
         <Home size={20}/>
@@ -31,7 +31,7 @@ export default function Step({ step, segment }: StepProps) {
       default: 
         step;
     }
-  }
+  }*/
 
   return (
     <Link
