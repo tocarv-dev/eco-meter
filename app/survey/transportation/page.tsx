@@ -106,7 +106,7 @@ export default function TransportationPage() {
         <div>
         { selected.map((s:any) => {
           return (
-            <div>
+            <div key={s.option}>
               <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
                 { s.option }
               </span>
