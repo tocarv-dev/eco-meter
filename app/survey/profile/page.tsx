@@ -35,12 +35,13 @@ export default function ProfilePage() {
       name: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d' | 'profile_e' | 'profile_f' | 'profile_g' ;
       icon: any;
       displayName: string,
+      description: string
     };
   } = {
-    profile_a: { name: 'profile_a', icon: profile_aIcon, displayName:"Profile A", },
-    profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Profile B" },
-    profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Profile C" },
-    profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Profile D" },
+    profile_a: { name: 'profile_a', icon: profile_aIcon, displayName:"Profile A", description: "this is profile A. as a profile A ...."},
+    profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Profile B", description: "this is profile B. as a profile B ...." },
+    profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Profile C", description: "this is profile C. as a profile C ...." },
+    profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Profile D", description: "This is profile D. As a profile D ...." },
   };
 
   const Profiles = Object.values(profiles).map((profile) => (
@@ -55,18 +56,25 @@ export default function ProfilePage() {
           : 'border-light-gray bg-transparent hover:border-mid-green hover:bg-white-green'
       )}
     >
-      <Image src={profile.icon} alt="" />
+      <Image src={profile.icon} alt="" className="w-32" />
       <div className="flex flex-col lg:mt-10">
-        <span className="capitalize font-bold text-deep-green">
-          {profile.displayName}
-        </span>
+        <div className="flex flex-col lg:mt-10">
+          <span className="capitalize font-bold text-deep-green">
+            {profile.displayName}
+          </span>
+        </div>
+        <div className="flex flex-col lg:mt-10">
+          <span className="text-sm text-cool-gray">
+            {profile.description}
+          </span>
+        </div>
+        <input
+          {...register('profile', { required: 'Please select a profile' })}
+          type="radio"
+          value={profile.name}
+          className="hidden"
+        />
       </div>
-      <input
-        {...register('profile', { required: 'Please select a profile' })}
-        type="radio"
-        value={profile.name}
-        className="hidden"
-      />
     </label>
   ));
 
