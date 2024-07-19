@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useState } from 'react';
 import useAppFormContext from '@/lib/hooks/useAppFormContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -14,8 +15,35 @@ import FormActions from '@/components/survey/FormActions';
 
 export default function TransportationPage() {
   const router = useRouter();
-  const { register, trigger, formState, watch } = useAppFormContext();
-  const { isValid } = formState;
+  const { register, trigger, formState, watch, setValue } = useAppFormContext();
+  const { isValid, errors } = formState;
+
+  const transportOptions: {
+    [key: string]: {
+      name: 'dieselCar' | 'gasCar' | 'hybridCar' | 'gplCar' | 'electricCar' | 'motorcycle' | 'taxi' | 'train' | 'bus' | 'subway' | 'tram' | 'ferryFoot' | 'ferryCar';
+      displayName: string;
+    };
+  } = {
+    dieselCar: { name: 'dieselCar', displayName: 'Propane' },
+    gasCar: { name: 'gasCar', displayName: 'Gasoline Car' },
+    hybridCar: { name: 'hybridCar', displayName: 'Hybrid Car' },
+    gplCar: { name: 'gplCar', displayName: 'GPL Car' },
+    electricCar: { name: 'electricCar', displayName: 'Electric Car' },
+    motorcycle: { name: 'motorcycle', displayName: 'Motorcycle' },
+    taxi: { name: 'taxi', displayName: 'Taxi' },
+    train: { name: 'train', displayName: 'Train' },
+    bus: { name: 'bus', displayName: 'Urban Bus' },
+    subway: { name: 'subway', displayName: 'Subway' }, 
+    tram: { name: 'tram', displayName: 'Tram' },
+    ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (Foot Passenger)'},
+    ferryCar: { name: 'ferryCar', displayName: 'Ferry (Car Passenger)'}
+  };
+
+  const Transports = Object.values(transportOptions).map((item) => (
+    <option value={item.name} key={item.name} > 
+      {item.displayName}
+    </option>
+  ));
 
   const validateStep = async () => {
     await trigger();
@@ -30,6 +58,36 @@ export default function TransportationPage() {
       description="Tell us more about your transportation habits."
     >
       <div className="flex flex-col w-full gap-4 mt-6">
+        
+      <label className="flex flex-col mt-4">
+          <div className="flex justify-between">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Transports
+            </span>
+            {errors.transports && (
+              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+                {errors.transports.message}
+              </span>
+            )}
+          </div>
+          <select 
+            className={clsx(
+              'border',
+              errors.transports
+                ? 'border-strawberry-red'
+                : 'border-light-gray focus:border-purplish-blue',
+              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'focus:outline-none'
+            )}
+            { ...register('transports', { required: 'This field is required' }) }
+            onChange={(e) => setValue('transports', e.target.value)}
+            onBlur={() => trigger('transports')}
+            autoComplete="transports"
+          >
+            {Transports}
+          </select>
+        </label>
       </div>
       <FormActions>
         <Link

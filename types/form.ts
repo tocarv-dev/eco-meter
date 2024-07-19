@@ -2,6 +2,7 @@ export interface FormValues {
   gender: string;
   age: number;
   municipality: string;
+  transports: string;
   veganMeals: number;
   redMeatMeals: number;
   unsortedBags: number;
