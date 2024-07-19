@@ -37,7 +37,6 @@ export default function FoodPage() {
         <Slider
           key={"primary"}
           size="md"
-          color={"primary"}
           radius="md"
           step={1}
           getValue={(meals) => `${meals} of 14 Meals`}
@@ -45,7 +44,20 @@ export default function FoodPage() {
           minValue={0}
           defaultValue={7}
           aria-label="meat"
-          className="max-w-md"
+          classNames={{
+            base: "max-w-md",
+            filler: "bg-gradient-to-r from-dark-green to-dark-green",
+            labelWrapper: "mb-2",
+            label: "font-medium text-default-700 text-medium",
+            value: "font-medium text-default-500 text-small",
+            thumb: [
+              "transition-size",
+              "bg-dark-green",
+              "data-[dragging=true]:shadow-lg data-[dragging=true]:shadow-black/20",
+              "data-[dragging=true]:w-7 data-[dragging=true]:h-7 data-[dragging=true]:after:h-6 data-[dragging=true]:after:w-6"
+            ],
+            step: "bg-dark-green"
+          }}
           label="Red meat"
         />
         <Slider

@@ -18,6 +18,21 @@ export default function TransportationPage() {
   const { register, trigger, formState, watch, setValue } = useAppFormContext();
   const { isValid, errors } = formState;
 
+  const [selected, setSelected]: any[] = useState([]);
+
+  const addSelection = ((option: any) => {
+    console.log(selected)
+
+    setSelected((prev: any) => {
+      const optionIndex = prev.findIndex((item: any) => item.option === option);
+      if (optionIndex > -1) {
+        return prev.filter((item: any) => item.option !== option);
+      } else {
+        return [...prev, { option, distance: '' }];
+      }
+    });
+  })
+
   const transportOptions: {
     [key: string]: {
       name: 'dieselCar' | 'gasCar' | 'hybridCar' | 'gplCar' | 'electricCar' | 'motorcycle' | 'taxi' | 'train' | 'bus' | 'subway' | 'tram' | 'ferryFoot' | 'ferryCar';
@@ -81,13 +96,41 @@ export default function TransportationPage() {
               'focus:outline-none'
             )}
             { ...register('transports', { required: 'This field is required' }) }
-            onChange={(e) => setValue('transports', e.target.value)}
+            onChange={(e) => addSelection(e.target.value)}
             onBlur={() => trigger('transports')}
             autoComplete="transports"
           >
             {Transports}
           </select>
         </label>
+        <div>
+        { selected.map((s:any) => {
+          return (
+            <div>
+              <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+                { s.option }
+              </span>
+              <input
+              type="number"
+              placeholder="30"
+              className={clsx(
+                'border',
+                errors.gasSpend
+                  ? 'border-strawberry-red'
+                  : 'border-light-gray focus:border-purplish-blue',
+                'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
+                'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+                'focus:outline-none'
+              )}
+              {...register('gasSpend', { required: 'This field is required', })}
+              onBlur={() => trigger('gasSpend')}
+              min={1}
+              autoComplete="gasSpend"
+            />
+          </div>
+          )
+        })}
+        </div>
       </div>
       <FormActions>
         <Link
