@@ -38,6 +38,7 @@ export default function FoodPage() {
           key={"primary"}
           size="md"
           color={"primary"}
+          radius="md"
           step={1}
           getValue={(meals) => `${meals} of 14 Meals`}
           maxValue={14}
@@ -50,6 +51,7 @@ export default function FoodPage() {
         <Slider
           key={"primary"}
           size="md"
+          radius="md"
           color={"primary"}
           step={1}
           getValue={(meals) => `${meals} of 14 Meals`}
