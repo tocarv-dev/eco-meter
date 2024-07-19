@@ -11,7 +11,7 @@ export default function Page() {
             Join us on this journey to building a Cooler World! The read ahead is long and winding, there will be bumps along the way! But you will not regret it!
           </p>
           <p className="text-deep-green mt-5">
-            But let's start by assessing your starting point. Are you an Eco-Star?
+            But let&apos;s start by assessing your starting point. Are you an Eco-Star?
             Take our 
             {' '}
             <a
