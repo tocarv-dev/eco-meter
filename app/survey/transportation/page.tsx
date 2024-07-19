@@ -111,6 +111,7 @@ export default function TransportationPage() {
                 { s.option }
               </span>
               <input
+              key={ s.option }
               type="number"
               placeholder="30"
               className={clsx(
