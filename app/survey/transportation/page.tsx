@@ -84,7 +84,7 @@ export default function TransportationPage() {
             </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.transports.message }
+                { }
               </span>
             )}
           </div>
@@ -98,7 +98,6 @@ export default function TransportationPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            { ...register(`transports`, { required: 'This field is required' }) }
             onChange={(e) => addSelection(e.target.value)}
             onBlur={() => trigger('transports')}
             autoComplete="transports"
