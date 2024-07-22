@@ -35,7 +35,7 @@ export default function FoodPage() {
           How many specific meals do you have in a week?
         </span>
         <Slider
-          key={"primary"}
+          key={"meat"}
           size="md"
           radius="md"
           step={1}
@@ -61,7 +61,7 @@ export default function FoodPage() {
           label="Red meat"
         />
         <Slider
-          key={"primary"}
+          key={"vegan"}
           size="md"
           radius="md"
           color={"primary"}

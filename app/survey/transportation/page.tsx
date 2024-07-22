@@ -6,6 +6,7 @@ import useAppFormContext from '@/lib/hooks/useAppFormContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { RxCross1 } from "react-icons/rx";
 
 // Icons
 import checkmarkIcon from '@/images/icon-checkmark.svg';
@@ -15,19 +16,21 @@ import FormActions from '@/components/survey/FormActions';
 
 export default function TransportationPage() {
   const router = useRouter();
-  const { register, trigger, formState, watch, setValue } = useAppFormContext();
+  const { register, unregister, trigger, formState, watch, setValue } = useAppFormContext();
   const { isValid, errors } = formState;
 
   const [selected, setSelected]: any[] = useState([]);
 
   const addSelection = ((option: any) => {
-    console.log(selected)
+    console.log(option);
 
     setSelected((prev: any) => {
       const optionIndex = prev.findIndex((item: any) => item.option === option);
       if (optionIndex > -1) {
+        unregister(`transports.${option}`)
         return prev.filter((item: any) => item.option !== option);
       } else {
+        register(`transports.${option}.option`, { value: option})
         return [...prev, { option, distance: '' }];
       }
     });
@@ -81,7 +84,7 @@ export default function TransportationPage() {
             </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                {errors.transports.message}
+                { errors.transports.message }
               </span>
             )}
           </div>
@@ -95,7 +98,7 @@ export default function TransportationPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            { ...register('transports', { required: 'This field is required' }) }
+            { ...register(`transports`, { required: 'This field is required' }) }
             onChange={(e) => addSelection(e.target.value)}
             onBlur={() => trigger('transports')}
             autoComplete="transports"
@@ -104,30 +107,35 @@ export default function TransportationPage() {
           </select>
         </label>
         <div>
-        { selected.map((s:any) => {
+        { selected.length > 0 && selected.map((s:any, index: any) => {
           return (
-            <div key={s.option}>
+            <div className="flex flex-col justify-between" key={index}>
               <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-                { s.option }
+                { transportOptions[s.option].displayName }
               </span>
-              <input
-              key={ s.option }
-              type="number"
-              placeholder="30"
-              className={clsx(
-                'border',
-                errors.gasSpend
-                  ? 'border-strawberry-red'
-                  : 'border-light-gray focus:border-purplish-blue',
-                'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-                'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-                'focus:outline-none'
-              )}
-              {...register('gasSpend', { required: 'This field is required', })}
-              onBlur={() => trigger('gasSpend')}
-              min={1}
-              autoComplete="gasSpend"
-            />
+              <div>
+                <input
+                key={ s.option }
+                type="number"
+                placeholder="30"
+                className={clsx(
+                  'border',
+                  errors.transports
+                    ? 'border-strawberry-red'
+                    : 'border-light-gray focus:border-purplish-blue',
+                  'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
+                  'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+                  'focus:outline-none'
+                )}
+                {...register(`transports.${s.option}.distance`, { required: 'This field is required', })}
+                onBlur={() => trigger('transports')}
+                min={1}
+                autoComplete="transports"
+              />
+              <button className="inline-block align-middle vertical-align ml-1" onClick={() => { addSelection(s.option) }}>
+              <RxCross1 size={"1.3em"} />
+              </button>
+            </div>
           </div>
           )
         })}
