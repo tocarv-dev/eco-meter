@@ -22,8 +22,6 @@ export default function TransportationPage() {
   const [selected, setSelected]: any[] = useState([]);
 
   const addSelection = ((option: any) => {
-    console.log(option);
-
     setSelected((prev: any) => {
       const optionIndex = prev.findIndex((item: any) => item.option === option);
       if (optionIndex > -1) {
@@ -84,7 +82,7 @@ export default function TransportationPage() {
             </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { }
+                {  }
               </span>
             )}
           </div>
