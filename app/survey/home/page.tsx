@@ -99,7 +99,7 @@ export default function ResidencePage() {
             </span>
             {errors.electricitySpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.electricitySpend.message}
+                { errors.electricitySpend.message }
               </span>
             )}
           </div>
@@ -159,7 +159,7 @@ export default function ResidencePage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            { ...register('gasType', { required: 'This field is required' }) }
+            { ...register('gasType', {  required: usesGas ? 'This field is required' : false, }) }
             onChange={(e) => setValue('gasType', e.target.value)}
             onBlur={() => trigger('gasType')}
             autoComplete="gasType"
@@ -174,7 +174,7 @@ export default function ResidencePage() {
             </span>
             {errors.gasSpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.gasSpend.message}
+                { errors.gasSpend.message }
               </span>
             )}
           </div>
@@ -190,7 +190,7 @@ export default function ResidencePage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('gasSpend', { required: 'This field is required', })}
+            {...register('gasSpend', {  required: usesGas ? 'This field is required' : false, })}
             onBlur={() => trigger('gasSpend')}
             min={1}
             autoComplete="gasSpend"
