@@ -59,8 +59,8 @@ export default function ResidencePage() {
 
   return (
     <FormWrapper
-      heading="Your Household"
-      description="Tell us about your household."
+      heading="Habitação"
+      description="A habitação contribui significativamente para a sua pegada de carbono de acordo com a sua eficiência energética."
     >
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">

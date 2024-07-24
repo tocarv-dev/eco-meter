@@ -13,6 +13,7 @@ export default function ThankYouPage() {
         Thank you!
       </h1>
       <p className="text-cool-gray text-center mt-2">
+      Monitorize a sua pegada de carbono calculando-a regularmente para que a possa melhorar 
         Thanks for completing our survey! We are looking forward to your contributions to building a Cooler World. 
         If you ever need support, please feel free to email us at support@get2c.com.
       </p>

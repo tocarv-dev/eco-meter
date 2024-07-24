@@ -5,22 +5,19 @@ export default function Page() {
     <div className="bg-white flex flex-col lg:flex-row m-10 rounded-2xl lg:shadow-lg">
         <div className="text-center max-w-screen-sm p-8 rounded-2xl">
           <h1 className="text-deep-green font-bold text-2xl">
-           Are you an eco-Star?
+            Descubra o seu impacto no planeta e como pode fazer a diferença! 
           </h1>
           <p className="text-deep-green mt-5">
-            Join us on this journey to building a Cooler World! The read ahead is long and winding, there will be bumps along the way! But you will not regret it!
+          Calcule a sua pegada de carbono e fique a conhecer a personagem que melhor o/a representa. Receba dicas práticas para tornar a sua vida mais sustentável.
           </p>
           <p className="text-deep-green mt-5">
-            But let&apos;s start by assessing your starting point. Are you an Eco-Star?
-            Take our 
-            {' '}
             <a
               href="survey"
               rel="noopener noreferrer"
               className="text-deep-green underline hover:text-mid-green transition-all"
-            > survey</a>
+            > Inicie aqui</a>
             {' '}
-             to find out!
+            a sua jornada para um COOLER WORLD!
           </p>
         </div>
       </div>

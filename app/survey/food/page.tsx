@@ -28,8 +28,8 @@ export default function FoodPage() {
 
   return (
     <FormWrapper
-      heading="Your Meals"
-      description="Tell us more about your eating habits."
+      heading="Alimentação"
+      description="O tipo de dieta que segue e como os alimentos são produzidos e transportados têm um impacto considerável nas emissões de gases com efeito de estufa"
     >
       <div className="flex flex-col w-full gap-4 mt-6">
         <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">

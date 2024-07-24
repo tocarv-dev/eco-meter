@@ -26,8 +26,8 @@ export default function TrashPage() {
 
   return (
     <FormWrapper
-      heading="Your Trash"
-      description="Tell us more about your trash."
+      heading="Resíduos"
+      description="A forma como lida com o lixo, desde a separação até à redução de desperdícios, pode reduzir significativamente o impacto ambiental"
     >
       <div className="grid grid-cols-2	w-full gap-4 mt-6">
 

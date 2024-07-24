@@ -70,8 +70,8 @@ export default function TransportationPage() {
 
   return (
     <FormWrapper
-      heading="Your Travels"
-      description="Tell us more about your transportation habits."
+      heading="Transportes"
+      description="Os transportes têm um grande impacto na sua pegada de carbono, influenciando as suas emissões de CO2 diariamente"
     >
       <div className="flex flex-col w-full gap-4 mt-6">
         
