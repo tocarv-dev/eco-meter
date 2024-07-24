@@ -10,6 +10,7 @@ export interface FormValues {
   };
   veganMeals: number;
   redMeatMeals: number;
+  whiteMeatMeals: number;
   unsortedBags: number;
   paperBags: number;
   plasticBags: number;

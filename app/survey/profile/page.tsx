@@ -38,10 +38,10 @@ export default function ProfilePage() {
       description: string
     };
   } = {
-    profile_a: { name: 'profile_a', icon: profile_aIcon, displayName:"Profile A", description: "this is profile A. as a profile A ...."},
-    profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Profile B", description: "this is profile B. as a profile B ...." },
-    profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Profile C", description: "this is profile C. as a profile C ...." },
-    profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Profile D", description: "This is profile D. As a profile D ...." },
+    profile_a: { name: 'profile_a', icon: profile_aIcon, displayName:"Herói da Sustentabilidade", description: "this is profile A. as a profile A ...."},
+    profile_b: { name: 'profile_b', icon: profile_bIcon, displayName:"Amigo do Ambiente", description: "this is profile B. as a profile B ...." },
+    profile_c: { name: 'profile_c', icon: profile_cIcon, displayName: "Eco-Explorador", description: "this is profile C. as a profile C ...." },
+    profile_d: { name: 'profile_d', icon: profile_dIcon, displayName: "Eco-Despreocupado", description: "This is profile D. As a profile D ...." },
   };
 
   const Profiles = Object.values(profiles).map((profile) => (
@@ -59,13 +59,13 @@ export default function ProfilePage() {
       <Image src={profile.icon} alt="" className="w-32" />
       <div className="flex flex-col lg:mt-10">
         <div className="flex flex-col lg:mt-10">
-          <span className="capitalize font-bold text-deep-green">
-            {profile.displayName}
+          <span className="capitalize text-sm font-bold text-deep-green">
+            { profile.displayName }
           </span>
         </div>
         <div className="flex flex-col lg:mt-10">
           <span className="text-sm text-cool-gray">
-            {profile.description}
+            { " " }
           </span>
         </div>
         <input
