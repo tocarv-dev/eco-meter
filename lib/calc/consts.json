@@ -1,0 +1,34 @@
+{
+    "eletricity": {
+        "conversion": 0.22,
+        "emission": 0.242
+    },
+    "naturalGas": {
+        "conversion": 0.1135,
+        "emission": {
+            "CO2": 56.41,
+            "WWT": 0.03347
+        }
+    },
+    "propaneGas": {
+        "conversion": 2.751,
+        "emission": {
+            "CO2": 56.41,
+            "WWT": 352.67018
+        }
+    },
+    "bottledGas": {
+        "conversion": 2.631,
+        "emission": {
+            "CO2": 56.41,
+            "WWT": 349.29282
+        }
+    },
+    "fireWood": {
+        "consume": 2316.92,
+        "conversion": 12.55, 
+        "emission": {
+            "biomass": 0.114163
+        }
+    }
+}
