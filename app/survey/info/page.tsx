@@ -423,6 +423,7 @@ export default function InfoPage() {
               'focus:outline-none'
             )}
             {...register('age', {
+              valueAsNumber: true,
               required: 'This field is required',
               max: {
                 value: 150,

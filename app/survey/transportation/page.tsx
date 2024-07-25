@@ -28,7 +28,7 @@ export default function TransportationPage() {
         unregister(`transports.${option}`)
         return prev.filter((item: any) => item.option !== option);
       } else {
-        register(`transports.${option}.option`, { value: option})
+        register(`transports.${option}.option`, { value: option })
         return [...prev, { option, distance: '' }];
       }
     });
@@ -40,7 +40,7 @@ export default function TransportationPage() {
       displayName: string;
     };
   } = {
-    dieselCar: { name: 'dieselCar', displayName: 'Propane' },
+    dieselCar: { name: 'dieselCar', displayName: 'Propane Car' },
     gasCar: { name: 'gasCar', displayName: 'Gasoline Car' },
     hybridCar: { name: 'hybridCar', displayName: 'Hybrid Car' },
     gplCar: { name: 'gplCar', displayName: 'GPL Car' },
@@ -124,7 +124,7 @@ export default function TransportationPage() {
                   'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
                   'focus:outline-none'
                 )}
-                {...register(`transports.${s.option}.distance`, { required: 'This field is required', })}
+                {...register(`transports.${s.option}.distance`, { valueAsNumber: true, required: 'This field is required', })}
                 onBlur={() => trigger('transports')}
                 min={1}
                 autoComplete="transports"

@@ -1,0 +1,16 @@
+-- AlterTable
+ALTER TABLE `surveys` ADD COLUMN `transport_bus` INTEGER NULL,
+    ADD COLUMN `transport_dieselCar` INTEGER NULL,
+    ADD COLUMN `transport_eletricCar` INTEGER NULL,
+    ADD COLUMN `transport_ferryCar` INTEGER NULL,
+    ADD COLUMN `transport_ferryFoot` INTEGER NULL,
+    ADD COLUMN `transport_gasCar` INTEGER NULL,
+    ADD COLUMN `transport_gplCar` INTEGER NULL,
+    ADD COLUMN `transport_hybridCar` INTEGER NULL,
+    ADD COLUMN `transport_motorcycle` INTEGER NULL,
+    ADD COLUMN `transport_subway` INTEGER NULL,
+    ADD COLUMN `transport_taxi` INTEGER NULL,
+    ADD COLUMN `transport_train` INTEGER NULL,
+    ADD COLUMN `transport_tram` INTEGER NULL,
+    MODIFY `gas_type` VARCHAR(191) NULL,
+    MODIFY `gas_spend` INTEGER NULL;

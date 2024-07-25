@@ -1,4 +1,5 @@
 export interface FormValues {
+  userid: String,
   gender: string;
   age: number;
   municipality: string;

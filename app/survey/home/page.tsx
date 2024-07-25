@@ -86,7 +86,7 @@ export default function ResidencePage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('residents', { required: 'This field is required', })}
+            {...register('residents', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('residents')}
             min={1}
             autoComplete="residents"
@@ -115,7 +115,7 @@ export default function ResidencePage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('electricitySpend', { required: 'This field is required', })}
+            {...register('electricitySpend', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('electricitySpend')}
             min={1}
             autoComplete="electricitySpend"
@@ -190,7 +190,7 @@ export default function ResidencePage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('gasSpend', {  required: usesGas ? 'This field is required' : false, })}
+            {...register('gasSpend', { valueAsNumber: true, required: usesGas ? 'This field is required' : false, })}
             onBlur={() => trigger('gasSpend')}
             min={1}
             autoComplete="gasSpend"

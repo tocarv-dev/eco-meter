@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL")
+}
+
+model Surveys {
+  id String @id @default(uuid())
+  userid String
+  createdAt DateTime @default(now())
+
+  gender String
+  age Int
+  municipality String
+
+  meals_vegan Int
+  meals_redmeat Int
+  meals_whitemeat Int
+
+  bags_unsorted Int
+  bags_paper Int
+  bags_plastic Int
+  bags_glass Int
+  bags_organic Int
+
+  home_residents Int 
+  home_eletricity Int
+
+  gas_type String?
+  gas_spend Int?
+
+  transport_dieselCar Int?
+  transport_gasCar Int?
+  transport_hybridCar Int?
+  transport_gplCar Int?
+  transport_eletricCar Int?
+  transport_motorcycle Int?
+  transport_taxi Int?
+  transport_train Int?
+  transport_bus Int?
+  transport_subway Int?
+  transport_tram Int?
+  transport_ferryFoot Int?
+  transport_ferryCar Int?
+  
+  profile String
+}

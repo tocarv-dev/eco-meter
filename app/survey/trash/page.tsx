@@ -54,7 +54,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('unsortedBags', { required: 'This field is required', })}
+            {...register('unsortedBags', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('unsortedBags')}
             min={1}
             autoComplete="unsortedBags"
@@ -84,7 +84,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('paperBags', { required: 'This field is required', })}
+            {...register('paperBags', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('paperBags')}
             min={1}
             autoComplete="paperBags"
@@ -114,7 +114,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('plasticBags', { required: 'This field is required', })}
+            {...register('plasticBags', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('plasticBags')}
             min={1}
             autoComplete="plasticBags"
@@ -144,7 +144,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('glassBags', { required: 'This field is required', })}
+            {...register('glassBags', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('glassBags')}
             min={1}
             autoComplete="glassBags"
@@ -174,7 +174,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('organicBags', { required: 'This field is required', })}
+            {...register('organicBags', { valueAsNumber: true, required: 'This field is required', })}
             onBlur={() => trigger('organicBags')}
             min={1}
             autoComplete="organicBags"
