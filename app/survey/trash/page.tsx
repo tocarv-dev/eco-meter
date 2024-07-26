@@ -14,8 +14,18 @@ import FormActions from '@/components/survey/FormActions';
 
 export default function TrashPage() {
   const router = useRouter();
-  const { register, trigger, formState, watch } = useAppFormContext();
+  const { register, trigger, formState, watch, setValue } = useAppFormContext();
   const { isValid, errors } = formState;
+
+  const recycle = watch('recycle');
+
+  const toogleRecycle = () => {
+    if (recycle === true) {
+      setValue('recycle', false);
+    } else {
+      setValue('recycle', true);
+    }
+  };
 
   const validateStep = async () => {
     await trigger();
@@ -29,9 +39,29 @@ export default function TrashPage() {
       heading="Resíduos"
       description="A forma como lida com o lixo, desde a separação até à redução de desperdícios, pode reduzir significativamente o impacto ambiental"
     >
-      <div className="grid grid-cols-2	w-full gap-4 mt-6">
+      <div className="w-full">
 
-      <label className="flex flex-col">
+      <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
+          <label>
+            <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+              Fazes separação de resíduos?
+            </span>
+          </label>
+          <button
+            className={clsx(
+              'h-[20px] w-[40px] rounded-full p-1 object-left',
+              recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+            )}
+            onClick= {toogleRecycle}
+            type="button"
+          >
+            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+          </button>
+        </div>
+      
+      <div className="grid grid-cols-2 gap-4 mt-6">
+
+      <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
             indiferenciado:
@@ -54,14 +84,14 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('unsortedBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+            {...register('unsortedBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('unsortedBags')}
             min={1}
             autoComplete="unsortedBags"
           />
         </label>
 
-        <label className="flex flex-col">
+        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
           papel e cartão:
@@ -84,14 +114,14 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('paperBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+            {...register('paperBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('paperBags')}
             min={1}
             autoComplete="paperBags"
           />
         </label>
 
-        <label className="flex flex-col">
+        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
           plástico e metal:
@@ -114,14 +144,14 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('plasticBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+            {...register('plasticBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('plasticBags')}
             min={1}
             autoComplete="plasticBags"
           />
         </label>
 
-        <label className="flex flex-col">
+        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
           vidro:
@@ -144,14 +174,14 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('glassBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+            {...register('glassBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('glassBags')}
             min={1}
             autoComplete="glassBags"
           />
         </label>
 
-        <label className="flex flex-col">
+        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
           orgânico:
@@ -174,12 +204,13 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('organicBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+            {...register('organicBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('organicBags')}
             min={1}
             autoComplete="organicBags"
           />
         </label>
+      </div>
       </div>
       <FormActions>
         <Link

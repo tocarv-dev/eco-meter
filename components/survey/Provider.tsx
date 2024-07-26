@@ -6,7 +6,7 @@ import { SubmitHandler, FormProvider } from 'react-hook-form';
 import { FormValues } from '@/types/form';
 import { useRouter } from 'next/navigation';
 
-import { saveForm } from '@/app/actions/save-form';
+import { saveForm, setFormCookies } from '@/app/actions/save-form';
 
 export default function Provider({ children }: FormProviderProps) {
   const route = useRouter();
@@ -19,8 +19,10 @@ export default function Provider({ children }: FormProviderProps) {
     useWood: false,
     residents: undefined,
     electricitySpend: undefined,
+    transports: {},
     redMeatMeals: undefined,
     veganMeals: undefined,
+    recycle: false,
     unsortedBags: undefined,
     paperBags: undefined,
     plasticBags: undefined,
@@ -46,13 +48,25 @@ export default function Provider({ children }: FormProviderProps) {
       data.organicBags &&
       data.profile
     );
-
+    /*
+          (data.recycle && (
+          data.unsortedBags &&
+          data.paperBags &&
+          data.plasticBags &&
+          data.glassBags &&
+          data.organicBags
+        )
+      ) &&
+    */
     if (isValid) {
       let saveData = data;
       
       saveData.userid = '1';
 
-      saveForm(saveData);
+      saveForm(saveData).then(id => {
+        console.log(id);
+        setFormCookies(id);
+      })
 
       route.push('/survey/thank-you');
     } else {
@@ -62,7 +76,7 @@ export default function Provider({ children }: FormProviderProps) {
         route.replace('/survey/home');
       } else if(!data.whiteMeatMeals || !data.redMeatMeals || !data.veganMeals) {
         route.replace('/survey/food');
-      } else if(!data.unsortedBags || !data.paperBags || !data.plasticBags || !data.organicBags) {
+      } else if(data.recycle && (!data.unsortedBags || !data.paperBags || !data.plasticBags || !data.organicBags)) {
         route.replace('/survey/trash');
       } else if(!data.profile) {
         route.replace('/survey/profile');
