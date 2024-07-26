@@ -5,7 +5,7 @@ export default async function ProtectedPage() {
 
   return (
       <div className="lg:bg-white w-full flex flex-col lg:flex-row px-4 lg:p-4 rounded-2xl lg:shadow-lg">
-        Registado como {session?.user?.email}
+        Sessão inicada como {session?.user?.email}
         <SignOut />
       </div>
   );

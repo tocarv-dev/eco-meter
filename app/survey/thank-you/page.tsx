@@ -13,8 +13,9 @@ export default function ThankYouPage() {
         Obrigado!
       </h1>
       <p className="text-cool-gray text-center mt-2">
-        Monitoriza a sua pegada de carbono calculando-a regularmente para que a possa melhorar. Podes-te registar 
-        no nosso site para consultar os teus cálculos e ver o progresso nesta joranda para um COOLER WORLD!
+        Quer monitorizar o histórico da sua pegada de carbono? Registe-se no nosso site para poder aceder
+        ao seu espaço pessoal, onde poderá consultar os seus cálculos históricos e ver o progresso nesta 
+        joranda para um COOLER WORLD! 
       </p>
     </section>
   );

@@ -95,7 +95,7 @@ export default function ResidencePage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              quanto gastas mensalmente em electricidade?
+              quanto gastam mensalmente em electricidade em sua casa?
             </span>
             {errors.electricitySpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -124,7 +124,7 @@ export default function ResidencePage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              usas gás em casa?
+              usam gás em casa?
             </span>
           </label>
           <button
@@ -141,7 +141,7 @@ export default function ResidencePage() {
         <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')} >
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              qual o tipo de gás que utilizas?
+              qual o tipo de gás que utilizam?
             </span>
             {errors.gasType && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -170,7 +170,7 @@ export default function ResidencePage() {
         <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')}>
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              quanto gastas mensalmente em gás?
+              quanto gastam mensalmente em gás em sua casa?
             </span>
             {errors.gasSpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -199,7 +199,7 @@ export default function ResidencePage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx(' text-sm lg:text-base font-bold transition duration-300',) }>
-              utilizas lenha em casa?
+              utilizam lenha em casa?
             </span>
           </label>
           <button

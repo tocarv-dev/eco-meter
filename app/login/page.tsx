@@ -10,7 +10,7 @@ export default function Login() {
         <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
           <h3 className="text-xl font-semibold">Aceder</h3>
           <p className="text-sm text-gray-500">
-            Utiliza o teu e-mail para aceder à tua área de utilizador
+            Utilize o seu e-mail para aceder à sua área de utilizador
           </p>
         </div>
         <Form
@@ -25,10 +25,11 @@ export default function Login() {
         >
           <SubmitButton>Registar</SubmitButton>
           <p className="text-center text-sm text-gray-600">
-            {"Ainda não te registaste? "}
+            {"Ainda não se registou? "}
             <Link href="/register" className="font-semibold text-gray-800">
-              Regista-te aqui.
+              Registe-se aqui
             </Link>
+            {"."}
           </p>
         </Form>
       </div>

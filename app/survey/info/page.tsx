@@ -367,7 +367,7 @@ export default function InfoPage() {
    return (
     <FormWrapper
       heading="Informação pessoal"
-      description="os teus dados irão permitir perceber os comportamentos por geografia, demografia e género"
+      description="os seus dados permitem perceber os comportamentos por geografia, demografia e género"
     >
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">

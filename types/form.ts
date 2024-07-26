@@ -23,5 +23,5 @@ export interface FormValues {
   gasType: string;
   gasSpend: number;
   useWood: boolean;
-  profile: 'profile_a' | 'profile_b' | 'profile_c';
+  profile: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d'| 'profile_e';
 }

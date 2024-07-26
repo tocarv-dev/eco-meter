@@ -31,10 +31,11 @@ export default function Login() {
         <Form action={register}>
           <SubmitButton>Registar</SubmitButton>
           <p className="text-center text-sm text-gray-600">
-            {'Já estás registado? '}
+            {'Já está registado? '}
             <Link href="/login" className="font-semibold text-gray-800">
-              Entra aqui.
+              Entre aqui
             </Link>
+            {"."}
           </p>
         </Form>
       </div>

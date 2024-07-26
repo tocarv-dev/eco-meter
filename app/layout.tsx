@@ -11,9 +11,9 @@ import siteBackGround4 from '@/images/bg-cooler-world.svg';
 
 import {Providers} from "./providers";
 
-let title = 'Cooler World - Carbon Footprint Calculator';
+let title = 'Cooler World - Uma calculadora de pegada de carbono';
 let description =
-  'This is a carbon footprint calculator for Portuguese residents.';
+  'Esta é uma  calculadora de pegada de carbono para pessoas residentes em Portugal';
 
 export const metadata = {
   title,

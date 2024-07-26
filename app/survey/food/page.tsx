@@ -57,7 +57,7 @@ export default function FoodPage() {
     >
       <div className="flex flex-col w-full gap-4 mt-6">
         <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-          Quantas refeições deste tipo fazes por semana?  
+          Quantas refeições deste tipo faz por semana?  
         </span>
         <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
           Número total: { totalMeals }
@@ -171,7 +171,7 @@ export default function FoodPage() {
 
         {(errors.veganMeals || errors.redMeatMeals || errors.whiteMeatMeals) && (
           <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-            Não podes selecionar mais que 14 refeições
+            Não pode selecionar mais que 14 refeições
           </span>
         )}
         

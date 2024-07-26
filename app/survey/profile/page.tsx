@@ -79,8 +79,8 @@ export default function ProfilePage() {
 
   return (
     <FormWrapper
-      heading="Qual o teu perfil?"
-      description="faz uma auto-avaliação e diz-nos quais destes perfis melhor te descreve?"
+      heading="Qual o seu perfil?"
+      description="Escolha entre estes  perfis aquele que acha que o descreve melhor?"
     >
       <div className="flex mt-5 lg:mt-6">
         <div className="flex flex-wrap gap-x-4 gap-y-3">{Profiles}</div>
