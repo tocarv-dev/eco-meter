@@ -27,32 +27,32 @@ export default function SurveySidebar() {
     {
       number: 1,
       segment: 'info',
-      heading: 'Info',
+      heading: 'Informação',
     },
     {
       number: 2,
       segment: 'home',
-      heading: 'Home',
+      heading: 'Residência',
     },
     {
       number: 3,
       segment: 'transportation',
-      heading: 'Transportation',
+      heading: 'Transporte',
     },
     {
       number: 4,
       segment: 'food',
-      heading: 'Meals',
+      heading: 'Alimentação',
     },
     {
       number: 5,
       segment: 'trash',
-      heading: 'Trash',
+      heading: 'Resíduos',
     },
     {
       number: 6,
       segment: 'profile',
-      heading: 'Profile',
+      heading: 'Perfil',
     },
   ];
 

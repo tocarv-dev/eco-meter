@@ -27,7 +27,7 @@ export default function FoodPage() {
 
   const validateTotalMeals = (value: number) => {
     const total = getValues('whiteMeatMeals') + getValues('redMeatMeals') + getValues('veganMeals');
-    return total <= 14 || 'Não pode selecionar mais que 14 refeições';
+    return total <= 14 || 'Não podes selecionar mais que 14 refeições';
   };
 
   const validateStep = async () => {
@@ -57,7 +57,7 @@ export default function FoodPage() {
     >
       <div className="flex flex-col w-full gap-4 mt-6">
         <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-          How many specific meals do you have in a week? 
+          Quantas refeições deste tipo fazes por semana?  
         </span>
         <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
           Número total: { totalMeals }
@@ -93,7 +93,7 @@ export default function FoodPage() {
               ],
               step: "bg-dark-green"
             }}
-            label="White meat / Fish"
+            label="Carnes brancas / peixe"
             />
           )}
         />
@@ -129,7 +129,7 @@ export default function FoodPage() {
               ],
               step: "bg-dark-green"
             }}
-            label="Red meat"
+            label="Carnes vermelhas"
             />
           )}
         />
@@ -164,14 +164,14 @@ export default function FoodPage() {
               ],
               step: "bg-dark-green"
             }}
-            label="Red meat"
+            label="Veganas / Vegetarianas"
             />
           )}
         />
 
         {(errors.veganMeals || errors.redMeatMeals || errors.whiteMeatMeals) && (
           <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-            Não pode selecionar mais que 14 refeições
+            Não podes selecionar mais que 14 refeições
           </span>
         )}
         
@@ -181,14 +181,14 @@ export default function FoodPage() {
           href="/survey/transportation"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
         >
-          Go Back
+          Anterior
         </Link>
         <button
           type="button"
           className="bg-dark-green transition duration-300 hover:opacity-80 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={ validateStep }
         >
-          Next Step
+          Próximo
         </button>
       </FormActions>
     </FormWrapper>

@@ -15,7 +15,7 @@ export function Form({
           htmlFor="email"
           className="block text-xs text-gray-600 uppercase"
         >
-          Email Address
+          Endereço e-mail
         </label>
         <input
           id="email"

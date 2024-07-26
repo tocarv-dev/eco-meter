@@ -34,7 +34,7 @@ export default function TrashPage() {
       <label className="flex flex-col">
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
-            unsorted garbage:
+            indiferenciado:
           </span>
             {errors.unsortedBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -54,7 +54,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('unsortedBags', { valueAsNumber: true, required: 'This field is required', })}
+            {...register('unsortedBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
             onBlur={() => trigger('unsortedBags')}
             min={1}
             autoComplete="unsortedBags"
@@ -64,7 +64,7 @@ export default function TrashPage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
-          paper garbage:
+          papel e cartão:
           </span>
             {errors.paperBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -84,7 +84,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('paperBags', { valueAsNumber: true, required: 'This field is required', })}
+            {...register('paperBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
             onBlur={() => trigger('paperBags')}
             min={1}
             autoComplete="paperBags"
@@ -94,7 +94,7 @@ export default function TrashPage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
-          plastic garbage:
+          plástico e metal:
           </span>
             {errors.plasticBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -114,7 +114,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('plasticBags', { valueAsNumber: true, required: 'This field is required', })}
+            {...register('plasticBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
             onBlur={() => trigger('plasticBags')}
             min={1}
             autoComplete="plasticBags"
@@ -124,7 +124,7 @@ export default function TrashPage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
-          glass garbage:
+          vidro:
           </span>
             {errors.glassBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -144,7 +144,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('glassBags', { valueAsNumber: true, required: 'This field is required', })}
+            {...register('glassBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
             onBlur={() => trigger('glassBags')}
             min={1}
             autoComplete="glassBags"
@@ -154,7 +154,7 @@ export default function TrashPage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
-          organic garbage:
+          orgânico:
           </span>
             {errors.organicBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -174,7 +174,7 @@ export default function TrashPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('organicBags', { valueAsNumber: true, required: 'This field is required', })}
+            {...register('organicBags', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
             onBlur={() => trigger('organicBags')}
             min={1}
             autoComplete="organicBags"
@@ -186,14 +186,14 @@ export default function TrashPage() {
           href="/survey/food"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
         >
-          Go Back
+          Anterior
         </Link>
         <button
           type="button"
           className="bg-dark-green transition duration-300 hover:opacity-80 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={validateStep}
         >
-          Next Step
+          Próximo
         </button>
       </FormActions>
     </FormWrapper>

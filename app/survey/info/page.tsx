@@ -30,10 +30,10 @@ export default function InfoPage() {
       displayName: string;
     };
   } = {
-    female: { name: 'female', icon: femaleIcon, displayName: 'Female' },
-    male: { name: 'male', icon: maleIcon, displayName: 'Male' },
-    other: { name: 'other', icon: otherIcon, displayName: 'Other' },
-    unspecified: { name: 'unspecified', icon: unspecifiedIcon, displayName: 'Rather not say' },
+    female: { name: 'female', icon: femaleIcon, displayName: 'Feminino' },
+    male: { name: 'male', icon: maleIcon, displayName: 'Masculino' },
+    other: { name: 'other', icon: otherIcon, displayName: 'Outro' },
+    unspecified: { name: 'unspecified', icon: unspecifiedIcon, displayName: 'Prefiro não dizer' },
   };
 
   const Genders = Object.values(genders).map((gender) => (
@@ -366,14 +366,14 @@ export default function InfoPage() {
 
    return (
     <FormWrapper
-      heading="Personal info"
-      description="Please tell us a bit about yourself"
+      heading="Informação pessoal"
+      description="os teus dados irão permitir perceber os comportamentos por geografia, demografia e género"
     >
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              gender
+              género
             </span>
             {errors.gender && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -391,7 +391,7 @@ export default function InfoPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            { ...register('gender', { required: 'This field is required' }) }
+            { ...register('gender', { required: 'Este campo é obrigatório' }) }
             onChange={(e) => setValue('gender', e.target.value)}
             onBlur={() => trigger('gender')}
             autoComplete="gender"
@@ -402,7 +402,7 @@ export default function InfoPage() {
         <label className="flex flex-col">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              age
+              idade
             </span>
             {errors.age && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -424,7 +424,7 @@ export default function InfoPage() {
             )}
             {...register('age', {
               valueAsNumber: true,
-              required: 'This field is required',
+              required: 'Este campo é obrigatório',
               max: {
                 value: 150,
                 message: 'Are you really over 150 years old?',
@@ -442,7 +442,7 @@ export default function InfoPage() {
         <label className="flex flex-col mt-4">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              municipality
+              município
             </span>
             {errors.municipality && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -460,7 +460,7 @@ export default function InfoPage() {
               'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            { ...register('municipality', { required: 'This field is required' }) }
+            { ...register('municipality', { required: 'Este campo é obrigatório' }) }
             onChange={(e) => setValue('municipality', e.target.value)}
             onBlur={() => trigger('municipality')}
             autoComplete="municipality"
@@ -475,7 +475,7 @@ export default function InfoPage() {
           className="bg-dark-green hover:opacity-80 transition duration-300 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={validateStep}
         >
-          Next Step
+          Próximo
         </button>
       </FormActions>
     </FormWrapper>

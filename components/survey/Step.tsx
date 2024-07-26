@@ -66,7 +66,7 @@ export default function Step({ step, segment }: StepProps) {
         </button>
         <div className="hidden lg:flex flex-col uppercase">
           <h3 className={clsx('font-normal text-[13px] text-cool-gray')}>
-            Step {step.number}
+            Passo {step.number}
           </h3>
           <h2
             className={clsx(

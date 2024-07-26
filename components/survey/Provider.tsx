@@ -58,8 +58,16 @@ export default function Provider({ children }: FormProviderProps) {
     } else {
       if(!data.gender || !data.age || !data.municipality) {
         route.replace('/survey/info');
+      } else if(!data.residents || !data.electricitySpend) {
+        route.replace('/survey/home');
+      } else if(!data.whiteMeatMeals || !data.redMeatMeals || !data.veganMeals) {
+        route.replace('/survey/food');
+      } else if(!data.unsortedBags || !data.paperBags || !data.plasticBags || !data.organicBags) {
+        route.replace('/survey/trash');
+      } else if(!data.profile) {
+        route.replace('/survey/profile');
       } else {
-        route.replace('/survey/transports');
+        route.replace('/survey/transportation');
       }
     }
   };

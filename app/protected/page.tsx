@@ -5,7 +5,7 @@ export default async function ProtectedPage() {
 
   return (
       <div className="lg:bg-white w-full flex flex-col lg:flex-row px-4 lg:p-4 rounded-2xl lg:shadow-lg">
-        You are logged in as {session?.user?.email}
+        Registado como {session?.user?.email}
         <SignOut />
       </div>
   );
@@ -19,7 +19,7 @@ function SignOut() {
         await signOut();
       }}
     >
-      <button type="submit">Sign out</button>
+      <button type="submit">Sair</button>
     </form>
   );
 }

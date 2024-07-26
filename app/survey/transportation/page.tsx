@@ -40,19 +40,19 @@ export default function TransportationPage() {
       displayName: string;
     };
   } = {
-    dieselCar: { name: 'dieselCar', displayName: 'Propane Car' },
-    gasCar: { name: 'gasCar', displayName: 'Gasoline Car' },
-    hybridCar: { name: 'hybridCar', displayName: 'Hybrid Car' },
-    gplCar: { name: 'gplCar', displayName: 'GPL Car' },
-    electricCar: { name: 'electricCar', displayName: 'Electric Car' },
-    motorcycle: { name: 'motorcycle', displayName: 'Motorcycle' },
+    dieselCar: { name: 'dieselCar', displayName: 'Carro a propano' },
+    gasCar: { name: 'gasCar', displayName: 'Carro a gasolina' },
+    hybridCar: { name: 'hybridCar', displayName: 'Carro híbrido' },
+    gplCar: { name: 'gplCar', displayName: 'Carro a GPL' },
+    electricCar: { name: 'electricCar', displayName: 'Carro elétrico' },
+    motorcycle: { name: 'motorcycle', displayName: 'Moto / Motorizada' },
     taxi: { name: 'taxi', displayName: 'Taxi' },
-    train: { name: 'train', displayName: 'Train' },
-    bus: { name: 'bus', displayName: 'Urban Bus' },
-    subway: { name: 'subway', displayName: 'Subway' }, 
-    tram: { name: 'tram', displayName: 'Tram' },
-    ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (Foot Passenger)'},
-    ferryCar: { name: 'ferryCar', displayName: 'Ferry (Car Passenger)'}
+    train: { name: 'train', displayName: 'Comboio' },
+    bus: { name: 'bus', displayName: 'Autocarro' },
+    subway: { name: 'subway', displayName: 'Metro' }, 
+    tram: { name: 'tram', displayName: 'Carris' },
+    ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (peão)'},
+    ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)'}
   };
 
   const Transports = Object.values(transportOptions).map((item) => (
@@ -78,7 +78,7 @@ export default function TransportationPage() {
       <label className="flex flex-col mt-4">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Transports
+              transportes
             </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -124,7 +124,7 @@ export default function TransportationPage() {
                   'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
                   'focus:outline-none'
                 )}
-                {...register(`transports.${s.option}.distance`, { valueAsNumber: true, required: 'This field is required', })}
+                {...register(`transports.${s.option}.distance`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
                 onBlur={() => trigger('transports')}
                 min={1}
                 autoComplete="transports"
@@ -143,14 +143,14 @@ export default function TransportationPage() {
           href="/survey/home"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
         >
-          Go Back
+          Anterior
         </Link>
         <button
           type="button"
           className="bg-dark-green hover:opacity-80 transition duration-300 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
           onClick={validateStep}
         >
-          Next Step
+          Próximo
         </button>
       </FormActions>
     </FormWrapper>
