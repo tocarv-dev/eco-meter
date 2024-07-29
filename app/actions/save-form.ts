@@ -2,9 +2,10 @@
 
 // Database
 import prisma from '@/lib/utils/db'
+import { cookies } from 'next/headers'
 
 export const saveForm = async (data: any) => {
-  await prisma.surveys.create({
+  const query = await prisma.surveys.create({
     data: {
       userid: data.userid,
 
@@ -44,5 +45,13 @@ export const saveForm = async (data: any) => {
 
       profile: data.profile,
     }
+  })
+
+  return query.id;
+}
+
+export const setFormCookies = async(id: string) => {
+  cookies().set('g2c_formToken', id, {
+    secure: true
   })
 }

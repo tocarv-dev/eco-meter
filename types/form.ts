@@ -20,6 +20,7 @@ export interface FormValues {
   residents: number;
   electricitySpend: number;
   useGas: boolean;
+  recycle: boolean;
   gasType: string;
   gasSpend: number;
   useWood: boolean;
