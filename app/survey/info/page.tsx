@@ -399,7 +399,7 @@ export default function InfoPage() {
             {Genders}
           </select>
         </label>
-        <label className="flex flex-col">
+        <label className="flex flex-col mt-3">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               idade
@@ -439,7 +439,7 @@ export default function InfoPage() {
             autoComplete="age"
           />
         </label>
-        <label className="flex flex-col mt-4">
+        <label className="flex flex-col mt-3">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               município
@@ -468,6 +468,9 @@ export default function InfoPage() {
             {Municipalities}
           </select>
         </label>
+        <p className="text-default-500 font-medium text-small mt-6">
+        Nota: Estes dados serão utilizados apenas para fins estatísticos
+      </p>  
       </div>
       <FormActions>
         <button

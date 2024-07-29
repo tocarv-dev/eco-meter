@@ -1,6 +1,10 @@
 import { MdFormatColorText } from 'react-icons/md';
 import Factor from './consts.json';
 
+/*
+- Habitações
+*/
+
 // Eletricidade | ID: OT 1.0
 export const EletricityCalc = (euros: number, residents: number) => {
     const MonthlyEletricity = euros / Factor.eletricity.conversion,
@@ -55,4 +59,81 @@ export const FirewoodCalc = (residents: number) => {
     EmisisonsPerCapita = TonEmissions / residents
 
     return EmisisonsPerCapita
+}
+
+/*
+- Transportes
+*/
+
+// Térreos / Marítimos | OT 7.0
+export const VehiclesCalc = (distance: number, type: string) => {
+    let VehicleFactor = 0
+
+    switch(type) {
+        case 'dieselCar':
+            VehicleFactor = Factor.vehicles.dieselCar
+        break;
+
+        case 'gasCar':
+            VehicleFactor = Factor.vehicles.gasCar
+        break;
+
+        case 'hybridCar': 
+            VehicleFactor = Factor.vehicles.hybridCar
+        break;
+
+        case 'gplCar':
+            VehicleFactor = Factor.vehicles.gplCar
+        break;
+        
+        case 'electricCar':
+            VehicleFactor = Factor.vehicles.electricCar
+        break;
+
+        case 'motorcycle':
+            VehicleFactor = Factor.vehicles.motorcycle
+        break;
+
+        case 'taxi':
+            VehicleFactor = Factor.vehicles.taxi
+        break;
+
+        case 'urbanBus':
+            VehicleFactor = Factor.vehicles.urbanBus
+        break;
+
+        case 'coachBus':
+            VehicleFactor = Factor.vehicles.coachBus
+        break;
+
+        case 'subway':
+            VehicleFactor = Factor.vehicles.subway
+        break;
+
+        case 'tram':
+            VehicleFactor = Factor.vehicles.tram
+        break;
+
+        case 'ferryFoot':
+            VehicleFactor = Factor.vehicles.ferryFoot
+        break;
+
+        case 'ferryCar':
+            VehicleFactor = Factor.vehicles.ferryCar
+        break;
+
+        default:
+            VehicleFactor = 0
+        break;
+    }
+
+    const AnnualDistance = distance * 52,
+    Emissions = AnnualDistance * VehicleFactor * Math.pow(10, -6)
+
+    return Emissions;
+}
+
+// Aviação | OT 8.0
+export const AviationCalc = (flights: number) => {
+    
 }

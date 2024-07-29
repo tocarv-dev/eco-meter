@@ -9,6 +9,14 @@ export interface FormValues {
       distance: number;
     }
   };
+  useFlights: boolean;
+
+  hourFlights: number;
+  shortFlights: number;
+  mediumFlights: number;
+  longFlights: number;
+
+  meals: number[];
   veganMeals: number;
   redMeatMeals: number;
   whiteMeatMeals: number;

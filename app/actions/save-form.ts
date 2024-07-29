@@ -55,3 +55,9 @@ export const setFormCookies = async(id: string) => {
     secure: true
   })
 }
+
+export const checkFormCookies = async() => {
+  const formCookies = cookies().get('g2c_formToken')
+
+  return formCookies ? formCookies.value : false;
+}

@@ -20,8 +20,7 @@ export default function Provider({ children }: FormProviderProps) {
     residents: undefined,
     electricitySpend: undefined,
     transports: {},
-    redMeatMeals: undefined,
-    veganMeals: undefined,
+    meals: [2, 12],
     recycle: false,
     unsortedBags: undefined,
     paperBags: undefined,
@@ -38,14 +37,14 @@ export default function Provider({ children }: FormProviderProps) {
       data.municipality &&
       data.residents &&
       data.electricitySpend &&
-      data.whiteMeatMeals &&
-      data.redMeatMeals &&
-      data.veganMeals &&
+      data.meals &&
+      /*
       data.unsortedBags &&
       data.paperBags &&
       data.plasticBags &&
       data.glassBags &&
       data.organicBags &&
+      */
       data.profile
     );
     /*
@@ -63,6 +62,10 @@ export default function Provider({ children }: FormProviderProps) {
       
       saveData.userid = '1';
 
+      saveData.whiteMeatMeals = data.meals[1] - data.meals[0] 
+      saveData.redMeatMeals = (14 - data.meals[1])
+      saveData.veganMeals = data.meals[0]
+
       saveForm(saveData).then(id => {
         console.log(id);
         setFormCookies(id);
@@ -74,7 +77,7 @@ export default function Provider({ children }: FormProviderProps) {
         route.replace('/survey/info');
       } else if(!data.residents || !data.electricitySpend) {
         route.replace('/survey/home');
-      } else if(!data.whiteMeatMeals || !data.redMeatMeals || !data.veganMeals) {
+      } else if(!data.meals) {
         route.replace('/survey/food');
       } else if(data.recycle && (!data.unsortedBags || !data.paperBags || !data.plasticBags || !data.organicBags)) {
         route.replace('/survey/trash');

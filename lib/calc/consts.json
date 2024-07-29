@@ -30,5 +30,27 @@
         "emission": {
             "biomass": 0.114163
         }
+    },
+    "vehicles": {
+        "dieselCar": 194.62,
+        "gasCar": 203.93, 
+        "hybridCar": 141.99,
+        "gplCar": 192.76,
+        "electricCar": 22.65,
+        "motorcycle": 131.04,
+        "taxi": 198.46,
+        "train": 25.80,
+        "coachBus": 27.33,
+        "urbanBus": 186.95,
+        "subway": 42,
+        "tram": 39.18,
+        "ferryFoot": 18.74,
+        "ferryCar": 129.52
+    },
+    "aviation": {
+        "hour": 80,
+        "short": 165,
+        "medium": 380,
+        "long": 420 
     }
 }

@@ -26,11 +26,11 @@ model Surveys {
   meals_redmeat Int
   meals_whitemeat Int
 
-  bags_unsorted Int
-  bags_paper Int
-  bags_plastic Int
-  bags_glass Int
-  bags_organic Int
+  bags_unsorted Int?
+  bags_paper Int?
+  bags_plastic Int?
+  bags_glass Int?
+  bags_organic Int?
 
   home_residents Int 
   home_eletricity Int
