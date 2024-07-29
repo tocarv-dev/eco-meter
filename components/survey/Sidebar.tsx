@@ -32,7 +32,7 @@ export default function SurveySidebar() {
     {
       number: 2,
       segment: 'home',
-      heading: 'Residência',
+      heading: 'Habitação',
     },
     {
       number: 3,

@@ -103,11 +103,11 @@ export default function TransportationPage() {
             {Transports}
           </select>
         </label>
-        <div>
+        <div className="flex flex-wrap">
         { selected.length > 0 && selected.map((s:any, index: any) => {
           return (
-            <div className="flex flex-col justify-between" key={index}>
-              <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <div className="flex flex-col w-36" key={index}>
+              <span className="capitalize text-xs text-deep-green lg:text-sm font-medium">
                 { transportOptions[s.option].displayName }
               </span>
               <div>
@@ -120,7 +120,7 @@ export default function TransportationPage() {
                   errors.transports
                     ? 'border-strawberry-red'
                     : 'border-light-gray focus:border-purplish-blue',
-                  'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
+                  'w-4/5 py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
                   'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
                   'focus:outline-none'
                 )}
