@@ -20,14 +20,21 @@ export const saveForm = async (data: any) => {
       meals_redmeat: data.redMeatMeals,
       meals_vegan: data.veganMeals,
 
+      flights_hour: data.hourFlights,
+      flights_short: data.shortFlights,
+      flights_medium: data.mediumFlights,
+      flights_long: data.longFlights,
+
       bags_unsorted: data.unsortedBags,
-      bags_paper: data.paperBags,
-      bags_plastic: data.plasticBags,
-      bags_glass: data.glassBags,
-      bags_organic: data.organicBags,
+      bags_paper: data.recycleBags['paper'] ? data.recycleBags['paper'].value : null,
+      bags_plastic: data.recycleBags['plastic'] ? data.recycleBags['plastic'].value : null,
+      bags_glass: data.recycleBags['glass'] ? data.recycleBags['glass'].value : null,
+      bags_organic: data.recycleBags['organic'] ? data.recycleBags['organic'].value : null,
 
       gas_type: data.gasType,
       gas_spend: data.gasSpend,
+
+      useWood: data.useWood,
 
       transport_dieselCar: data.transports['dieselCar'] ? data.transports['dieselCar'].distance : null,
       transport_gasCar: data.transports['gasCar'] ? data.transports['gasCar'].distance : null,

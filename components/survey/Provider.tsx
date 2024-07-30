@@ -22,49 +22,30 @@ export default function Provider({ children }: FormProviderProps) {
     transports: {},
     meals: [2, 12],
     recycle: false,
-    unsortedBags: undefined,
-    paperBags: undefined,
-    plasticBags: undefined,
-    glassBags: undefined,
-    organicBags: undefined, 
-    profile: undefined
+    recycleBags: {},
+    profile: undefined,
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const isValid = !!(
+    const isValid = !!( // !! - Assegurar que o resultado é boolean
       data.gender &&
       data.age &&
       data.municipality &&
       data.residents &&
       data.electricitySpend &&
       data.meals &&
-      /*
-      data.unsortedBags &&
-      data.paperBags &&
-      data.plasticBags &&
-      data.glassBags &&
-      data.organicBags &&
-      */
+      data.unsortedBags && 
       data.profile
     );
-    /*
-          (data.recycle && (
-          data.unsortedBags &&
-          data.paperBags &&
-          data.plasticBags &&
-          data.glassBags &&
-          data.organicBags
-        )
-      ) &&
-    */
+
     if (isValid) {
       let saveData = data;
       
       saveData.userid = '1';
 
       saveData.whiteMeatMeals = data.meals[1] - data.meals[0] 
-      saveData.redMeatMeals = (14 - data.meals[1])
-      saveData.veganMeals = data.meals[0]
+      saveData.veganMeals = (14 - data.meals[1])
+      saveData.redMeatMeals = data.meals[0]
 
       saveForm(saveData).then(id => {
         console.log(id);
@@ -79,7 +60,7 @@ export default function Provider({ children }: FormProviderProps) {
         route.replace('/survey/home');
       } else if(!data.meals) {
         route.replace('/survey/food');
-      } else if(data.recycle && (!data.unsortedBags || !data.paperBags || !data.plasticBags || !data.organicBags)) {
+      } else if(!data.unsortedBags) {
         route.replace('/survey/trash');
       } else if(!data.profile) {
         route.replace('/survey/profile');

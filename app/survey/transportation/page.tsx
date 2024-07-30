@@ -106,7 +106,7 @@ export default function TransportationPage() {
               'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            onChange={(e) => register(`transports.${e.target.value}.option`, { value: e.target.value })}
+            onChange={(e) => { register(`transports.${e.target.value}.option`, { value: e.target.value }); trigger('transports')}}
             onBlur={() => trigger('transports')}
             autoComplete="transports"
           >
@@ -146,6 +146,7 @@ export default function TransportationPage() {
           </div>
           ))}
         </div>
+
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>

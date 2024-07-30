@@ -3,12 +3,14 @@ export interface FormValues {
   gender: string;
   age: number;
   municipality: string;
+
   transports: {
     [index: string]: {
       option: string;
       distance: number;
     }
   };
+
   useFlights: boolean;
 
   hourFlights: number;
@@ -20,17 +22,23 @@ export interface FormValues {
   veganMeals: number;
   redMeatMeals: number;
   whiteMeatMeals: number;
+
+  recycleBags: {
+    [index: string]: {
+      option: string;
+      value: number;
+    }
+  };
   unsortedBags: number;
-  paperBags: number;
-  plasticBags: number;
-  glassBags: number;
-  organicBags: number;
+
   residents: number;
   electricitySpend: number;
   useGas: boolean;
   recycle: boolean;
   gasType: string;
   gasSpend: number;
+
   useWood: boolean;
+  
   profile: 'profile_a' | 'profile_b' | 'profile_c' | 'profile_d'| 'profile_e';
 }

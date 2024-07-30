@@ -63,7 +63,7 @@ export default function FoodPage() {
             size="md"
             radius="md"
             step={1}
-            getValue={() => `Carnes Vermelhas`}
+            getValue={() => `Vegan`}
             maxValue={14}
             minValue={0}
             defaultValue={[2, 12]}
@@ -82,16 +82,16 @@ export default function FoodPage() {
               ],
               step: "bg-dark-green"
             }}
-            label="Vegan"
+            label="Carnes Vermelhas"
             />
           )}
         />
 
       <p className="text-default-500 font-medium text-small">
-        Refeições Vegan: {Array.isArray(meals) && meals[0]} 
+        Refeições Carne Vermelha: {Array.isArray(meals) && meals[0]} 
       </p>
       <p className="text-default-500 font-medium text-small">
-        Refeições de Carne Vermelha: {Array.isArray(meals) && (14 - meals[1])}
+        Refeições de Vegan: {Array.isArray(meals) && (14 - meals[1])}
       </p>
 
       <p className="text-default-500 font-medium text-small">

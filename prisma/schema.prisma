@@ -26,7 +26,12 @@ model Surveys {
   meals_redmeat Int
   meals_whitemeat Int
 
-  bags_unsorted Int?
+  flights_hour Int?
+  flights_short Int?
+  flights_medium Int?
+  flights_long Int?
+
+  bags_unsorted Int
   bags_paper Int?
   bags_plastic Int?
   bags_glass Int?
@@ -37,6 +42,8 @@ model Surveys {
 
   gas_type String?
   gas_spend Int?
+
+  useWood Boolean @default(false)
 
   transport_dieselCar Int?
   transport_gasCar Int?
