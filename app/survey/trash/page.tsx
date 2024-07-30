@@ -63,7 +63,7 @@ export default function TrashPage() {
 
       <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
+          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
             indiferenciado:
           </span>
             {errors.unsortedBags && (
@@ -80,8 +80,8 @@ export default function TrashPage() {
               errors.unsortedBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('unsortedBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
@@ -93,7 +93,7 @@ export default function TrashPage() {
 
         <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
+          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
           papel e cartão:
           </span>
             {errors.paperBags && (
@@ -110,8 +110,8 @@ export default function TrashPage() {
               errors.paperBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('paperBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
@@ -123,7 +123,7 @@ export default function TrashPage() {
 
         <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
+          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
           plástico e metal:
           </span>
             {errors.plasticBags && (
@@ -140,10 +140,10 @@ export default function TrashPage() {
               errors.plasticBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
-            )}
+              )}
             {...register('plasticBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('plasticBags')}
             min={1}
@@ -153,7 +153,7 @@ export default function TrashPage() {
 
         <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
+          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
           vidro:
           </span>
             {errors.glassBags && (
@@ -170,10 +170,10 @@ export default function TrashPage() {
               errors.glassBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
-            )}
+              )}
             {...register('glassBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('glassBags')}
             min={1}
@@ -183,7 +183,7 @@ export default function TrashPage() {
 
         <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-sm lg:text-base font-bold transition duration-300',) }>
+          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
           orgânico:
           </span>
             {errors.organicBags && (
@@ -200,10 +200,10 @@ export default function TrashPage() {
               errors.organicBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
-            )}
+              )}
             {...register('organicBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
             onBlur={() => trigger('organicBags')}
             min={1}

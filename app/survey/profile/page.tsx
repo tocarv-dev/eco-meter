@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 // Icons
-import profile_aIcon from '@/images/heroi.svg';
-import profile_bIcon from '@/images/amigo.svg';
-import profile_cIcon from '@/images/explorador.svg';
-import profile_dIcon from '@/images/despreocupado.svg';
-import profile_eIcon from '@/images/vilao.svg';
+import profile_aIcon from '@/images/profiles/eco-hero.svg';
+import profile_bIcon from '@/images/profiles/amigo.svg';
+import profile_cIcon from '@/images/profiles/explorador.svg';
+import profile_dIcon from '@/images/profiles/eco-carefree.svg';
+import profile_eIcon from '@/images/profiles/vilao.svg';
+
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
 
@@ -58,7 +59,7 @@ export default function ProfilePage() {
       <Image src={profile.icon} alt="" className="h-16 lg:h-24" />
       <div className="flex flex-col ">
         <div className="flex flex-col">
-          <span className="text-xs font-bold text-deep-green text-center">
+          <span className="text-xs font-semibold text-deep-green text-center">
             { profile.displayName }
           </span>
         </div>

@@ -82,8 +82,8 @@ export default function ResidencePage() {
               errors.residents
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('residents', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
@@ -92,7 +92,7 @@ export default function ResidencePage() {
             autoComplete="residents"
           />
         </label>
-        <label className="flex flex-col">
+        <label className="flex flex-col mt-3">
           <div className="flex justify-between">
             <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               quanto gastam mensalmente em electricidade em sua casa?
@@ -111,8 +111,8 @@ export default function ResidencePage() {
               errors.electricitySpend
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('electricitySpend', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
@@ -124,12 +124,12 @@ export default function ResidencePage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              usam gás em casa?
+              utilizam gás em casa?
             </span>
           </label>
           <button
             className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
+              'h-[20px] w-[40px] rounded-full p-1',
               usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
             )}
             onClick= {toggleUseGas}
@@ -155,8 +155,8 @@ export default function ResidencePage() {
               errors.gasType
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             { ...register('gasType', {  required: usesGas ? 'Este campo é obrigatório' : false, }) }
@@ -186,8 +186,8 @@ export default function ResidencePage() {
               errors.gasSpend
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('gasSpend', { valueAsNumber: true, required: usesGas ? 'Este campo é obrigatório' : false, })}

@@ -2,6 +2,8 @@ import clsx from 'clsx';
 // Styles
 import '@/stylesheets/globals.css';
 import '@/stylesheets/fonts.css';
+import '@/stylesheets/switzer.css';
+
 import Image from 'next/image';
 import {NextUIProvider} from "@nextui-org/react";
 import siteBackGround1 from '@/images/arrows-8841234_1280.jpg';
@@ -33,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en" className="h-full">
-        <body className="lg:bg-faint-green font-ubuntu h-full flex flex-col justify-start lg:justify-center items-center">
+        <body className="lg:bg-faint-green font-switzer h-full flex flex-col justify-start lg:justify-center items-center">
           <Image src={siteBackGround4} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
           <Providers>
             <main className="font-normal relative w-full max-w-lg lg:max-w-[940px]">

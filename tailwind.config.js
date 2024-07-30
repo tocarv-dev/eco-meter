@@ -38,6 +38,9 @@ module.exports = {
       fontFamily: {
         ubuntu: ['Ubuntu', 'sans-serif'],
       },
+      fontFamily: {
+        switzer: ['Switzer-Variable', 'sans-serif'],
+      },
     },
   },
   plugins: [nextui()],

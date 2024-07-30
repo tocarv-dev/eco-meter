@@ -387,9 +387,9 @@ export default function InfoPage() {
               errors.gender
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
+                'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+                'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+                'focus:outline-none'
             )}
             { ...register('gender', { required: 'Este campo é obrigatório' }) }
             onChange={(e) => setValue('gender', e.target.value)}
@@ -418,8 +418,8 @@ export default function InfoPage() {
               errors.age
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
             {...register('age', {
@@ -456,10 +456,10 @@ export default function InfoPage() {
               errors.municipality
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
-              'py-2 lg:py-3 px-3 lg:px-4 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
-            )}
+              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+            'focus:outline-none'
+              )}
             { ...register('municipality', { required: 'Este campo é obrigatório' }) }
             onChange={(e) => setValue('municipality', e.target.value)}
             onBlur={() => trigger('municipality')}
@@ -468,7 +468,7 @@ export default function InfoPage() {
             {Municipalities}
           </select>
         </label>
-        <p className="text-default-500 font-medium text-small mt-6">
+        <p className="font-light text-small mt-6">
         Nota: Estes dados serão utilizados apenas para fins estatísticos
       </p>  
       </div>

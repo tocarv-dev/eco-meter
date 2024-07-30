@@ -16,7 +16,7 @@ export default function FormWrapper({
       <h1 className="text-2xl lg:text-[34px] font-bold text-dark-green">
         {heading}
       </h1>
-      <p className="text-cool-gray mt-1">{description}</p>
+      <p className="text-cool-gray font-light mt-1">{description}</p>
       {children}
     </section>
   );
