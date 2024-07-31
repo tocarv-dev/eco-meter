@@ -7,17 +7,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Icons
-import checkmarkIcon from '@/images/icon-checkmark.svg';
+import { RxCross1 } from "react-icons/rx";
 
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
 
 export default function TrashPage() {
   const router = useRouter();
-  const { register, trigger, formState, watch, setValue } = useAppFormContext();
+  const { register, trigger, formState, watch, setValue, unregister } = useAppFormContext();
   const { isValid, errors } = formState;
 
-  const recycle = watch('recycle');
+  const recycle = watch('recycle'),
+  recycleBags = watch('recycleBags');
 
   const toogleRecycle = () => {
     if (recycle === true) {
@@ -26,6 +27,24 @@ export default function TrashPage() {
       setValue('recycle', true);
     }
   };
+
+  const recycleOptions: {
+    [key: string]: {
+      name: 'paper' | 'glass' | 'plastic' | 'organic';
+      displayName: string;
+    };
+  } = {
+    paper: { name: 'paper', displayName: 'Papel' },
+    glass: { name: 'glass', displayName: 'Vidro' },
+    plastic: { name: 'plastic', displayName: 'Plástico' },
+    organic: { name: 'organic', displayName: 'Orgânico'}
+  };
+
+  const RecycleOptions = Object.values(recycleOptions).map((item) => (
+    <option value={item.name} key={item.name} > 
+      {item.displayName}
+    </option>
+  ));
 
   const validateStep = async () => {
     await trigger();
@@ -40,31 +59,11 @@ export default function TrashPage() {
       description="A forma como lida com o lixo, desde a separação até à redução de desperdícios, pode reduzir significativamente o impacto ambiental"
     >
       <div className="w-full">
-
-      <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
-          <label>
-            <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              Fazes separação de resíduos?
-            </span>
-          </label>
-          <button
-            className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
-              recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-            )}
-            onClick= {toogleRecycle}
-            type="button"
-          >
-            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-          </button>
-        </div>
-      
-      <div className="grid grid-cols-2 gap-4 mt-6">
-
-      <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
+      <div className="flex flex-col w-full gap-4">
+      <label className={clsx('flex flex-col mt-2')}>
           <div className="flex justify-between">
           <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-            indiferenciado:
+            Quantos sacos produz de lixo indeferenciado em sua casa?
           </span>
             {errors.unsortedBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -84,132 +83,92 @@ export default function TrashPage() {
               'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
             )}
-            {...register('unsortedBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
+            {...register('unsortedBags', { valueAsNumber: true, required: 'Este campo é obrigatório' })}
             onBlur={() => trigger('unsortedBags')}
             min={1}
             autoComplete="unsortedBags"
           />
         </label>
 
-        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
-          <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-          papel e cartão:
-          </span>
-            {errors.paperBags && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.paperBags.message }
-              </span>
-            )}
-          </div>
-          <input
-            type="number"
-            placeholder="2"
+      <div className="flex justify-start items-center gap-6 bg-alabaster mt-4 lg:mt-2 rounded-lg p-3 lg:p-4 bg-white-green">
+          <label>
+            <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+              Fazes separação de resíduos?
+            </span>
+          </label>
+          <button
             className={clsx(
-              'border',
-              errors.paperBags
-                ? 'border-strawberry-red'
-                : 'border-light-gray focus:border-purplish-blue',
-              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
+              'h-[20px] w-[40px] rounded-full p-1 object-left',
+              recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
             )}
-            {...register('paperBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
-            onBlur={() => trigger('paperBags')}
-            min={1}
-            autoComplete="paperBags"
-          />
-        </label>
+            onClick= {toogleRecycle}
+            type="button"
+          >
+            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+          </button>
+        </div>
 
-        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
+        <label className={clsx('flex flex-col mt-2', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-          plástico e metal:
-          </span>
-            {errors.plasticBags && (
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Quais dos seguintes resíduos faz separação?
+            </span>
+            {errors.recycleBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.plasticBags.message}
+                {  }
               </span>
             )}
           </div>
-          <input
-            type="number"
-            placeholder="2"
+          <select 
             className={clsx(
               'border',
-              errors.plasticBags
+              errors.recycleBags
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
               'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
               'focus:outline-none'
-              )}
-            {...register('plasticBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
-            onBlur={() => trigger('plasticBags')}
-            min={1}
-            autoComplete="plasticBags"
-          />
-        </label>
-
-        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
-          <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-          vidro:
-          </span>
-            {errors.glassBags && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.glassBags.message}
-              </span>
             )}
-          </div>
-          <input
-            type="number"
-            placeholder="2"
-            className={clsx(
-              'border',
-              errors.glassBags
-                ? 'border-strawberry-red'
-                : 'border-light-gray focus:border-purplish-blue',
-              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
-              )}
-            {...register('glassBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
-            onBlur={() => trigger('glassBags')}
-            min={1}
-            autoComplete="glassBags"
-          />
+            onChange={(e) => {register(`recycleBags.${e.target.value}.option`, { value: e.target.value }); trigger('recycleBags')}}
+            onBlur={() => trigger('recycleBags')}
+            autoComplete="recycleBags"
+          >
+            {RecycleOptions}
+          </select>
         </label>
-
-        <label className={clsx('flex flex-col', recycle === true ? '' : 'hidden')}>
-          <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-          orgânico:
-          </span>
-            {errors.organicBags && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.organicBags.message }
-              </span>
-            )}
+      
+      <div className="grid grid-cols-2 gap-4">
+          { Object.keys(recycleBags || {}).length !== 0 && Object.values(recycleBags).map((s, index) => (
+          <div className={clsx('flex flex-col', recycle === true ? '' : 'hidden')} key={index}>
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Quantos sacos de { s.option} { recycleOptions[s.option].displayName } produz?
+            </span>
+            <div className="flex flex-row">
+              <input
+                key={ s.option }
+                type="number"
+                placeholder="15"
+                className={clsx(
+                  'border',
+                  errors.recycleBags
+                    ? 'border-strawberry-red'
+                    : 'border-light-gray focus:border-purplish-blue',
+                    'py-1 lg:py-2 px-2 lg:px-2 rounded-[4px] lg:rounded-lg mt-1',
+                    'w-40 lg:w-40 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
+                    'focus:outline-none'
+                )}
+                {...register(`recycleBags.${s.option}.value`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+                onBlur={() => trigger('recycleBags')}
+                min={1}
+                autoComplete="recycleBags"
+              />
+              <button className="inline-block align-middle vertical-align ml-1" onClick={() => { unregister(`recycleBags.${s.option}`) }}>
+              <RxCross1 size={"1.3em"} />
+              </button>
+            </div>
           </div>
-          <input
-            type="number"
-            placeholder="2"
-            className={clsx(
-              'border',
-              errors.organicBags
-                ? 'border-strawberry-red'
-                : 'border-light-gray focus:border-purplish-blue',
-              'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
-              )}
-            {...register('organicBags', { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
-            onBlur={() => trigger('organicBags')}
-            min={1}
-            autoComplete="organicBags"
-          />
-        </label>
+          ))}
+      </div>
       </div>
       </div>
       <FormActions>
