@@ -8,7 +8,7 @@ import { Surveys } from '@/types/surveys';
 import { } from '@/lib/calc/calcs';
 
 interface ResultPageClientProps {
-  survey: Surveys,
+  survey: any,
 }
 
 export default function ResultPageClient({ survey }: ResultPageClientProps) {

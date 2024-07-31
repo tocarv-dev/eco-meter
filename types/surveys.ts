@@ -1,6 +1,7 @@
 export interface Surveys {
     id: string,
     userid: string,
+    createdAt: Date,
 
     gender: string,
     age: number,
