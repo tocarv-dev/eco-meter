@@ -1,10 +1,5 @@
-import NextAuth from 'next-auth';
-import { authConfig } from 'app/auth.config';
-
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-
-export default NextAuth(authConfig).auth;
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {

@@ -11,17 +11,19 @@ import { RxCross1 } from "react-icons/rx";
 // Icons
 import checkmarkIcon from '@/images/icon-checkmark.svg';
 
-import electricCarImage from '@/images/transport/ico_form_electric_car.png';
-import ferryCarImage from '@/images/transport/ico_form_ferry_car.png';
-import ferryPersonImage from '@/images/transport/ico_form_ferry_people.png';
-import gplCarImage from '@/images/transport/ico_form_gpl_car.png';
-import hybridCarImage from '@/images/transport/ico_form_hybrid_car.png';
-import motorcycleImage from '@/images/transport/ico_form_motorcycle.png';
-import subwayImage from '@/images/transport/ico_form_subway.png';
-import taxiImage from '@/images/transport/ico_form_taxi.png';
-import trainImage from '@/images/transport/ico_form_train.png';
-import tramImage from '@/images/transport/ico_form_tram.png';
-import busImage from '@/images/transport/ico_form_urban_bus.png';
+import carImage from '@/images/transport/car.png';
+import electricCarImage from '@/images/transport/electric_car.png';
+import gplCarImage from '@/images/transport/gpl_car.png';
+import hybridCarImage from '@/images/transport/hybrid_car.png';
+import motorcycleImage from '@/images/transport/motorcycle.png';
+import subwayImage from '@/images/transport/subway.png';
+import taxiImage from '@/images/transport/taxi.png';
+import trainImage from '@/images/transport/train.png';
+import tramImage from '@/images/transport/tram.png';
+import busImage from '@/images/transport/urban_bus.png';
+import coachImage from '@/images/transport/coach_bus.png';
+import ferryCarImage from '@/images/transport/ferry_car.png';
+import ferryPersonImage from '@/images/transport/ferry_people.png';
 
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
@@ -50,20 +52,20 @@ export default function TransportationPage() {
       imgSrc: StaticImageData;
     };
   } = {
-    dieselCar: { name: 'dieselCar', displayName: 'Carro a propano', shortName: 'propano', imgSrc: hybridCarImage },
-    gasCar: { name: 'gasCar', displayName: 'Carro a gasolina', shortName: 'gasolina', imgSrc: hybridCarImage },
-    hybridCar: { name: 'hybridCar', displayName: 'Carro híbrido', shortName: 'híbrido', imgSrc: hybridCarImage },
+    gasCar: { name: 'gasCar', displayName: 'Carro a gasolina / diesel', shortName: 'gasolina', imgSrc: carImage },
+    hybridCar: { name: 'hybridCar', displayName: 'Carro híbrido', shortName: 'híbrido', imgSrc: carImage },
+    electricCar: { name: 'electricCar', displayName: 'Carro elétrico', shortName: 'elétrico', imgSrc: carImage },
     gplCar: { name: 'gplCar', displayName: 'Carro a GPL', shortName: 'GPL', imgSrc: gplCarImage },
-    electricCar: { name: 'electricCar', displayName: 'Carro elétrico', shortName: 'elétrico', imgSrc: electricCarImage },
+    dieselCar: { name: 'dieselCar', displayName: 'Carro a propano', shortName: 'propano', imgSrc: carImage },
     motorcycle: { name: 'motorcycle', displayName: 'Moto / Motorizada', shortName: 'moto', imgSrc: motorcycleImage },
-    taxi: { name: 'taxi', displayName: 'Taxi', shortName: 'taxi', imgSrc: taxiImage },
-    train: { name: 'train', displayName: 'Comboio', shortName: 'comboio', imgSrc: trainImage },
     urbanBus: { name: 'urbanBus', displayName: 'Autocarro Urbano', shortName: 'urbano', imgSrc: busImage },
-    coachBus: { name: 'coachBus', displayName: 'Autocarro Coach', shortName: 'coach', imgSrc: busImage },
+    train: { name: 'train', displayName: 'Comboio', shortName: 'comboio', imgSrc: trainImage },
     subway: { name: 'subway', displayName: 'Metro', shortName: 'metro', imgSrc: subwayImage }, 
     tram: { name: 'tram', displayName: 'Carris', shortName: 'carris', imgSrc: tramImage },
+    taxi: { name: 'taxi', displayName: 'Taxi', shortName: 'taxi', imgSrc: taxiImage },
     ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (peão)', shortName: 'peão', imgSrc: ferryPersonImage},
-    ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)', shortName: 'condutor', imgSrc: ferryCarImage}
+    ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)', shortName: 'condutor', imgSrc: ferryCarImage},
+    coachBus: { name: 'coachBus', displayName: 'Autocarro Coach', shortName: 'coach', imgSrc: coachImage }
   };
 
   const Transports = Object.values(transportOptions).map((item) => (
@@ -149,7 +151,7 @@ export default function TransportationPage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              Costumas viajar de avião?
+              Viaja habitualmente de avião?
             </span>
           </label>
           <button
