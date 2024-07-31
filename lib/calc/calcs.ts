@@ -1,9 +1,16 @@
-import { MdFormatColorText } from 'react-icons/md';
 import Factor from './consts.json';
-
+import { Surveys } from '@/types/surveys'
 /*
 - Habitações
 */
+
+export const Calc = (data: Surveys) => {
+    let result: {
+        [index: string]: number;
+    } = {}
+
+    result.eletricity = EletricityCalc(data.home_eletricity, data.home_residents)
+}
 
 // Eletricidade | ID: OT 1.0
 export const EletricityCalc = (euros: number, residents: number) => {
@@ -66,74 +73,78 @@ export const FirewoodCalc = (residents: number) => {
 */
 
 // Térreos / Marítimos | OT 7.0
-export const VehiclesCalc = (distance: number, type: string) => {
-    let VehicleFactor = 0
+export const VehiclesCalc = (vehicles: any) => {
+    let result = 0;
 
-    switch(type) {
-        case 'dieselCar':
-            VehicleFactor = Factor.vehicles.dieselCar
-        break;
-
-        case 'gasCar':
-            VehicleFactor = Factor.vehicles.gasCar
-        break;
-
-        case 'hybridCar': 
-            VehicleFactor = Factor.vehicles.hybridCar
-        break;
-
-        case 'gplCar':
-            VehicleFactor = Factor.vehicles.gplCar
-        break;
-        
-        case 'electricCar':
-            VehicleFactor = Factor.vehicles.electricCar
-        break;
-
-        case 'motorcycle':
-            VehicleFactor = Factor.vehicles.motorcycle
-        break;
-
-        case 'taxi':
-            VehicleFactor = Factor.vehicles.taxi
-        break;
-
-        case 'urbanBus':
-            VehicleFactor = Factor.vehicles.urbanBus
-        break;
-
-        case 'coachBus':
-            VehicleFactor = Factor.vehicles.coachBus
-        break;
-
-        case 'subway':
-            VehicleFactor = Factor.vehicles.subway
-        break;
-
-        case 'tram':
-            VehicleFactor = Factor.vehicles.tram
-        break;
-
-        case 'ferryFoot':
-            VehicleFactor = Factor.vehicles.ferryFoot
-        break;
-
-        case 'ferryCar':
-            VehicleFactor = Factor.vehicles.ferryCar
-        break;
-
-        default:
-            VehicleFactor = 0
-        break;
+    if (vehicles.dieselCar) {
+        const AnnualDistance = vehicles.dieselCar * 52;
+        result += AnnualDistance * Factor.vehicles.dieselCar * Math.pow(10, -6);
+    }
+    
+    if (vehicles.gasCar) {
+        const AnnualDistance = vehicles.gasCar * 52;
+        result += AnnualDistance * Factor.vehicles.gasCar * Math.pow(10, -6);
+    }
+    
+    if (vehicles.hybridCar) {
+        const AnnualDistance = vehicles.hybridCar * 52;
+        result += AnnualDistance * Factor.vehicles.hybridCar * Math.pow(10, -6);
+    }
+    
+    if (vehicles.gplCar) {
+        const AnnualDistance = vehicles.gplCar * 52;
+        result += AnnualDistance * Factor.vehicles.gplCar * Math.pow(10, -6);
+    }
+    
+    if (vehicles.electricCar) {
+        const AnnualDistance = vehicles.electricCar * 52;
+        result += AnnualDistance * Factor.vehicles.electricCar * Math.pow(10, -6);
+    }
+    
+    if (vehicles.motorcycle) {
+        const AnnualDistance = vehicles.motorcycle * 52;
+        result += AnnualDistance * Factor.vehicles.motorcycle * Math.pow(10, -6);
+    }
+    
+    if (vehicles.taxi) {
+        const AnnualDistance = vehicles.taxi * 52;
+        result += AnnualDistance * Factor.vehicles.taxi * Math.pow(10, -6);
+    }
+    
+    if (vehicles.urbanBus) {
+        const AnnualDistance = vehicles.urbanBus * 52;
+        result += AnnualDistance * Factor.vehicles.urbanBus * Math.pow(10, -6);
+    }
+    
+    if (vehicles.coachBus) {
+        const AnnualDistance = vehicles.coachBus * 52;
+        result += AnnualDistance * Factor.vehicles.coachBus * Math.pow(10, -6);
+    }
+    
+    if (vehicles.subway) {
+        const AnnualDistance = vehicles.subway * 52;
+        result += AnnualDistance * Factor.vehicles.subway * Math.pow(10, -6);
+    }
+    
+    if (vehicles.tram) {
+        const AnnualDistance = vehicles.tram * 52;
+        result += AnnualDistance * Factor.vehicles.tram * Math.pow(10, -6);
+    }
+    
+    if (vehicles.ferryFoot) {
+        const AnnualDistance = vehicles.ferryFoot * 52;
+        result += AnnualDistance * Factor.vehicles.ferryFoot * Math.pow(10, -6);
+    }
+    
+    if (vehicles.ferryCar) {
+        const AnnualDistance = vehicles.ferryCar * 52;
+        result += AnnualDistance * Factor.vehicles.ferryCar * Math.pow(10, -6);
     }
 
-    const AnnualDistance = distance * 52,
-    Emissions = AnnualDistance * VehicleFactor * Math.pow(10, -6)
-
-    return Emissions;
+    return result;
 }
 
 // Aviação | OT 8.0
-export const AviationCalc = (flights: number) => {
-    
+export const AviationCalc = (flights: number, type: number) => {
+    let result;
 }

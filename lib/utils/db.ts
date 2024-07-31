@@ -13,3 +13,18 @@ const prisma = globalThis.prismaGlobal ?? PrismaClientSingleToken()
 export default prisma;
 
 if(process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
+
+export async function GetSurvey(id: string) {
+    try {
+        const query = await prisma.surveys.findUnique({
+            where: {
+                id: id
+            }
+        })
+
+        return query;
+    } catch (error) {
+        console.log(error)
+        throw new Error("Error getting surveys")
+    }
+}
