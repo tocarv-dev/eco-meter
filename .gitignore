@@ -36,4 +36,6 @@ yarn-error.log*
 .vercel
 .env*.local
 
+compose.yml
 /data
+/prisma/migrations

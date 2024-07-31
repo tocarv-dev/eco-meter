@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/survey/info', request.url));
   }
 }
+export { auth as auth_middleware } from "@/lib/auth/auth"
 
 export const config = {
   // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
