@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: eco-meter-db
+    restart: always
+    environment:
+      POSTGRES_DB: get2c
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 3C0meteR4G3t2C
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer:latest
+    container_name: eco-meter-db-admin
+    restart: always
+    ports:
+      - 8082:8080
+    depends_on:
+      - db
