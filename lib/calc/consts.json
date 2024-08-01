@@ -52,5 +52,17 @@
         "short": 165,
         "medium": 380,
         "long": 420 
+    },
+    "meals": {
+        "vegan": 0.7,
+        "whiteMeat": 2.9,
+        "redMeat": 4.8
+    },
+    "residuals": {
+        "inceneration": 1.27,
+        "landfills": 1.0133,
+        "paper": 0.992,
+        "glass": 0.639,
+        "organic": 0.439
     }
 }
