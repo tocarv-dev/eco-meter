@@ -37,4 +37,4 @@ yarn-error.log*
 .env*.local
 
 /data
-/prisma/migrations
+/prisma/migrations/*
