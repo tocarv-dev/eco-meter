@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { Slider } from "@nextui-org/slider";
 import Image from 'next/image';
 import { Controller } from 'react-hook-form'
+import redMeatImage from '@/images/food/red_meat.png';
+import veganImage from '@/images/food/vegan.png';
+import whiteMeatFishImage from '@/images/food/fish_white_meat.png';
 
 // Icons
 import checkmarkIcon from '@/images/icon-checkmark.svg';
@@ -47,10 +50,9 @@ export default function FoodPage() {
       description="O tipo de dieta que segue e como os alimentos são produzidos e transportados têm um impacto considerável nas emissões de gases com efeito de estufa"
     >
       <div className="flex flex-col w-full gap-4 mt-6">
-        <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+        <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
           Quantas refeições deste tipo faz por semana?  
         </span>
-
         <Controller
           name="meals"
           control={control}
@@ -62,10 +64,13 @@ export default function FoodPage() {
             key="meals"
             size="md"
             radius="md"
+            showTooltip={true}
             step={1}
             getValue={() => `Vegan`}
             maxValue={14}
             minValue={0}
+            startContent={ <div className="flex flex-col justify-center text-xs text-center"><Image src={redMeatImage} alt="" className="w-16 lg:w-16" /><span>Carnes Vermelhas</span></div> }
+            endContent={<div className="flex flex-col justify-start text-xs text-center"><Image src={veganImage} alt="" className="w-16 lg:w-16" /> <span>Veganas Vegetarianas</span> </div>}
             defaultValue={[2, 12]}
             aria-label="meals"
             classNames={{
@@ -82,21 +87,10 @@ export default function FoodPage() {
               ],
               step: "bg-dark-green"
             }}
-            label="Carnes Vermelhas"
             />
           )}
         />
-
-      <p className="text-default-500 font-medium text-small">
-        Refeições Carne Vermelha: {Array.isArray(meals) && meals[0]} 
-      </p>
-      <p className="text-default-500 font-medium text-small">
-        Refeições de Vegan: {Array.isArray(meals) && (14 - meals[1])}
-      </p>
-
-      <p className="text-default-500 font-medium text-small">
-        Carnes Brancas/Peixe: {Array.isArray(meals) && (meals[1] - meals[0])}  
-      </p>  
+        <div className="flex items-end text-xs"><Image src={whiteMeatFishImage} alt="" className="w-12 lg:w-12" /> <span> {Array.isArray(meals) && (meals[1] - meals[0])} refeições serão consideradas como carnes brancas e peixe</span></div>
       </div>
       <FormActions>
         <Link

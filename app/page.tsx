@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div className="bg-white flex flex-col lg:flex-row m-10 rounded-2xl lg:shadow-lg">
+    <div className="bg-white flex flex-col lg:flex-row rounded-2xl lg:shadow-lg">
         <div className="text-center max-w-screen-sm p-8 rounded-2xl">
           <h1 className="text-deep-green font-bold text-2xl">
             Descubra o seu impacto no planeta e como pode fazer a diferença! 

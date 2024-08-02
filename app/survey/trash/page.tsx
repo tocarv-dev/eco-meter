@@ -4,7 +4,12 @@ import clsx from 'clsx';
 import useAppFormContext from '@/lib/hooks/useAppFormContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import paperImage from '@/images/trash/paper.png';
+import glassImage from '@/images/trash/glass.png';
+import plasticImage from '@/images/trash/plastic.png';
+import organicImage from '@/images/trash/organic.png';
+import unsortedImage from '@/images/trash/unsorted.png';
 
 // Icons
 import { RxCross1 } from "react-icons/rx";
@@ -32,12 +37,14 @@ export default function TrashPage() {
     [key: string]: {
       name: 'paper' | 'glass' | 'plastic' | 'organic';
       displayName: string;
+      imgSrc: StaticImageData;
+      cssColor: string;
     };
   } = {
-    paper: { name: 'paper', displayName: 'Papel' },
-    glass: { name: 'glass', displayName: 'Vidro' },
-    plastic: { name: 'plastic', displayName: 'Plástico' },
-    organic: { name: 'organic', displayName: 'Orgânico'}
+    paper: { name: 'paper', displayName: 'Papel', imgSrc: paperImage, cssColor: "paper-color" },
+    glass: { name: 'glass', displayName: 'Vidro', imgSrc: glassImage, cssColor: "glass-color" },
+    plastic: { name: 'plastic', displayName: 'Plástico', imgSrc: plasticImage, cssColor: "plastic-color" },
+    organic: { name: 'organic', displayName: 'Orgânico', imgSrc: organicImage, cssColor: "organic-color" }
   };
 
   const RecycleOptions = Object.values(recycleOptions).map((item) => (
@@ -62,7 +69,7 @@ export default function TrashPage() {
       <div className="flex flex-col w-full gap-4">
       <label className={clsx('flex flex-col mt-2')}>
           <div className="flex justify-between">
-          <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
+          <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
             Quantos sacos produz de lixo indeferenciado em sua casa?
           </span>
             {errors.unsortedBags && (
@@ -93,9 +100,12 @@ export default function TrashPage() {
       <div className="flex justify-start items-center gap-6 bg-alabaster mt-4 lg:mt-2 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              Fazes separação de resíduos?
+              Faz separação de resíduos?
             </span>
           </label>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Não
+          </span>
           <button
             className={clsx(
               'h-[20px] w-[40px] rounded-full p-1 object-left',
@@ -106,12 +116,15 @@ export default function TrashPage() {
           >
             <div className={clsx('h-full rounded-full aspect-square bg-white')} />
           </button>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Sim
+          </span>
         </div>
 
         <label className={clsx('flex flex-col mt-2', recycle === true ? '' : 'hidden')}>
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Quais dos seguintes resíduos faz separação?
+            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Especifique quais?
             </span>
             {errors.recycleBags && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -137,11 +150,12 @@ export default function TrashPage() {
           </select>
         </label>
       
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-4 gap-y-2">
           { Object.keys(recycleBags || {}).length !== 0 && Object.values(recycleBags).map((s, index) => (
-          <div className={clsx('flex flex-col', recycle === true ? '' : 'hidden')} key={index}>
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Quantos sacos de { s.option} { recycleOptions[s.option].displayName } produz?
+          <div className={clsx('justify-self-center', recycle === true ? '' : 'hidden')} key={index}>
+            <span className="text-xs text-deep-green font-normal flex flex-row items-end">
+              <Image src={recycleOptions[s.option].imgSrc} alt="" className="mx-1 h-6 w-6" />
+              { recycleOptions[s.option].displayName }
             </span>
             <div className="flex flex-row">
               <input
@@ -154,7 +168,7 @@ export default function TrashPage() {
                     ? 'border-strawberry-red'
                     : 'border-light-gray focus:border-purplish-blue',
                     'py-1 lg:py-2 px-2 lg:px-2 rounded-[4px] lg:rounded-lg mt-1',
-                    'w-40 lg:w-40 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
+                    'w-10 lg:w-20 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
                     'focus:outline-none'
                 )}
                 {...register(`recycleBags.${s.option}.value`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
@@ -169,6 +183,7 @@ export default function TrashPage() {
           </div>
           ))}
       </div>
+      <div className="w-fill justify-end text-xs">sacos de 20 litros por semana</div>
       </div>
       </div>
       <FormActions>

@@ -21,13 +21,20 @@ module.exports = {
       // Neutral
       'cool-gray': 'hsl(231, 11%, 63%)',
 
+      // Theme
       'white-green': 'hsl(165, 40%, 98%)',
       'faint-green': 'hsl(164, 38.5%, 92.4%)',
       'light-green': 'hsl(162, 100%, 45%)',
       'mid-green': 'hsl(177, 100%, 32%)',
       'dark-green': 'hsl(179, 70%, 18%)',
       'deep-green': 'hsl(175, 68.4%, 3.7%)',
-      
+
+      // Trash
+      'glass-color': 'hsl(162, 100%, 45%)',
+      'organic-color': 'hsl(162, 100%, 45%)',
+      'plastic-color': 'hsl(162, 100%, 45%)',
+      'paper-color': 'hsl(162, 100%, 45%)',
+
       magnolia: 'hsl(217, 100%, 97%)',
       alabaster: 'hsl(231, 100%, 99%)',
       white: 'hsl(0, 0%, 100%)',

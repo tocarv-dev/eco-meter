@@ -14,6 +14,7 @@ import siteBackGround1 from '@/images/arrows-8841234_1280.jpg';
 import siteBackGround2 from '@/images/tree-5725540_1280.jpg';
 import siteBackGround3 from '@/images/sustainability-8438275_1280.png';
 import siteBackGround4 from '@/images/bg-cooler-world.svg';
+import userIcon from '@/images/user.svg'
 
 import {Providers} from "./providers";
 
@@ -49,7 +50,9 @@ export default function RootLayout({
                     await signIn("google")
                   }}
                 >
-                <SubmitButton>Signin with GitHub</SubmitButton>
+                <button type= 'submit' className="absolute top-2 right-2 p-2 bg-white-green rounded-md border text-sm transition-all focus:outline-none">
+                  <Image src={userIcon} alt="" className="w-4"/>
+                </button>
               </form>
                {children}
             </main>

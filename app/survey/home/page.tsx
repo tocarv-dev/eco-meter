@@ -65,8 +65,8 @@ export default function ResidencePage() {
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              quantas pessoas moram em sua casa?
+            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Quantas pessoas moram em sua casa?
             </span>
             {errors.residents && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -94,8 +94,8 @@ export default function ResidencePage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              quanto gastam mensalmente em electricidade em sua casa?
+            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Qual o seu gasto mensal em electricidade?
             </span>
             {errors.electricitySpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -124,7 +124,7 @@ export default function ResidencePage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-              utilizam gás em casa?
+              Utilizam gás em casa?
             </span>
           </label>
           <button
@@ -138,16 +138,11 @@ export default function ResidencePage() {
             <div className={clsx('h-full rounded-full aspect-square bg-white')} />
           </button>
         </div>
-        <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')} >
-          <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              qual o tipo de gás que utilizam?
+        <label className={clsx('grid grid-cols-2 gap-2' , usesGas === true ? '' : 'hidden')} >
+          <div className="col-span-2 justify-between">
+            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Que tipo de gás que utilizam e quanto gastam mensalmente?
             </span>
-            {errors.gasType && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                {errors.gasType.message}
-              </span>
-            )}
           </div>
           <select 
             className={clsx(
@@ -166,18 +161,6 @@ export default function ResidencePage() {
           >
             {GasOptions}
           </select>
-        </label>
-        <label className={clsx('flex flex-col', usesGas === true ? '' : 'hidden')}>
-          <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              quanto gastam mensalmente em gás em sua casa?
-            </span>
-            {errors.gasSpend && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                { errors.gasSpend.message }
-              </span>
-            )}
-          </div>
           <input
             type="number"
             placeholder="30"
@@ -199,7 +182,7 @@ export default function ResidencePage() {
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx(' text-sm lg:text-base font-bold transition duration-300',) }>
-              utilizam lenha em casa?
+              Utilizam lenha em casa?
             </span>
           </label>
           <button

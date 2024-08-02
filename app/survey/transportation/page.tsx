@@ -9,12 +9,7 @@ import Image, { StaticImageData } from 'next/image';
 import { RxCross1 } from "react-icons/rx";
 
 // Icons
-import checkmarkIcon from '@/images/icon-checkmark.svg';
-
 import carImage from '@/images/transport/car.png';
-import electricCarImage from '@/images/transport/electric_car.png';
-import gplCarImage from '@/images/transport/gpl_car.png';
-import hybridCarImage from '@/images/transport/hybrid_car.png';
 import motorcycleImage from '@/images/transport/motorcycle.png';
 import subwayImage from '@/images/transport/subway.png';
 import taxiImage from '@/images/transport/taxi.png';
@@ -55,7 +50,7 @@ export default function TransportationPage() {
     gasCar: { name: 'gasCar', displayName: 'Carro a gasolina / diesel', shortName: 'gasolina', imgSrc: carImage },
     hybridCar: { name: 'hybridCar', displayName: 'Carro híbrido', shortName: 'híbrido', imgSrc: carImage },
     electricCar: { name: 'electricCar', displayName: 'Carro elétrico', shortName: 'elétrico', imgSrc: carImage },
-    gplCar: { name: 'gplCar', displayName: 'Carro a GPL', shortName: 'GPL', imgSrc: gplCarImage },
+    gplCar: { name: 'gplCar', displayName: 'Carro a GPL', shortName: 'GPL', imgSrc: carImage },
     dieselCar: { name: 'dieselCar', displayName: 'Carro a propano', shortName: 'propano', imgSrc: carImage },
     motorcycle: { name: 'motorcycle', displayName: 'Moto / Motorizada', shortName: 'moto', imgSrc: motorcycleImage },
     urbanBus: { name: 'urbanBus', displayName: 'Autocarro Urbano', shortName: 'urbano', imgSrc: busImage },
@@ -89,8 +84,8 @@ export default function TransportationPage() {
       <div className="flex flex-col w-full gap-4 mt-6">
         <label className="flex flex-col mt-4">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              transportes
+            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              Transportes
             </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -118,7 +113,7 @@ export default function TransportationPage() {
         <div className="grid grid-cols-3 gap-y-2">
           { Object.keys(transports || {}).length !== 0 && Object.values(transports).map((s, index) => (
           <div className="justify-self-center" key={index}>
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium flex flex-row items-end">
+            <span className="text-xs text-deep-green font-normal flex flex-row items-end">
               <Image src={transportOptions[s.option].imgSrc} alt="" className="mx-1 h-6 w-6" />
               { transportOptions[s.option].shortName }
             </span>
@@ -148,6 +143,7 @@ export default function TransportationPage() {
           </div>
           ))}
         </div>
+        <div className="w-fill justify-end text-xs">kms por semana por tipo de transporte</div>
 
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
@@ -227,7 +223,7 @@ export default function TransportationPage() {
           </label>
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
             <div className="flex justify-between">
-            <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
+            <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
               { '3 a 6 horas:' }
             </span>
               {errors.mediumFlights && (
@@ -256,7 +252,7 @@ export default function TransportationPage() {
           </label>
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
             <div className="flex justify-between">
-            <span className={clsx( 'capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
+            <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
               { '6> horas:' }
             </span>
               {errors.longFlights && (
