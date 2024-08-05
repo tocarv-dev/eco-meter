@@ -12,6 +12,7 @@ export default function Provider({ children }: FormProviderProps) {
   const route = useRouter();
 
   const methods = useAppForm({
+    page: 1,
     gender: '',
     municipality: '',
     useGas: false,

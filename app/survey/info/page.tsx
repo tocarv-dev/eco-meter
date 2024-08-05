@@ -19,6 +19,8 @@ export default function InfoPage() {
   const validateStep = async () => {
     await trigger();
     if (isValid) {
+      setValue('page', 2);
+      
       router.push('/survey/home');
     }
   };

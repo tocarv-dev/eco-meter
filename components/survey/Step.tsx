@@ -12,31 +12,18 @@ import { IoCarOutline} from "react-icons/io5";
 import { MdOutlineRestaurant } from "react-icons/md";
 import { FiTrash2 } from "react-icons/fi";
 import { GiGreenhouse } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa6";
 
 export default function Step({ step, segment }: StepProps) {
-  // const router = useRouter();
 
-  // const { formState } = useAppFormContext();
-  // const { isValid } = formState;
+  const { getValues } = useAppFormContext();
 
-  // const validateStep = async (href: string) => {
-  //   if (isValid) {
-  //     router.push(href);
-  //   }
-  // };
+  const page:number = getValues('page');
 
-  let disabled = false;
+  let disabled:boolean = false,
+  checked:boolean = false;
 
-/*  let icons = (step: number) => {
-    switch(step) {
-      case 1: 
-        <Home size={20}/>
-      break;
-
-      default: 
-        step;
-    }
-  }*/
+  if(page > step.number) checked = true;
 
   return (
     <Link
@@ -57,12 +44,12 @@ export default function Step({ step, segment }: StepProps) {
             'font-bold text-sm flex justify-center items-center'
           )}
         >
-          { step.number === 1 && <RiUser5Line size="1.5em" /> }
-          { step.number === 2 && <TbHomeHeart size="1.5em" />}
-          { step.number === 3 && <IoCarOutline size="1.5em" />}
-          { step.number === 4 && <MdOutlineRestaurant size="1.5em" /> }
-          { step.number === 5 && <FiTrash2 size="1.5em" /> }
-          { step.number === 6 && <GiGreenhouse size="1.5em" /> }
+          { step.number === 1 && (checked ? <FaCheck size="1.4em" /> : <RiUser5Line size="1.5em" /> )}
+          { step.number === 2 && (checked ? <FaCheck size="1.4em" /> : <TbHomeHeart size="1.5em" /> )}
+          { step.number === 3 && (checked ? <FaCheck size="1.4em" /> : <IoCarOutline size="1.5em" /> )}
+          { step.number === 4 && (checked ? <FaCheck size="1.4em" /> : <MdOutlineRestaurant size="1.5em" /> )}
+          { step.number === 5 && (checked ? <FaCheck size="1.4em" /> : <FiTrash2 size="1.5em" /> )}
+          { step.number === 6 && (checked ? <FaCheck size="1.4em" /> : <GiGreenhouse size="1.5em" /> )}
         </button>
         <div className="hidden lg:flex flex-col uppercase">
           <h3 className={clsx('font-normal text-[13px] text-cool-gray')}>

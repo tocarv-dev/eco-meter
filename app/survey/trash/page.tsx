@@ -56,6 +56,8 @@ export default function TrashPage() {
   const validateStep = async () => {
     await trigger();
     if (isValid) {
+      setValue('page', 6);
+
       router.push('/survey/profile');
     }
   };

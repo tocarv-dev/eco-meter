@@ -25,6 +25,8 @@ export default function ProfilePage() {
   const validateStep = async () => {
     await trigger();
     if (isValid) {
+      setValue('page', 7);
+      
       router.push('/survey/profile');
     }
   };

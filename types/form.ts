@@ -1,9 +1,11 @@
 export interface FormValues {
+  page: number;
   userid: String,
   gender: string;
   age: number;
   municipality: string;
 
+  selectedTransports: string[];
   transports: {
     [index: string]: {
       option: string;

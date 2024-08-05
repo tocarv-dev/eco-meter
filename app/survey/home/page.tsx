@@ -20,6 +20,8 @@ export default function ResidencePage() {
   const validateStep = async () => {
     await trigger();
     if (isValid) {
+      setValue('page', 3);
+
       router.push('/survey/transportation');
     }
   };
@@ -127,9 +129,13 @@ export default function ResidencePage() {
               Utilizam gás em casa?
             </span>
           </label>
+
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Não
+          </span>
           <button
             className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1',
+              'h-[20px] w-[40px] rounded-full p-1 object-left',
               usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
             )}
             onClick= {toggleUseGas}
@@ -137,6 +143,10 @@ export default function ResidencePage() {
           >
             <div className={clsx('h-full rounded-full aspect-square bg-white')} />
           </button>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Sim
+          </span>
+
         </div>
         <label className={clsx('grid grid-cols-2 gap-2' , usesGas === true ? '' : 'hidden')} >
           <div className="col-span-2 justify-between">
@@ -185,9 +195,12 @@ export default function ResidencePage() {
               Utilizam lenha em casa?
             </span>
           </label>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Não
+          </span>
           <button
             className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 flex',
+              'h-[20px] w-[40px] rounded-full p-1 object-left',
               usesWood === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
             )}
             onClick= {toggleUseWood}
@@ -195,6 +208,9 @@ export default function ResidencePage() {
           >
             <div className={clsx('h-full rounded-full aspect-square bg-white')} />
           </button>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Sim
+          </span>
         </div>
 
       </div>

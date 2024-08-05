@@ -10,7 +10,6 @@ import bgSidebarDesktop from '@/images/bg-sidebar-desktop.svg';
 import bgSidebarMobile from '@/images/bg-sidebar-mobile.svg';
 
 export default function SurveySidebar() {
-
   const segment = useSelectedLayoutSegment() as
     | 'info'
     | 'home'
@@ -68,7 +67,7 @@ export default function SurveySidebar() {
   return (
     <div className="relative shrink-0">
       <div className="lg:absolute lg:inset-0 lg:px-8 py-8 lg:py-10 flex flex-row justify-center lg:justify-stretch lg:flex-col gap-4 lg:gap-6">
-        {Steps}
+        {Steps} 
       </div>
       <Image
         src={bgSidebarDesktop}

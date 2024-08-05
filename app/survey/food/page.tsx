@@ -19,7 +19,7 @@ import FormActions from '@/components/survey/FormActions';
 
 export default function FoodPage() {
   const router = useRouter();
-  const { control, trigger, formState, getValues, watch } = useAppFormContext();
+  const { control, trigger, formState, getValues, watch, setValue } = useAppFormContext();
   const { isValid, errors } = formState;
 
   const meals:number[] = watch('meals')
@@ -27,19 +27,9 @@ export default function FoodPage() {
   const validateStep = async () => {
     await trigger();
 
-    // console.log(whiteMeals, redMeats, veganMeals)
-
-    /*
-    const values = getValues();
-    const totalMeals = values.whiteMeatMeals + values.redMeatMeals + values.veganMeals;
-
-    if (totalMeals > 14) {
-      alert("Não pode exceder um total de 14 refeições!");
-      return;
-    }
-    */
-
     if (isValid) {
+      setValue('page', 5);
+      
       router.push('/survey/trash');
     }
   };
