@@ -28,3 +28,18 @@ export async function GetSurvey(id: string) {
         throw new Error("Error getting surveys")
     }
 }
+
+export async function getUser(email: string) {
+    try {
+        const query = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        })
+
+        return query || false;
+    } catch (error) {
+        console.log(error)
+        throw new Error("Error getting user")
+    }
+}

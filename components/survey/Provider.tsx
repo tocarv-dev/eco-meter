@@ -21,6 +21,7 @@ export default function Provider({ children }: FormProviderProps) {
     residents: undefined,
     electricitySpend: undefined,
     transports: {},
+    selectedTransports: [],
     meals: [2, 12],
     recycle: false,
     recycleBags: {},
