@@ -192,6 +192,7 @@ export default function TrashPage() {
         <Link
           href="/survey/food"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          onClick={(e) => setValue('page', 4)}
         >
           Anterior
         </Link>

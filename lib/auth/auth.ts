@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
-import bcrypt from 'bcrypt';
+var bcrypt = require('bcryptjs');
 
 import { getUser } from "@/lib/utils/db"
 
@@ -12,28 +12,35 @@ const prisma = new PrismaClient()
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  callbacks: {
+    session({ session, user }) {
+      session.user.id = user.id
+      return session
+    },
+  },
   providers: [
-    GitHub,
+    // GitHub,
     Credentials({
       // The name to display on the sign-in form (e.g. 'Sign in with...')
       name: 'Credentials',
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: { label: "Email", type: "email", placeholder: "exemplo@gmail.com" },
         password: {  label: "Password", type: "password" }
       },
-      authorize: async (credentials) => {
-        // Add your own logic here to find the user and verify their password
-        const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com', password: '1234' }
+      authorize: async (credentials: {email?: any, password?: any}) => {
+        const check = await getUser(credentials.email)
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return Promise.resolve(user)
-        } else {
-          // If you return null or false then the credentials will be rejected
-          return Promise.resolve(null)
-          // You can also Reject this callback with an Error or with a URL:
-          // return Promise.reject(new Error('error message')) // Redirect to error page
-          // return Promise.reject('/path/to/redirect')        // Redirect to a URL
+        if(check) {
+          console.log(credentials.password)
+          console.log(check.password)
+
+          const hashedPassword = bcrypt.compareSync(credentials.password, check.password);
+
+          if(hashedPassword) {
+            return Promise.resolve(check) as any;
+          } else {
+            return Promise.resolve(null) as any;
+          }
         }
       }
     })

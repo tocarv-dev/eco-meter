@@ -86,6 +86,7 @@ export default function FoodPage() {
         <Link
           href="/survey/transportation"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          onClick={(e) => setValue('page', 3)}
         >
           Anterior
         </Link>

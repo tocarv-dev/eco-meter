@@ -29,7 +29,7 @@ export async function GetSurvey(id: string) {
     }
 }
 
-export async function getUser(email: string) {
+export async function getUser(email: any) {
     try {
         const query = await prisma.user.findUnique({
             where: {

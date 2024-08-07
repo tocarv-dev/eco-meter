@@ -219,6 +219,7 @@ export default function ResidencePage() {
         <Link
           href="/survey/info"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          onClick={(e) => setValue('page', 1)}
         >
           Anterior
         </Link>
