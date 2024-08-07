@@ -27,7 +27,7 @@ export default function ProfilePage() {
     if (isValid) {
       setValue('page', 7);
       
-      router.push('/survey/profile');
+      router.push('/results/thank-you');
     }
   };
 

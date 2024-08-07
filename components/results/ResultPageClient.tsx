@@ -1,4 +1,3 @@
-// app/result/[id]/ResultPageClient.tsx
 'use client';
 
 import Image from 'next/image';
