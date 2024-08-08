@@ -14,6 +14,7 @@ import siteBackGround1 from '@/images/arrows-8841234_1280.jpg';
 import siteBackGround2 from '@/images/tree-5725540_1280.jpg';
 import siteBackGround3 from '@/images/sustainability-8438275_1280.png';
 import siteBackGround4 from '@/images/bg-cooler-world.svg';
+import siteBackGround5 from '@/images/bg-cooler-world.jpeg';
 import userIcon from '@/images/user.svg'
 
 import {Providers} from "./providers";
@@ -41,7 +42,7 @@ export default function RootLayout({
   return (
       <html lang="en" className="h-full">
         <body className="lg:bg-faint-green font-switzer h-full flex flex-col justify-start lg:justify-center items-center">
-          <Image src={siteBackGround4} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
+          <Image src={siteBackGround5} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
           <Providers>
             <main className="font-normal relative w-full max-w-lg lg:max-w-[940px]">
               <form

@@ -97,7 +97,7 @@ export default function ResidencePage() {
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
             <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Qual o seu gasto mensal em electricidade?
+              Qual o custo médio mensal de electricidade em sua casa (€)?
             </span>
             {errors.electricitySpend && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -129,29 +129,25 @@ export default function ResidencePage() {
               Utilizam gás em casa?
             </span>
           </label>
-
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Não
+          <span className="flex gap-2">
+            <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
+            <button
+              className={clsx('flex',
+                'h-[20px] w-[40px] rounded-full p-1 object-left',
+                usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+              )}
+              onClick= {toggleUseGas}
+              type="button"
+            >
+              <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+            </button>
+            <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
-          <button
-            className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
-              usesGas === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-            )}
-            onClick= {toggleUseGas}
-            type="button"
-          >
-            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-          </button>
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Sim
-          </span>
-
         </div>
         <label className={clsx('grid grid-cols-2 gap-2' , usesGas === true ? '' : 'hidden')} >
           <div className="col-span-2 justify-between">
             <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Que tipo de gás que utilizam e quanto gastam mensalmente?
+              Que tipo de gás que utilizam e quanto gastam mensalmente (€)?
             </span>
           </div>
           <select 
@@ -195,21 +191,19 @@ export default function ResidencePage() {
               Utilizam lenha em casa?
             </span>
           </label>
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Não
-          </span>
-          <button
-            className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
-              usesWood === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-            )}
-            onClick= {toggleUseWood}
-            type="button"
-          >
-            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-          </button>
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Sim
+          <span className="flex gap-2">
+            <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
+            <button
+              className={clsx('flex',
+                'h-[20px] w-[40px] rounded-full p-1 object-left',
+                usesWood === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+              )}
+              onClick= {toggleUseWood}
+              type="button"
+            >
+              <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+            </button>
+            <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
         </div>
 

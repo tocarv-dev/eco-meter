@@ -85,7 +85,7 @@ export default function TrashPage() {
           <label className={clsx('flex flex-col mt-2')}>
             <div className="flex justify-between">
               <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
-                Quantos sacos produz de lixo indeferenciado em sua casa?
+                Quantos sacos (20L) de lixo indeferenciado produz em sua casa por semana?
               </span>
                 {errors.unsortedBags && (
                   <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
@@ -118,29 +118,26 @@ export default function TrashPage() {
                 Faz separação de resíduos?
               </span>
             </label>
-            <span className="text-xs text-deep-green lg:text-sm font-light">
-              Não
-            </span>
-            <button
-            className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
-              recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-            )}
-            onClick= {toogleRecycle}
-            type="button"
-          >
-            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-          </button>
-            <span className="text-xs text-deep-green lg:text-sm font-light">
-              Sim
+            <span className="flex gap-2">
+              <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
+              <button
+                className={clsx('flex',
+                  'h-[20px] w-[40px] rounded-full p-1 object-left',
+                  recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+                )}
+                onClick= {toogleRecycle}
+                type="button"
+              >
+                <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+              </button>
+              <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
             </span>
           </div>
-
           <label className={clsx('flex flex-col mt-2', recycle === true ? '' : 'hidden')}>
+            <div className="w-fill justify-end text-xs">
+              Adicione os vários tipos de separação que faz e a quantidade de sacos de 20L que descarta por semana
+            </div>
             <div className="flex justify-between">
-              <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-                Especifique quais?
-              </span>
               {errors.recycleBags && (
                 <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
                   {  }
@@ -180,7 +177,7 @@ export default function TrashPage() {
                   <input
                     key={ s.option }
                     type="number"
-                    placeholder="15"
+                    placeholder="1"
                     className={clsx(
                       'border',
                       errors.recycleBags
@@ -202,7 +199,6 @@ export default function TrashPage() {
               </div>
             ))}
           </div>
-          <div className="w-fill justify-end text-xs">sacos de 20 litros por semana</div>
         </div>
       </div>
       <FormActions>

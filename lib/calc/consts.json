@@ -63,6 +63,7 @@
         "landfills": 1.0133,
         "paper": 0.992,
         "glass": 0.639,
+        "plastic": 0.662,
         "organic": 0.439
     },
     "planet": {

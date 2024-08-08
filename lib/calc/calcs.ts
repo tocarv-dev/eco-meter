@@ -324,9 +324,9 @@ export const ResidualCalc = (bags: { [index: string]: number }, residents: numbe
 
     // Plástico / Metal | OT 13.0b
     if(bags.plastic) {
-        const WeeklyResiduals = bags.paper * 0.81 / residents,
+        const WeeklyResiduals = bags.plastic * 0.81 / residents,
         AnnualResiduals = WeeklyResiduals * 52,
-        AnnualEmissions = AnnualResiduals * Factor.residuals.paper
+        AnnualEmissions = AnnualResiduals * Factor.residuals.plastic
 
         result += AnnualEmissions;
     }

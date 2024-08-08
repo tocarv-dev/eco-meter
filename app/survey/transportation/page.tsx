@@ -95,12 +95,13 @@ export default function TransportationPage() {
       heading="Transportes"
       description="Os transportes têm um grande impacto na sua pegada de carbono, influenciando as suas emissões de CO2 diariamente"
     >
-      <div className="flex flex-col w-full gap-4 mt-6">
-        <label className="flex flex-col mt-4">
+      <div className="text-xs text-deep-green lg:text-sm font-medium tracking-wide mt-3">Transportes</div>
+      <div className="w-fill justify-end text-xs">
+        Adicione os vários tipos de transportes que utiliza habitualmente e a quantidade de kms semanais que faz em média em cada um deles
+      </div>
+      <div className="flex flex-col w-full gap-4 mt-2">
+        <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
-              Transportes
-            </span>
             {errors.transports && (
               <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
                 {  }
@@ -172,32 +173,28 @@ export default function TransportationPage() {
             )
           })}
         </div>
-        <div className="w-fill justify-end text-xs">kms por semana por tipo de transporte</div>
-
         <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
           <label>
             <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
               Viaja habitualmente de avião?
             </span>
           </label>
-
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Não
-          </span>
-          <button
-            className={clsx(
-              'h-[20px] w-[40px] rounded-full p-1 object-left',
-              flights === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-            )}
-            onClick= {toogleFlights}
-            type="button"
-          >
-            <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-          </button>
-          <span className="text-xs text-deep-green lg:text-sm font-light">
-            Sim
+          <span className="flex gap-2">
+            <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
+            <button
+              className={clsx('flex',
+                'h-[20px] w-[40px] rounded-full p-1 object-left',
+                flights === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+              )}
+              onClick= {toogleFlights}
+              type="button"
+            >
+              <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+            </button>
+            <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
         </div>
+        <div className="w-fill justify-end text-xs">Quantos vôos com estas durações faz por ano. Indique 0 caso não faça vôos dessas durações</div> 
         <div className="grid grid-cols-4 gap-4 mt-2 mb-2">
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
             <div className="flex justify-between">
