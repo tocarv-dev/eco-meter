@@ -20,8 +20,8 @@ export default async function OverviewResult({
   const results = FormCalc(survey)
 
   return (
-    <ResultWrapper title="O seu perfil é:">
-      <ProfilePageClient data={results} id={id} />
+    <ResultWrapper title="O seu perfil">
+      <ProfilePageClient selected={survey.profile} data={results} id={id} />
     </ResultWrapper>
   );
 }

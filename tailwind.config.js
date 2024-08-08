@@ -35,6 +35,12 @@ module.exports = {
       'plastic-color': 'hsl(162, 100%, 45%)',
       'paper-color': 'hsl(162, 100%, 45%)',
 
+      // Graphs
+      'house-color': '#4bb367',
+      'transports-color': '#40c97c',
+      'meals-color': '#34c9b1',
+      'residuals-color': '#51cf61',
+
       magnolia: 'hsl(217, 100%, 97%)',
       alabaster: 'hsl(231, 100%, 99%)',
       white: 'hsl(0, 0%, 100%)',

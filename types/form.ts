@@ -5,7 +5,6 @@ export interface FormValues {
   age: number;
   municipality: string;
 
-  selectedTransports: string[];
   transports: {
     [index: string]: {
       option: string;

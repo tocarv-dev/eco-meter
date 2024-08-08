@@ -13,11 +13,12 @@ import profile_eIcon from '@/images/profiles/vilao.svg';
 import ResultActions from './ResultActions';
 
 interface ProfilePageClientProps {
+  selected: string,
   data: any,
   id: any
 }
 
-export default function ProfilePageClient({ data, id }: ProfilePageClientProps) {
+export default function ProfilePageClient({ selected, data, id }: ProfilePageClientProps) {
   const profile = data.profile;
   const router = useRouter();
 
@@ -38,13 +39,13 @@ export default function ProfilePageClient({ data, id }: ProfilePageClientProps) 
   };
 
   let ProfileData = profiles['profile_a'];
-
+  
   Object.keys(profiles).forEach(function(key, index) {
     if(profiles[key].id === profile) {
       ProfileData = profiles[key];
     }
   });
-
+  
   if(profile > 5) {
     ProfileData = profiles['profile_e']
   }
@@ -56,17 +57,20 @@ export default function ProfilePageClient({ data, id }: ProfilePageClientProps) 
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
       <p className="text-lg -mt-20 lg:-mt-8"> { ProfileData?.displayName } </p>
-      <Image src={ ProfileData?.icon } alt="" className="w-[150px] lg:w-[150px] -mt-2 lg:h-auto" />
-      <p className="text-cool-gray -mt-2 text-center">
+      <Image src={ ProfileData?.icon } alt="" className="w-[150px] lg:w-[150px] lg:h-auto" />
+      <p className="text-cool-gray text-center mt-2">
+        { selected === ProfileData.name && <p>Confirma-se, é mesmo um <strong>{ProfileData.displayName}</strong></p> || <p>Afinal não é um <strong>{ profiles[selected].displayName}</strong> mas sim um <strong>{ProfileData.displayName}</strong>!</p>}
+      </p>
+      <p className="text-cool-gray text-center">
         { ProfileData?.description }
       </p>
       <ResultActions>
       <button
         type="button"
-        className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia ml-auto px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
+        className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         onClick={nextPage}
       >
-        Ver Gráficos
+        Mas e o que isso significa?
       </button>
     </ResultActions>
     </section>

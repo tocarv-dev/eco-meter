@@ -21,7 +21,6 @@ export default function Provider({ children }: FormProviderProps) {
     residents: undefined,
     electricitySpend: undefined,
     transports: {},
-    selectedTransports: [],
     meals: [2, 12],
     recycle: false,
     recycleBags: {},
@@ -52,9 +51,8 @@ export default function Provider({ children }: FormProviderProps) {
       saveForm(saveData).then(id => {
         console.log(id);
         setFormCookies(id);
+        route.push('/results/');
       })
-
-      route.push('/survey/thank-you');
     } else {
       if(!data.gender || !data.age || !data.municipality) {
         route.replace('/survey/info');

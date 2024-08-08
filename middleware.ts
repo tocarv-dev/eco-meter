@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
 
   if(pathname === '/results' && cookies().get('g2c_formToken')) {
     const id:any = cookies().get('g2c_formToken');
-    return NextResponse.redirect(new URL(`/results/${id.value}`, request.url));
+    return NextResponse.redirect(new URL(`/results/${id.value}/profile`, request.url));
   }
 }
 export { auth as auth_middleware } from "@/lib/auth/auth"

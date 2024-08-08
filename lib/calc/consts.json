@@ -64,5 +64,14 @@
         "paper": 0.992,
         "glass": 0.639,
         "organic": 0.439
+    },
+    "planet": {
+        "total": 1.7,
+        "offset": 0.61
+    },
+    "barChart": {
+        "avrPT": 4.6,
+        "avrUS": 17,
+        "avrIN": 1.7
     }
 }

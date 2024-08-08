@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { RxCross1 } from "react-icons/rx";
+import { Button } from "@nextui-org/react";
 
 // Icons
 import carImage from '@/images/transport/car.png';
@@ -19,6 +20,7 @@ import busImage from '@/images/transport/urban_bus.png';
 import coachImage from '@/images/transport/coach_bus.png';
 import ferryCarImage from '@/images/transport/ferry_car.png';
 import ferryPersonImage from '@/images/transport/ferry_people.png';
+import { FaPlus } from "react-icons/fa6";
 
 import FormWrapper from '@/components/survey/FormWrapper';
 import FormActions from '@/components/survey/FormActions';
@@ -27,6 +29,16 @@ export default function TransportationPage() {
   const router = useRouter();
   const { register, unregister, trigger, formState, watch, setValue } = useAppFormContext();
   const { isValid, errors } = formState;
+
+  const [selectedValue, setSelectedValue] = useState<string>('gasCar');
+
+  const setSelectedOption = (event: any) => {
+    if(!selectedValue) return;
+
+    console.log(selectedValue)
+    register(`transports.${selectedValue}.option`, { value: selectedValue });
+    trigger('transports')
+  }
 
   const transports = watch('transports'),
   flights = watch('useFlights')
@@ -58,8 +70,8 @@ export default function TransportationPage() {
     subway: { name: 'subway', displayName: 'Metro', shortName: 'metro', imgSrc: subwayImage }, 
     tram: { name: 'tram', displayName: 'Carris', shortName: 'carris', imgSrc: tramImage },
     taxi: { name: 'taxi', displayName: 'Taxi', shortName: 'taxi', imgSrc: taxiImage },
-    ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (peão)', shortName: 'peão', imgSrc: ferryPersonImage},
-    ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)', shortName: 'condutor', imgSrc: ferryCarImage},
+    ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (peão)', shortName: 'peão', imgSrc: ferryPersonImage },
+    ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)', shortName: 'condutor', imgSrc: ferryCarImage },
     coachBus: { name: 'coachBus', displayName: 'Autocarro Coach', shortName: 'coach', imgSrc: coachImage }
   };
 
@@ -72,6 +84,8 @@ export default function TransportationPage() {
   const validateStep = async () => {
     await trigger();
     if (isValid) {
+      setValue('page', 4);
+
       router.push('/survey/food');
     }
   };
@@ -93,7 +107,9 @@ export default function TransportationPage() {
               </span>
             )}
           </div>
-          <select 
+          <div className="flex items-start">
+          <select
+            defaultValue={"0"}
             className={clsx(
               'border',
               errors.transports
@@ -101,47 +117,60 @@ export default function TransportationPage() {
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
               'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-              'focus:outline-none'
+              'focus:outline-none w-full lg:w-64'
             )}
-            onChange={(e) => { register(`transports.${e.target.value}.option`, { value: e.target.value }); trigger('transports')}}
-            onBlur={() => trigger('transports')}
             autoComplete="transports"
+            onChange={(e) => setSelectedValue(e.target.value)}
           >
             {Transports}
           </select>
-        </label>
-        <div className="grid grid-cols-3 gap-y-2">
-          { Object.keys(transports || {}).length !== 0 && Object.values(transports).map((s, index) => (
-          <div className="justify-self-center" key={index}>
-            <span className="text-xs text-deep-green font-normal flex flex-row items-end">
-              <Image src={transportOptions[s.option].imgSrc} alt="" className="mx-1 h-6 w-6" />
-              { transportOptions[s.option].shortName }
-            </span>
-            <div className="flex flex-row">
-              <input
-                key={ s.option }
-                type="number"
-                placeholder="15"
-                className={clsx(
-                  'border',
-                  errors.transports
-                    ? 'border-strawberry-red'
-                    : 'border-light-gray focus:border-purplish-blue',
-                  'py-1 lg:py-2 px-2 lg:px-2 rounded-[4px] lg:rounded-lg mt-1',
-                  'w-12 lg:w-20 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
-                  'focus:outline-none'
-                )}
-                {...register(`transports.${s.option}.distance`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
-                onBlur={() => trigger('transports')}
-                min={1}
-                autoComplete="transports"
-              />
-              <button className="inline-block align-middle vertical-align ml-1" onClick={() => { unregister(`transports.${s.option}`) }}>
-              <RxCross1 size={"1.3em"} />
-              </button>
-            </div>
+          <Button isIconOnly onClick={setSelectedOption} variant="bordered" className="ml-2 text-dark-green border-dark-green h-9 w-7 mt-1" aria-label="Add Option">
+            <FaPlus />
+          </Button>
           </div>
-          ))}
+        </label>
+
+        <div className="grid grid-cols-3 gap-y-2">
+          { Object.keys(transports || {}).length !== 0 && Object.values(transports).map((s, index) => {
+            const transportOption = transportOptions[s.option];
+
+            if (!transportOption) {
+              console.log(s);
+              return null; 
+            }
+
+            return(
+              <div className="justify-self-center" key={index}>
+                <span className="text-xs text-deep-green font-normal flex flex-row items-end capitalize">
+                  <Image src={transportOptions[s.option].imgSrc} alt="" className="mx-1 h-6 w-6" />
+                  { transportOptions[s.option].shortName }
+                </span> 
+                <div className="flex flex-row">
+                  <input
+                    key={ s.option }
+                    type="number"
+                    placeholder="15"
+                    className={clsx(
+                      'border',
+                      errors.transports
+                        ? 'border-strawberry-red'
+                        : 'border-light-gray focus:border-purplish-blue',
+                      'py-1 lg:py-2 px-2 lg:px-2 rounded-[4px] lg:rounded-lg mt-1',
+                      'w-12 lg:w-20 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
+                      'focus:outline-none'
+                    )}
+                    {...register(`transports.${s.option}.distance`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+                    onBlur={() => trigger('transports')}
+                    min={1}
+                    autoComplete="transports"
+                  />
+                  <button className="inline-block align-middle vertical-align ml-1" onClick={() => { unregister(`transports.${s.option}`) }}>
+                  <RxCross1 size={"1.3em"} />
+                  </button>
+                </div>
+              </div>
+            )
+          })}
         </div>
         <div className="w-fill justify-end text-xs">kms por semana por tipo de transporte</div>
 
@@ -151,6 +180,10 @@ export default function TransportationPage() {
               Viaja habitualmente de avião?
             </span>
           </label>
+
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Não
+          </span>
           <button
             className={clsx(
               'h-[20px] w-[40px] rounded-full p-1 object-left',
@@ -161,6 +194,9 @@ export default function TransportationPage() {
           >
             <div className={clsx('h-full rounded-full aspect-square bg-white')} />
           </button>
+          <span className="text-xs text-deep-green lg:text-sm font-light">
+            Sim
+          </span>
         </div>
         <div className="grid grid-cols-4 gap-4 mt-2 mb-2">
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
@@ -285,6 +321,7 @@ export default function TransportationPage() {
         <Link
           href="/survey/home"
           className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          onClick={(e) => setValue('page', 2)}
         >
           Anterior
         </Link>

@@ -1,7 +1,7 @@
 import Factor from './consts.json';
-import { Surveys } from '@/types/surveys'
+
 /*
-- Habitações
+- Total
 */
 
 export const FormCalc = (data: any) => {
@@ -99,6 +99,10 @@ export const FormCalc = (data: any) => {
 
     result.total = result.home + result.transports + result.meals + result.residual
 
+    // Planetas
+
+    result.planets = (result.total * Factor.planet.offset) / Factor.planet.total;
+
     // Perfil
     if(result.total < 3) {
         result.profile = 1 // A
@@ -118,6 +122,10 @@ export const FormCalc = (data: any) => {
 
     return result;
 }
+
+/*
+- Habitações
+*/
 
 // Eletricidade | ID: OT 1.0
 export const EletricityCalc = (euros: number, residents: number) => {
