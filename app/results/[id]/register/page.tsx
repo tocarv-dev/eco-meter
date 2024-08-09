@@ -1,7 +1,7 @@
 import { GetSurvey } from '@/lib/utils/db';
 import { notFound } from 'next/navigation';
 import ResultWrapper from '@/components/results/ResultWrapper';
-import ReactionPageClient from '@/components/results/ReactionPage';
+import RegisterPageClient from '@/components/results/RegisterPage';
 
 export default async function ResultPage({
   params: { id },
@@ -15,8 +15,8 @@ export default async function ResultPage({
   }
 
   return (
-        <ResultWrapper title="Como te sentes com este resultado?">
-            <ReactionPageClient id={id} />
+        <ResultWrapper title="Registar os meus resultados">
+            <RegisterPageClient id={id} />
         </ResultWrapper>
     );
 }

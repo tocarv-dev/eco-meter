@@ -1,7 +1,7 @@
 'use client';
 
 import { Bar } from "react-chartjs-2";
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import Chart from "chart.js/auto";
 import { CategoryScale } from 'chart.js'; 
@@ -18,10 +18,13 @@ interface EquivalencePageProps {
 }
 
 export default function EquivalencePageClient({ results, data, id }: EquivalencePageProps) {
-  const router = useRouter();
+  const router = useRouter(),
+  params = useSearchParams();
 
   const nextPage = () => {
-    router.push(`/results/${id}/overview`);
+    if(params.get('form') && params.get('form') === 'true') {
+      router.push(`/results/${id}/reaction?form=true`);
+    }
   }
 
   const Data = {

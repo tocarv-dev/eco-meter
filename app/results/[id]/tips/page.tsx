@@ -2,8 +2,8 @@ import { GetSurvey } from '@/lib/utils/db';
 import { FormCalc } from '@/lib/calc/calcs';
 import { notFound } from 'next/navigation';
 import ResultWrapper from '@/components/results/ResultWrapper';
-import EquivalencePageClient from '@/components/results/EquivalencePage';
-import Factor from '@/lib/calc/consts.json';
+import ReactionPageClient from '@/components/results/ReactionPage';
+import TipsPageClient from '@/components/results/TipsPage';
 
 export default async function ResultPage({
   params: { id },
@@ -16,11 +16,9 @@ export default async function ResultPage({
     notFound();
   }
 
-  const results = FormCalc(survey)
-
   return (
-        <ResultWrapper title="Equivalências">
-            <EquivalencePageClient results={results} data={[results.total, Factor.barChart.avrIN, Factor.barChart.avrPT, Factor.barChart.avrUS,]} id={id} />
+        <ResultWrapper title="Como melhorar a minha pegada de carbono?">
+            <TipsPageClient id={id} />
         </ResultWrapper>
     );
 }

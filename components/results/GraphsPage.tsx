@@ -2,7 +2,7 @@
 
 import { Doughnut } from 'react-chartjs-2';
 import React from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import {Chip} from "@nextui-org/react";
 import {Chart, ArcElement} from 'chart.js'
 import ResultActions from '@/components/results/ResultActions';
@@ -17,10 +17,13 @@ interface ResultPageClientProps {
 }
 
 export default function GraphsPage({ results, data, id }: ResultPageClientProps) {
-  const router = useRouter();
+  const router = useRouter(),
+  params = useSearchParams();
 
   const nextPage = () => {
-    router.push(`/results/${id}/footprint`);
+    if(params.get('form') && params.get('form') === 'true') {
+      router.push(`/results/${id}/footprint?form=true`);
+    }
   }
 
   const Labels = [
