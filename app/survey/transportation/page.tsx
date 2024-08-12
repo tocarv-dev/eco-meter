@@ -66,13 +66,13 @@ export default function TransportationPage() {
     dieselCar: { name: 'dieselCar', displayName: 'Carro a propano', shortName: 'propano', imgSrc: carImage },
     motorcycle: { name: 'motorcycle', displayName: 'Moto / Motorizada', shortName: 'moto', imgSrc: motorcycleImage },
     urbanBus: { name: 'urbanBus', displayName: 'Autocarro Urbano', shortName: 'urbano', imgSrc: busImage },
+    coachBus: { name: 'coachBus', displayName: 'Autocarro Coach', shortName: 'coach', imgSrc: coachImage },
     train: { name: 'train', displayName: 'Comboio', shortName: 'comboio', imgSrc: trainImage },
     subway: { name: 'subway', displayName: 'Metro', shortName: 'metro', imgSrc: subwayImage }, 
     tram: { name: 'tram', displayName: 'Carris', shortName: 'carris', imgSrc: tramImage },
     taxi: { name: 'taxi', displayName: 'Taxi', shortName: 'taxi', imgSrc: taxiImage },
     ferryFoot: { name: 'ferryFoot', displayName: 'Ferry (peão)', shortName: 'peão', imgSrc: ferryPersonImage },
     ferryCar: { name: 'ferryCar', displayName: 'Ferry (condutor)', shortName: 'condutor', imgSrc: ferryCarImage },
-    coachBus: { name: 'coachBus', displayName: 'Autocarro Coach', shortName: 'coach', imgSrc: coachImage }
   };
 
   const Transports = Object.values(transportOptions).map((item) => (
@@ -95,10 +95,7 @@ export default function TransportationPage() {
       heading="Transportes"
       description="Os transportes têm um grande impacto na sua pegada de carbono, influenciando as suas emissões de CO2 diariamente"
     >
-      <div className="text-xs text-deep-green lg:text-sm font-medium tracking-wide mt-3">Transportes</div>
-      <div className="w-fill justify-end text-xs">
-        Adicione os vários tipos de transportes que utiliza habitualmente e a quantidade de kms semanais que faz em média em cada um deles
-      </div>
+      <div className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide mt-3">Transportes</div>
       <div className="flex flex-col w-full gap-4 mt-2">
         <label className="flex flex-col">
           <div className="flex justify-between">
@@ -130,6 +127,9 @@ export default function TransportationPage() {
           </Button>
           </div>
         </label>
+        <div className="w-fill justify-end text-xs">
+        Adicione os vários tipos de transportes que utiliza habitualmente e a quantidade de kms semanais que faz em média em cada um deles
+      </div>
 
         <div className="grid grid-cols-3 gap-y-2">
           { Object.keys(transports || {}).length !== 0 && Object.values(transports).map((s, index) => {
@@ -194,7 +194,9 @@ export default function TransportationPage() {
             <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
         </div>
-        <div className="w-fill justify-end text-xs">Quantos vôos com estas durações faz por ano. Indique 0 caso não faça vôos dessas durações</div> 
+        { flights && 
+          <div className="w-fill justify-end text-xs">Quantos vôos com estas durações faz por ano. Indique 0 caso não faça vôos dessas durações</div> 
+        }
         <div className="grid grid-cols-4 gap-4 mt-2 mb-2">
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
             <div className="flex justify-between">

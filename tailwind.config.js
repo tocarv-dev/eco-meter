@@ -52,6 +52,7 @@ module.exports = {
         ubuntu: ['Ubuntu', 'sans-serif'],
       },
       fontFamily: {
+        poppins: ['var(--font-poppins)', 'sans-serif'],
         switzer: ['Switzer-Variable', 'sans-serif'],
       },
     },

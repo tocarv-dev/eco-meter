@@ -7,7 +7,7 @@ export default function ResultWrapper({
   return (
     <section
       className={clsx(
-        'flex flex-col justify-center bg-white lg:bg-transparent items-center w-full h-full rounded-lg lg:rounded-none',
+        'font-poppins flex flex-col justify-center bg-white lg:bg-transparent items-center w-full h-full rounded-lg lg:rounded-none',
         'bg-white lg:bg-transparent rounded-lg lg:rounded-none'
       )}
     >
