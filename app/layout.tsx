@@ -4,6 +4,15 @@ import '@/stylesheets/globals.css';
 import '@/stylesheets/fonts.css';
 import '@/stylesheets/switzer.css';
 
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
 import { signIn } from "@/lib/auth/auth"
 
 import { SubmitButton } from "@/components/submit-button"
@@ -41,6 +50,13 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en" className="h-full">
+        <style jsx="true" global>
+        {`
+        :root {
+          --font-poppins: ${poppins.style.fontFamily};
+        }
+        `}
+        </style>
         <body className="lg:bg-faint-green font-switzer h-full flex flex-col justify-start lg:justify-center items-center">
           <Image src={siteBackGround5} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
           <Providers>

@@ -1,7 +1,7 @@
 'use client';
 
 import { Bar } from "react-chartjs-2";
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import Chart from "chart.js/auto";
 import { CategoryScale } from 'chart.js'; 
@@ -18,14 +18,17 @@ interface EquivalencePageProps {
 }
 
 export default function EquivalencePageClient({ results, data, id }: EquivalencePageProps) {
-  const router = useRouter();
+  const router = useRouter(),
+  params = useSearchParams();
 
   const nextPage = () => {
-    router.push(`/results/${id}/overview`);
+    if(params.get('form') && params.get('form') === 'true') {
+      router.push(`/results/${id}/reaction?form=true`);
+    }
   }
 
   const Data = {
-    labels: ['A sua pegada', 'Média na Índia', 'Média em Portugal', 'Média nos EUA'],
+    labels: ['A sua pegada', 'Média em Portugal', 'Média na Índia', 'Média nos EUA'],
     datasets: [{
       data: data,
       backgroundColor: [
@@ -39,20 +42,32 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
 
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <p className="mb-4 -mt-4 text-base text-deep-green font-medium tracking-wide">
-        E se todas as pessoas tivessem esta pegada de carbono, seriam necessários <strong>{ results.planets.toFixed(2) }</strong> planetas!
-      </p>
-      <Bar data={Data} options={{
-          plugins: {
-            legend: {
-              display: false
+      <div className="flex flex-col items-center h-[250px] sm:h-[250px] -mt-16 lg:-mt-8">
+        <p className="mb-4 -mt-4 text-base text-deep-green font-medium tracking-wide">
+          E se todas as pessoas tivessem esta pegada de carbono, seriam necessários <strong>{ results.planets.toFixed(2) }</strong> planetas!
+        </p>
+
+        <Bar data={Data} options={{
+            plugins: {
+              legend: {
+                display: false
+              },
+            },
+            scales: {
+              y: {
+                stacked: true,
+                title: {
+                  display: true,
+                  text: 'tCO2eq/ano'
+                }
+              }
             }
-          }
-        }}
-      />
+          }}
+        />
+      </div>
       <ResultActions>
       <Link
-        href={`/results/${id}/overview`}
+        href={`/results/${id}/profile`}
         className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base mt-4 mr-4"
       >
         Anterior
@@ -62,7 +77,7 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
         className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         onClick={nextPage}
       >
-        Próximo
+        E isto significa que…
       </button>
     </ResultActions>
     </section>

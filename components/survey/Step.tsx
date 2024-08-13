@@ -40,6 +40,9 @@ export default function Step({ step, segment }: StepProps) {
             'transition-colors duration-300',
             step.segment === segment
               ? 'bg-faint-green text-deep-green border-transparent'
+              :
+            checked
+              ? 'bg-transparent text-light-green'
               : 'bg-transparent text-white border-white',
             'font-bold text-sm flex justify-center items-center'
           )}
@@ -52,12 +55,13 @@ export default function Step({ step, segment }: StepProps) {
           { step.number === 6 && (checked ? <FaCheck size="1.4em" /> : <GiGreenhouse size="1.5em" /> )}
         </button>
         <div className="hidden lg:flex flex-col uppercase">
-          <h3 className={clsx('font-normal text-[13px] text-cool-gray')}>
+          <h3 className={clsx('font-normal text-[13px] text-cool-gray' )}>
             Passo {step.number}
           </h3>
           <h2
             className={clsx(
-              'font-bold text-white text-[14px] tracking-[0.1em]'
+              'font-bold text-[14px] tracking-[0.1em]',
+              checked ? 'text-light-green' : 'text-white'
             )}
           >
             {step.heading}

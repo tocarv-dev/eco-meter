@@ -13,6 +13,67 @@ datasource db {
   url      = env("POSTGRES_CONNECT_STRING")
 }
 
+model Factors {
+  last_update DateTime @default(now()) @unique
+
+  eletricity_conversion Int
+  eletricity_emission Int
+
+  natural_gas_conversion Int
+  natural_gas_emission_co2 Int
+  natural_gas_emission_wwt Int
+
+  propane_gas_conversion Int
+  propane_gas_emission_co2 Int
+  propane_gas_emission_wwt Int
+
+  bottled_gas_conversion Int
+  bottled_gas_emission_co2 Int
+  bottled_gas_emission_wwt Int
+  
+  firewood_consume Int
+  firewood_conversion Int
+  firewood_emission_biomass Int
+
+  vehicles_dieselcar_emission Int
+  vehicles_gascar_emission Int
+  vehicles_hybridcar_emission Int
+  vehicles_gplcar_emission Int
+  vehicles_electriccar_emission Int
+  vehicles_motorcycle_emission Int
+  vehicles_taxi_emission Int
+  vehicles_train_emission Int
+  vehicles_coachbus_emission Int
+  vehicles_urbanbus_emission Int
+  vehicles_subway_emission Int
+  vehicles_tram_emission Int
+  vehicles_ferryfoot_emission Int
+  vehicles_ferrycar_emission Int
+
+  aviation_hour_emission Int
+  aviation_short_emission Int
+  aviation_medium_emission Int
+  aviation_long_emission Int
+
+  meals_vegan_emission Int
+  meals_whitemeat_emission Int
+  meals_redmeat_emission Int
+
+  residuals_inceneration_emission Int
+  residuals_landfills_emission Int
+  residuals_paper_emission Int
+  residuals_glass_emission Int
+  residuals_plastic_emission Int
+  residuals_organic_emission Int
+
+  planet_total Int
+  planet_offset Int
+
+  barChart_average_pt  Int
+  barChart_average_usa Int
+  barChart_average_in Int
+}
+
 model Surveys {
   id String @id @default(uuid())
   userid String
@@ -59,6 +120,7 @@ model Surveys {
   transport_ferryFoot Int?
   transport_ferryCar Int?
   
+  reaction String?
   profile String
 }
 

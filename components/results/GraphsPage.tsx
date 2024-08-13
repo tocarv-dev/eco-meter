@@ -2,7 +2,7 @@
 
 import { Doughnut } from 'react-chartjs-2';
 import React from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import {Chip} from "@nextui-org/react";
 import {Chart, ArcElement} from 'chart.js'
 import ResultActions from '@/components/results/ResultActions';
@@ -17,10 +17,13 @@ interface ResultPageClientProps {
 }
 
 export default function GraphsPage({ results, data, id }: ResultPageClientProps) {
-  const router = useRouter();
+  const router = useRouter(),
+  params = useSearchParams();
 
   const nextPage = () => {
-    router.push(`/results/${id}/footprint`);
+    if(params.get('form') && params.get('form') === 'true') {
+      router.push(`/results/${id}/footprint?form=true`);
+    }
   }
 
   const Labels = [
@@ -91,21 +94,6 @@ export default function GraphsPage({ results, data, id }: ResultPageClientProps)
         }} className='ml-2 w-[150px] lg:w-[150px] lg:h-auto'/>
         </div>
       </div>
-      <ResultActions>
-      <Link
-        href={`/results/${id}/profile`}
-        className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base mt-4 mr-4"
-      >
-        Anterior
-      </Link>
-      <button
-        type="button"
-        className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
-        onClick={nextPage}
-      >
-        E isto significa que…
-      </button>
-    </ResultActions>
     </section>
   );
 }

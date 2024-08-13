@@ -1,10 +1,9 @@
 import { GetSurvey } from '@/lib/utils/db';
 import { FormCalc } from '@/lib/calc/calcs';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import ProfilePageClient from '@/components/results/ProfilePage';
 import ResultWrapper from '@/components/results/ResultWrapper';
-import ResultActions from '@/components/results/ResultActions';
 
 export default async function OverviewResult({
   params: { id },

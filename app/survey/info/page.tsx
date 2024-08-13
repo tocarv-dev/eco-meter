@@ -369,12 +369,12 @@ export default function InfoPage() {
    return (
     <FormWrapper
       heading="Informação pessoal"
-      description="os seus dados permitem perceber os comportamentos por geografia, demografia e género"
+      description="Os seus dados permitem perceber os comportamentos por geografia, demografia e género"
     >
       <div className="flex flex-col mt-6">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               género
             </span>
             {errors.gender && (
@@ -403,7 +403,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               idade
             </span>
             {errors.age && (
@@ -443,7 +443,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
               município
             </span>
             {errors.municipality && (

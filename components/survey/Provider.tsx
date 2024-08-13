@@ -51,7 +51,7 @@ export default function Provider({ children }: FormProviderProps) {
       saveForm(saveData).then(id => {
         console.log(id);
         setFormCookies(id);
-        route.push('/results/');
+        route.push(`/results/${id}/profile?form=true`);
       })
     } else {
       if(!data.gender || !data.age || !data.municipality) {

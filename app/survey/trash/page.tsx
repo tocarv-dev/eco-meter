@@ -82,6 +82,28 @@ export default function TrashPage() {
     >
       <div className="w-full">
         <div className="flex flex-col w-full gap-4">
+          <div className="flex justify-start items-center gap-6 bg-alabaster mt-4 lg:mt-2 rounded-lg p-3 lg:p-4 bg-white-green">
+            <label>
+              <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+                Faz separação de resíduos?
+              </span>
+            </label>
+            <span className="flex gap-2">
+              <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
+              <button
+                className={clsx('flex',
+                  'h-[20px] w-[40px] rounded-full p-1 object-left',
+                  recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
+                )}
+                onClick= {toogleRecycle}
+                type="button"
+              >
+                <div className={clsx('h-full rounded-full aspect-square bg-white')} />
+              </button>
+              <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
+            </span>
+          </div>
+
           <label className={clsx('flex flex-col mt-2')}>
             <div className="flex justify-between">
               <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
@@ -111,71 +133,17 @@ export default function TrashPage() {
               autoComplete="unsortedBags"
             />
           </label>
-
-          <div className="flex justify-start items-center gap-6 bg-alabaster mt-4 lg:mt-2 rounded-lg p-3 lg:p-4 bg-white-green">
-            <label>
-              <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
-                Faz separação de resíduos?
-              </span>
-            </label>
-            <span className="flex gap-2">
-              <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
-              <button
-                className={clsx('flex',
-                  'h-[20px] w-[40px] rounded-full p-1 object-left',
-                  recycle === true ? 'justify-end bg-dark-green' : 'justify-start bg-cool-gray'
-                )}
-                onClick= {toogleRecycle}
-                type="button"
-              >
-                <div className={clsx('h-full rounded-full aspect-square bg-white')} />
-              </button>
-              <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
-            </span>
-          </div>
-          <label className={clsx('flex flex-col mt-2', recycle === true ? '' : 'hidden')}>
-            <div className="w-fill justify-end text-xs">
-              Adicione os vários tipos de separação que faz e a quantidade de sacos de 20L que descarta por semana
-            </div>
-            <div className="flex justify-between">
-              {errors.recycleBags && (
-                <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
-                  {  }
-                </span>
-              )}
-            </div>
-            <div className="flex items-start">
-              <select 
-                className={clsx(
-                  'border',
-                  errors.recycleBags
-                    ? 'border-strawberry-red'
-                    : 'border-light-gray focus:border-purplish-blue',
-                  'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-                  'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
-                  'focus:outline-none w-full lg:w-64'
-                )}
-                onChange={(e) => setSelectedValue(e.target.value)}
-                autoComplete="recycleBags"
-              >
-                {RecycleOptions}
-              </select>
-              <Button isIconOnly onClick={setSelectedOption} variant="bordered" className="ml-2 text-dark-green border-dark-green h-9 w-7 mt-1" aria-label="Add Option">
-                <FaPlus />
-              </Button>
-            </div>
-          </label>
         
           <div className="grid grid-cols-4 gap-y-2">
-            { Object.keys(recycleBags || {}).length !== 0 && Object.values(recycleBags).map((s, index) => (
+            { Object.keys(recycleOptions || {}).length !== 0 && Object.values(recycleOptions).map((s, index) => (
               <div className={clsx('justify-self-center capitalize', recycle === true ? '' : 'hidden')} key={index}>
                 <span className="text-xs text-deep-green font-normal flex flex-row items-end">
-                  <Image src={recycleOptions[s.option].imgSrc} alt="" className="mx-1 h-6 w-6" />
-                  { recycleOptions[s.option].displayName }
+                  <Image src={s.imgSrc} alt="" className="mx-1 h-6 w-6" />
+                  { s.displayName }
                 </span>
                 <div className="flex flex-row">
                   <input
-                    key={ s.option }
+                    key={ s.name }
                     type="number"
                     placeholder="1"
                     className={clsx(
@@ -187,14 +155,11 @@ export default function TrashPage() {
                         'w-10 lg:w-20 h-9 text-[15px] text-deep-green placeholder:text-cool-gray font-medium',
                         'focus:outline-none'
                     )}
-                    {...register(`recycleBags.${s.option}.value`, { valueAsNumber: true, required: 'Este campo é obrigatório', })}
+                    {...register(`recycleBags.${s.name}.value`, { valueAsNumber: true, required: recycle ? 'Este campo é obrigatório' : false, })}
                     onBlur={() => trigger('recycleBags')}
                     min={1}
                     autoComplete="recycleBags"
                   />
-                  <button className="inline-block align-middle vertical-align ml-1" onClick={() => { unregister(`recycleBags.${s.option}`) }}>
-                    <RxCross1 size={"1.3em"} />
-                  </button>
                 </div>
               </div>
             ))}
