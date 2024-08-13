@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en" className="h-full">
-        <style jsx global>
+        <style jsx="true" global>
         {`
         :root {
           --font-poppins: ${poppins.style.fontFamily};

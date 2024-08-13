@@ -104,7 +104,7 @@ export const FormCalc = (data: any) => {
     result.planets = (result.total * Factor.planet.offset) / Factor.planet.total;
 
     // Perfil
-    if(result.total < 3) {
+    if(result.total < 3) {  
         result.profile = 1 // A
     } else if(result.total < 4) {
         result.profile = 2; // B
