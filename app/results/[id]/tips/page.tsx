@@ -16,9 +16,11 @@ export default async function ResultPage({
     notFound();
   }
 
+  const results = FormCalc(survey)
+
   return (
         <ResultWrapper title="Como melhorar a minha pegada de carbono?">
-            <TipsPageClient id={id} />
+            <TipsPageClient id={id} results={results}/>
         </ResultWrapper>
     );
 }

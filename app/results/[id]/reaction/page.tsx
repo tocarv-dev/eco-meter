@@ -15,8 +15,8 @@ export default async function ResultPage({
   }
 
   return (
-        <ResultWrapper title="Como te sentes com este resultado?">
-            <ReactionPageClient id={id} />
-        </ResultWrapper>
+      <ResultWrapper title="Como te sentes com este resultado?">
+          <ReactionPageClient id={id} />
+      </ResultWrapper>
     );
 }

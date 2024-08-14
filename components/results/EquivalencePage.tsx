@@ -22,9 +22,7 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
   params = useSearchParams();
 
   const nextPage = () => {
-    if(params.get('form') && params.get('form') === 'true') {
-      router.push(`/results/${id}/reaction?form=true`);
-    }
+    router.push(`/results/${id}/reaction`);
   }
 
   const Data = {

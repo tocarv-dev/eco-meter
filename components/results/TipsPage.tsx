@@ -1,28 +1,91 @@
 'use client';
 
 import { useRouter } from 'next/navigation'
-
-// Icons
 import ResultActions from './ResultActions';
 import Link from 'next/link';
 
+// Icons
+import { FaHome } from "react-icons/fa";
+import { FaCarSide } from "react-icons/fa";
+import { FaBowlFood } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
+
 interface TipsPageProps {
   id: string,
+  results: any
 }
 
-export default function TipsPageClient({ id }: TipsPageProps) {
+
+export default function TipsPageClient({ id, results }: TipsPageProps) {
   const router = useRouter();
 
   const nextPage = () => {
     router.push(`/results/${id}/register`);
   }
 
+  const data = [
+    {
+      title: 'Casa',
+      consumption: results.home.toFixed(2),
+      percentage: ((results.home / results.total) * 100).toFixed(0) ,
+      comparison: '1 urso polar',
+      color: 'bg-house-color',
+      icon: FaHome
+    },
+    {
+      title: 'Viajens',
+      consumption: results.transports.toFixed(2),
+      percentage: ((results.transports / results.total) * 100).toFixed(0),
+      comparison: '24 pandas',
+      color: 'bg-transports-color',
+      icon: FaCarSide
+    },
+    {
+      title: 'Comida',
+      consumption: results.meals.toFixed(2),
+      percentage: ((results.meals / results.total) * 100).toFixed(0),
+      comparison: '9 tigres',
+      color: 'bg-meals-color',
+      icon: FaBowlFood
+    },
+    {
+      title: 'Residuos',
+      consumption: results.residual.toFixed(2),
+      percentage: ((results.residual / results.total) * 100).toFixed(0),
+      comparison: '6 gorilas',
+      color: 'bg-residuals-color',
+      icon: FaTrash
+    },
+  ];
+
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+        {data.map((item, index) => {
+          let Icon = item.icon;
+
+          return (
+          <div key={index} className={`flex flex-col justify-between p-6 rounded-lg shadow-md text-white ${item.color}`}>
+            <div>
+              <div className="flex flex-row">
+              <h2 className="text-2xl font-bold">{item.percentage}% ⋅ {item.title}</h2>
+              <Icon className="ml-auto" size={30}/>
+              </div>
+              <p className="mt-2 tracking-wide">O teu consumo equivale a {item.consumption} tCO2eq/ano</p>
+              <p>É o peso equivalente a {item.comparison}!</p>
+            </div>
+            <div className="mt-4">
+              <button className="capitalize mt-4 px-4 py-2 font-semibold border-solid border-2 border-white rounded hover:bg-gray-300">
+                Reduzir este Resultado
+              </button>
+            </div>
+          </div>
+        )})}
+      </div>
       
       <ResultActions>
       <Link
-        href={`/results/${id}/footprint`}
+        href={`/results/${id}/reaction`}
         className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base mt-4 mr-4"
       >
         Anterior

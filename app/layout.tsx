@@ -16,6 +16,7 @@ const poppins = Poppins({
 import { signIn } from "@/lib/auth/auth"
 
 import { SubmitButton } from "@/components/submit-button"
+import Head from 'next/head';
 
 import Image from 'next/image';
 import {NextUIProvider} from "@nextui-org/react";
@@ -50,13 +51,15 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en" className="h-full">
-        <style jsx="true" global>
-        {`
-        :root {
-          --font-poppins: ${poppins.style.fontFamily};
-        }
-        `}
-        </style>
+        <Head>
+          <style>
+          {`
+          :root {
+            --font-poppins: ${poppins.style.fontFamily};
+          }
+          `}
+          </style>
+        </Head>
         <body className="lg:bg-faint-green font-switzer h-full flex flex-col justify-start lg:justify-center items-center">
           <Image src={siteBackGround5} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
           <Providers>

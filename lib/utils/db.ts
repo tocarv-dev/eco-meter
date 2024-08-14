@@ -29,6 +29,26 @@ export async function GetSurvey(id: string) {
     }
 }
 
+export async function addReaction(id: string, reaction: string) {
+    // try {
+        const query = await prisma.surveys.update({
+            where: {
+                id: id
+            },
+            data: {
+                reaction: reaction
+            }
+        })
+
+        return query;
+    /*} catch (error) {
+        console.log(error)
+        throw new Error("Error adding reaction")
+    }
+        */
+}
+
+
 export async function getUser(email: any) {
     try {
         const query = await prisma.user.findUnique({
