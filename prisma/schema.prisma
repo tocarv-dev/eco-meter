@@ -132,7 +132,6 @@ model User {
   emailVerified DateTime?
   image         String?
   password String
-  salt String
   Session       Session[]
   Account       Account?
   // Optional for WebAuthn support

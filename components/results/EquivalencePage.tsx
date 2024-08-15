@@ -2,6 +2,7 @@
 
 import { Bar } from "react-chartjs-2";
 import { useRouter, useSearchParams } from 'next/navigation'
+import Flag from 'react-flagpack'
 
 import Chart from "chart.js/auto";
 import { CategoryScale } from 'chart.js'; 
@@ -26,9 +27,11 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
   }
 
   const Data = {
-    labels: ['A sua pegada', 'Média em Portugal', 'Média na Índia', 'Média nos EUA'],
+    labels: ['A sua pegada', `Média em Portugal`, 'Média na Índia', 'Média nos EUA'],
     datasets: [{
       data: data,
+      barThickness: 30,
+      borderRadius: 3,
       backgroundColor: [
         '#4bb367',
         '#40c97c',
@@ -40,24 +43,33 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
 
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <div className="flex flex-col items-center h-[250px] sm:h-[250px] -mt-16 lg:-mt-8">
+      <div className="flex flex-col items-center mx-auto h-[225px] lg:h-[250px] lg:mb-4 mb-16 -mt-16 lg:-mt-8">
         <p className="mb-4 -mt-4 text-base text-deep-green font-medium tracking-wide">
           E se todas as pessoas tivessem esta pegada de carbono, seriam necessários <strong>{ results.planets.toFixed(2) }</strong> planetas!
         </p>
 
         <Bar data={Data} options={{
+            indexAxis: 'y',
             plugins: {
               legend: {
                 display: false
               },
             },
             scales: {
-              y: {
+              x: {
                 stacked: true,
+                grid: {
+                  display: true,
+                },
                 title: {
                   display: true,
                   text: 'tCO2eq/ano'
                 }
+              },
+              y: {
+                grid: {
+                  display: false,
+                },
               }
             }
           }}

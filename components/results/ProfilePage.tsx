@@ -56,14 +56,17 @@ export default function ProfilePageClient({ selected, data, id }: ProfilePageCli
 
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <p className="text-lg -mt-20 lg:-mt-8"> { ProfileData?.displayName } </p>
-      <Image src={ ProfileData?.icon } alt="" className="w-[150px] lg:w-[150px] lg:h-auto" />
-      <p className="text-cool-gray text-center mt-2">
-        { selected === ProfileData.name && <p>Confirma-se, é mesmo um <strong>{ProfileData.displayName}</strong></p> || <p>Afinal não é um <strong>{ profiles[selected].displayName}</strong> mas sim um <strong>{ProfileData.displayName}</strong>!</p>}
-      </p>
-      <p className="text-cool-gray text-center">
-        { ProfileData?.description }
-      </p>
+      <div className="flex lg:flex-row flex-col items-center">
+        <div className="order-2 lg:order-1">
+          <p className="text-cool-gray text-center mt-2 text-balance">
+            { selected === ProfileData.name && <p>Confirma-se, é mesmo um <strong>{ProfileData.displayName}</strong></p> || <p>Afinal não é um <strong>{ profiles[selected].displayName}</strong> mas sim um <strong>{ProfileData.displayName}</strong>!</p>}
+          </p>
+          <p className="text-cool-gray text-center">
+            { ProfileData?.description }
+          </p>
+      </div>
+      <Image src={ ProfileData?.icon } alt="" className="-mt-4 mb-4 lg:ml-6 w-[150px] lg:w-[150px] lg:h-auto order-1 lg:order-2" />
+      </div>
       <ResultActions>
       <button
         type="button"

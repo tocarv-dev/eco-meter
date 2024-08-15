@@ -6,22 +6,43 @@ import clsx from 'clsx'
 // Icons
 import ResultActions from './ResultActions';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, startTransition } from 'react';
 
+import { useForm, SubmitHandler } from "react-hook-form"
+
+import { handleRegister } from '@/app/actions/handleRegister';
 interface RegisterPageProps {
   id: string,
 }
 
+interface Form {
+  email: string
+}
+
 export default function RegisterPageClient({ id }: RegisterPageProps) {
-  const [selected, setSelected] = useState('');
   const router = useRouter();
 
-  const nextPage = () => {
-    router.push(`/results/${id}/register`);
-  }
+  const { register, handleSubmit, formState } = useForm<Form>({
+    defaultValues: {
+      email: ''
+    }
+  });
 
-  const handleSelect = (event: any) => {
-    setSelected(event.target.value)
+  const { errors } = formState;
+
+  const onSubmit:SubmitHandler<Form> = async (data) => {
+    const isValid = !!(data.email)
+
+    if(isValid) {
+      startTransition(() => {
+        handleRegister(id, data.email).then((a) => {
+          console.log(a);
+          router.push(`/`);
+        });
+      });
+    } else {
+      return;
+    }
   }
 
   return (
@@ -30,60 +51,51 @@ export default function RegisterPageClient({ id }: RegisterPageProps) {
       Pretende guardar o histórico da sua pegada de carbono? 
       </p>
 
-      <div className="mt-auto flex justify-between items-center gap-x-4">
-        <button
-          type="button"
-          value="no"
-          className={clsx("bg-cool-gray mt-4 transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg",
-            selected === 'no' ? 
-            'brightness-75'
-            :
-            'brightness-100'
-          )}
-          onClick={handleSelect}
-        >
-          Não
-        </button>
-
-        <button
-          type="button"
-          value="yes"
-          className={clsx("bg-dark-green mt-4 transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg",
-            selected === 'yes' ? 
-            'brightness-75'
-            :
-            'brightness-100'
-          )}
-          onClick={handleSelect}
-        >
-          Sim
-        </button>
-      </div>
-      { selected === "yes" &&
-      <form className="flex flex-col justify-center items-center">
-        <label className="flex flex-col mt-3">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center -mt-2">
+        <label className="flex flex-col mt-3 mb-2">
             <div className="flex justify-between">
-              <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+              <span className="text-sm text-deep-green lg:text-sm font-medium tracking-wide">
                 Insira o seu email
               </span>
             </div>
             <input
               type="email"
-              className="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@flowbite.com"
+              className="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="exemplo@email.com"
               required
               min={1}
               autoComplete="email"
+              {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Introduza um email válido!',
+                  }
+                })
+              }
             />
           </label>
+          {errors.email && (
+              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+                {errors.email.message}
+              </span>
+            )}
+          <ResultActions>
+          <Link
+            href={`/`}
+            className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base mt-4 mr-4"
+          >
+            Ignorar
+          </Link>
+
           <button
           type="submit"
           className="bg-dark-green mt-4 transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         >
           Registar
         </button>
+        </ResultActions>
         </form>
-        }
     </section>
   );
 }
