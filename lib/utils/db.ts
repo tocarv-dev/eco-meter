@@ -69,6 +69,7 @@ export async function registerSurvey(id: string, email: string) {
             }
         })
         
+        console.log(password)
         return password;
     } catch (error) {
         console.log(error)
