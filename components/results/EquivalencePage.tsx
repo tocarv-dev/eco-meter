@@ -30,6 +30,8 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
     labels: ['A sua pegada', `Média em Portugal`, 'Média na Índia', 'Média nos EUA'],
     datasets: [{
       data: data,
+      barThickness: 30,
+      borderRadius: 3,
       backgroundColor: [
         '#4bb367',
         '#40c97c',
