@@ -61,7 +61,7 @@ export default function RootLayout({
           </style>
         </Head>
         <body className="lg:bg-faint-green font-switzer h-full flex flex-col justify-start lg:justify-center items-center">
-          <Image src={siteBackGround5} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
+          <Image src={siteBackGround4} alt="" className="w-[250px] lg:h-auto backgroundImage" fill style={{objectFit: 'cover',}}/>
           <Providers>
             <main className="font-normal relative w-full max-w-lg lg:max-w-[940px]">
               <form
