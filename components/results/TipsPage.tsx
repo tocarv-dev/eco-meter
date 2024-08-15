@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import ResultActions from './ResultActions';
 import Link from 'next/link';
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 
 // Icons
 import { FaHome } from "react-icons/fa";
@@ -17,6 +18,7 @@ interface TipsPageProps {
 
 
 export default function TipsPageClient({ id, results }: TipsPageProps) {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const router = useRouter();
 
   const nextPage = () => {
@@ -75,10 +77,31 @@ export default function TipsPageClient({ id, results }: TipsPageProps) {
               <p>É o peso equivalente a {item.comparison}!</p>
             </div>
             <div className="mt-4">
-              <button className="capitalize mt-4 px-4 py-2 font-semibold border-solid border-2 border-white rounded hover:bg-gray-300">
+              <button onClick={onOpen} className="capitalize mt-4 px-4 py-2 font-semibold border-solid border-2 border-white rounded hover:bg-gray-300">
                 Reduzir este Resultado
               </button>
             </div>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+              <ModalContent>
+                {(onClose) => (
+                  <>
+                    <ModalHeader className="flex flex-col gap-1">Dicas para { item.title }</ModalHeader>
+                    <ModalBody>
+                      <p> 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nullam pulvinar risus non risus hendrerit venenatis.
+                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                      </p>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="primary" onPress={onClose}>
+                        Entendido!
+                      </Button>
+                    </ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
           </div>
         )})}
       </div>

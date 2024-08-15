@@ -128,7 +128,7 @@ export default function ReactionPageClient({ id }: ReactionPageProps) {
         }
       <ResultActions>
       { selected && 
-      <div className="flex flex-row gap-x-4">
+      <div className="flex flex-row mx-auto gap-x-4">
         <button
           type="submit"
           className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
@@ -141,7 +141,7 @@ export default function ReactionPageClient({ id }: ReactionPageProps) {
         className="mt-6 ml-3 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         onClick={nextPage}
         >
-          Claro que sim! 
+          Claro que sim!
         </button>
         </div>
         ||

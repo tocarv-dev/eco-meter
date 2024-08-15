@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+var bcrypt = require('bcryptjs');
 
 const PrismaClientSingleToken = () => {
     return new PrismaClient();
@@ -30,7 +31,7 @@ export async function GetSurvey(id: string) {
 }
 
 export async function addReaction(id: string, reaction: string) {
-    // try {
+    try {
         const query = await prisma.surveys.update({
             where: {
                 id: id
@@ -41,13 +42,39 @@ export async function addReaction(id: string, reaction: string) {
         })
 
         return query;
-    /*} catch (error) {
+    } catch (error) {
         console.log(error)
         throw new Error("Error adding reaction")
     }
-        */
 }
 
+export async function registerSurvey(id: string, email: string) {
+    try {
+        await prisma.surveys.update({
+            where: {
+                id: id
+            },
+            data: {
+                userid: email
+            }
+        })
+
+        const password = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        const encryptedPassword = bcrypt.hashSync(password, 8);
+
+        await prisma.user.create({
+            data: {
+                email: email,
+                password: encryptedPassword
+            }
+        })
+        
+        return password;
+    } catch (error) {
+        console.log(error)
+        throw new Error("Error register user and survey!")
+    }
+}
 
 export async function getUser(email: any) {
     try {
