@@ -16,7 +16,7 @@ export default async function ResultPage({
 
   return (
         <ResultWrapper title="Registar os meus resultados">
-            <RegisterPageClient id={id} />
+            <RegisterPageClient id={id} data={survey} />
         </ResultWrapper>
     );
 }

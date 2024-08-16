@@ -13,14 +13,17 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { handleRegister } from '@/app/actions/handleRegister';
 interface RegisterPageProps {
   id: string,
+  data: any
 }
 
 interface Form {
   email: string
 }
 
-export default function RegisterPageClient({ id }: RegisterPageProps) {
+export default function RegisterPageClient({ id, data }: RegisterPageProps) {
   const router = useRouter();
+
+  if(data.userid !== "1") router.push('/');
 
   const { register, handleSubmit, formState } = useForm<Form>({
     defaultValues: {

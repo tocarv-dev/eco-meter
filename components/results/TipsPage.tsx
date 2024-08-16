@@ -22,6 +22,8 @@ export default function TipsPageClient({ id, results }: TipsPageProps) {
   const router = useRouter();
 
   const nextPage = () => {
+    if(results.userid !== "1") router.push('/');
+    
     router.push(`/results/${id}/register`);
   }
 
