@@ -64,23 +64,23 @@ export default function TipsPageClient({ id, results }: TipsPageProps) {
 
   return (
     <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-2">
         {data.map((item, index) => {
           let Icon = item.icon;
 
           return (
-          <div key={index} className={`flex flex-col justify-between p-6 rounded-lg shadow-md text-white ${item.color}`}>
+          <div key={index} className={`flex flex-col justify-between p-4 rounded-lg shadow-md text-white ${item.color}`}>
             <div>
               <div className="flex flex-row">
-              <h2 className="text-2xl font-bold">{item.percentage}% ⋅ {item.title}</h2>
+              <h2 className="text-2xl font-bold">{item.title} - {item.percentage}%</h2>
               <Icon className="ml-auto" size={30}/>
               </div>
-              <p className="mt-2 tracking-wide">O teu consumo equivale a {item.consumption} tCO2eq/ano</p>
-              <p>É o peso equivalente a {item.comparison}!</p>
+              <p className="mt-2 text-sm tracking-wide">O teu consumo equivale a <strong>{item.consumption}</strong> tCO2eq/ano<br/>
+              É o peso equivalente a {item.comparison}!</p>
             </div>
-            <div className="mt-4">
-              <button onClick={onOpen} className="capitalize mt-4 px-4 py-2 font-semibold border-solid border-2 border-white rounded hover:bg-gray-300">
-                Reduzir este Resultado
+            <div className="mt-2">
+              <button onClick={onOpen} className="mt-1 px-4 py-1 font-regular border-solid border-2 border-white rounded hover:bg-gray-300">
+                Reduzir este resultado
               </button>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

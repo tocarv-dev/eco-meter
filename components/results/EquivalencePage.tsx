@@ -42,8 +42,8 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
   }
 
   return (
-    <section className="flex flex-col px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <div className="flex flex-col items-center mx-auto h-[300px] lg:h-[300px] lg:mb-4 ">
+    <section className="flex flex-col px-6 lg:pt-12 w-full h-full">
+      <div className="flex flex-col items-center mx-auto lg:mb-4 ">
         <Bar data={Data} options={{
             indexAxis: 'y',
             plugins: {

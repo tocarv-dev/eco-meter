@@ -23,11 +23,11 @@ params: { id: string };
         <ResultWrapper title="A sua pegada de carbono é">
             <section className="flex flex-col">
                 <div className="flex flex-col">
-                    <div className="text-5xl text-deep-green font-bold tracking-wide text-center">{ results.total.toFixed(2) }</div>
+                    <div className="text-5xl text-deep-green font-bold tracking-wide text-center mt-3">{ results.total.toFixed(2) }</div>
                     <div className="text-3xl text-deep-green font-light tracking-wide text-center">tCO2eq/ano</div>
-                    <div className="text-normal text-deep-green font-light tracking-wide text-center">
-                        E se todas as pessoas tivessem esta pegada de carbono, seriam necessários <strong>{ results.planets.toFixed(2) }</strong> planetas!
-                    </div>
+                    <div className="text-normal text-deep-green font-light tracking-wide text-center">E se todas as pessoas tivessem esta pegada de carbono, seriam necessários</div>
+                    <div className="text-3xl text-deep-green font-light tracking-wide text-center"><strong>{ results.planets.toFixed(2) }</strong></div>
+                    <div className="text-normal text-deep-green font-light tracking-wide text-center">planetas!</div>
                 </div>
                 <div className="grid grid-cols-2 justify-items-center">
                 <GraphsPage results={results} data={[results.home, results.transports, results.meals, results.residual]} id={id} />
