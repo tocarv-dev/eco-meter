@@ -83,7 +83,7 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
         className="mt-6 bg-dark-green transition duration-300 hover:opacity-80 text-magnolia px-[17px] lg:px-8 py-[10px] ml-auto lg:py-3 text-sm lg:text-base rounded-[4px] lg:rounded-lg"
         onClick={nextPage}
       >
-        E isto significa que…
+        E o que acha? …
       </button>
     </ResultActions>
     </section>

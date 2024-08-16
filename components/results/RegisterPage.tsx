@@ -49,21 +49,21 @@ export default function RegisterPageClient({ id, data }: RegisterPageProps) {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <p className="mb-4 -mt-4 text-base text-center text-deep-green font-medium tracking-wide">
+    <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-10 lg:pt-12 lg:pb-4 w-full h-full">
+      <p className="mb-4 -mt-4 text-base text-center text-deep-green font-normal tracking-wide">
       Pretende guardar o histórico da sua pegada de carbono? 
       </p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center -mt-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
         <label className="flex flex-col mt-3 mb-2">
             <div className="flex justify-between">
-              <span className="text-sm text-deep-green lg:text-sm font-medium tracking-wide">
+              <span className="text-base text-deep-green font-normal tracking-wide">
                 Insira o seu email
               </span>
             </div>
             <input
               type="email"
-              className="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
               placeholder="exemplo@email.com"
               required
               min={1}
