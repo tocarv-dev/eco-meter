@@ -61,37 +61,30 @@ export default function GraphsPage({ results, data, id }: ResultPageClientProps)
   };
 
   return (
-    <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <p className="mb-4 -mt-4 text-base text-deep-green font-medium tracking-wide">
-        A sua pegada de carbono é <strong>{ results.total.toFixed(2) }</strong> tCO2eq/ano
-      </p>
+    <section className="flex flex-col px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
       { /* Pre-render custom colors, não sei mas se não se der pre-render o Tailwind não reconhece */}
       <div className="invisible bg-house-color bg-transports-color bg-meals-color bg-residuals-color"></div>
-
       <div className="flex flex-row gap-2 my-2">
-        <div className="flex flex-col gap-2">
-
-        { Labels.map((value, index) => (
-            <Chip
-            key={index}
-              variant="shadow"
-              classNames={{
-                base: `bg-${Colors[index]} border-small border-white/50 shadow-pink-500/30`,
-                content: "text-white",
-              }}
-            >
-              { value } | { (results[keys[index]]).toFixed(2) } CO2e ({ ((results[keys[index]] / results.total) * 100).toFixed(2) }%)
-            </Chip>
-        ))}
+        <div className="flex flex-col grow gap-2">
+          { Labels.map((value, index) => (
+              <Chip
+              key={index}
+                variant="shadow"
+                classNames={{
+                  base: `bg-${Colors[index]} text-xs border-small border-white/50 shadow-pink-500/30`,
+                  content: "text-white",
+                }}
+                >
+                { value } | { (results[keys[index]]).toFixed(2) } 
+              </Chip>
+            ))}
         </div>
         <div className="flex flex-col">
           <Doughnut data={chart} options={{
-          plugins: {
-            legend: {
-              display: false
+            plugins: {
+              legend: { display: false }
             }
-          }
-        }} className='ml-2 w-[150px] lg:w-[150px] lg:h-auto'/>
+          }} className='ml-2 h-[75px]'/>
         </div>
       </div>
     </section>

@@ -371,10 +371,10 @@ export default function InfoPage() {
       heading="Informação pessoal"
       description="Os seus dados permitem perceber os comportamentos por geografia, demografia e género"
     >
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-normal tracking-wide">
               género
             </span>
             {errors.gender && (
@@ -390,7 +390,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
                 'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-                'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+                'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
                 'focus:outline-none'
             )}
             { ...register('gender', { required: 'Este campo é obrigatório' }) }
@@ -403,7 +403,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-normal tracking-wide">
               idade
             </span>
             {errors.age && (
@@ -421,7 +421,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none'
             )}
             {...register('age', {
@@ -443,7 +443,7 @@ export default function InfoPage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="capitalize text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="capitalize text-xs text-deep-green lg:text-sm font-normal tracking-wide">
               município
             </span>
             {errors.municipality && (
@@ -459,7 +459,7 @@ export default function InfoPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
             'focus:outline-none'
               )}
             { ...register('municipality', { required: 'Este campo é obrigatório' }) }
@@ -470,9 +470,9 @@ export default function InfoPage() {
             {Municipalities}
           </select>
         </label>
-        <p className="font-light text-small mt-6">
-        Nota: Estes dados serão utilizados apenas para fins estatísticos
-      </p>  
+        <p className="font-light text-small mt-3 mb-3">
+          Nota: Estes dados serão utilizados apenas para fins estatísticos
+        </p>  
       </div>
       <FormActions>
         <button

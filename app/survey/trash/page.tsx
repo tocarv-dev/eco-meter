@@ -82,13 +82,13 @@ export default function TrashPage() {
     >
       <div className="w-full">
         <div className="flex flex-col w-full gap-4">
-          <div className="flex justify-start items-center gap-6 bg-alabaster mt-4 lg:mt-2 rounded-lg p-3 lg:p-4 bg-white-green">
+          <div className="flex justify-start items-center">
             <label>
-              <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+              <span className={clsx('text-xs text-deep-green lg:text-sm font-normal tracking-wide transition duration-300',) }>
                 Faz separação de resíduos?
               </span>
             </label>
-            <span className="flex gap-2">
+            <span className="flex gap-2 ml-5">
               <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
               <button
                 className={clsx('flex',
@@ -106,7 +106,7 @@ export default function TrashPage() {
 
           <label className={clsx('flex flex-col mt-2')}>
             <div className="flex justify-between">
-              <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
+            <span className={clsx('text-xs text-deep-green lg:text-sm font-normal tracking-wide ') }>
                 Quantos sacos (20L) de lixo indeferenciado produz em sua casa por semana?
               </span>
                 {errors.unsortedBags && (

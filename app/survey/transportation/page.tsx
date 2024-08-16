@@ -95,14 +95,14 @@ export default function TransportationPage() {
       heading="Transportes"
       description="Os transportes têm um grande impacto na sua pegada de carbono, influenciando as suas emissões de CO2 diariamente"
     >
-      <div className="w-fill justify-end text-xs">
+      <span className="text-xs text-deep-green lg:text-sm font-normal tracking-wide">
         Adicione os vários tipos de transportes que utiliza habitualmente e a quantidade de kms semanais que faz em média em cada um deles
-      </div>
+      </span>
       <div className="flex flex-col w-full gap-4 mt-2">
         <label className="flex flex-col">
           <div className="flex justify-between">
             {errors.transports && (
-              <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+              <span className="text-xs lg:text-sm font-medium tracking-wide text-strawberry-red">
                 {  }
               </span>
             )}
@@ -116,7 +116,7 @@ export default function TransportationPage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none w-full lg:w-64'
             )}
             autoComplete="transports"
@@ -172,13 +172,13 @@ export default function TransportationPage() {
             )
           })}
         </div>
-        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
+        <div className="flex justify-start items-center mt-3">
           <label>
-            <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+            <span className={clsx('text-xs text-deep-green lg:text-sm font-normal tracking-wide transition duration-300',) }>
               Viaja habitualmente de avião?
             </span>
           </label>
-          <span className="flex gap-2">
+          <span className="flex gap-2 ml-5">
             <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
             <button
               className={clsx('flex',
@@ -193,8 +193,10 @@ export default function TransportationPage() {
             <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
         </div>
-        <div className={clsx('w-fill justify-end text-xs', flights === true ? '' : 'hidden')}>Quantos vôos com estas durações faz por ano. Indique 0 caso não faça vôos dessas durações</div> 
-        <div className="grid grid-cols-4 gap-4 mt-2 mb-2">
+        <span className={clsx('text-xs text-deep-green lg:text-sm font-normal tracking-wide transition duration-300', flights === true ? '' : 'hidden') }>
+          Quantos vôos com estas durações faz por ano. Indique 0 caso não faça vôos dessas durações
+        </span>
+        <div className="grid grid-cols-4 gap-4 mb-2">
           <label className={clsx('flex flex-col', flights === true ? '' : 'hidden')}>
             <div className="flex justify-between">
               <span className={clsx( 'text-xs text-deep-green lg:text-sm font-medium tracking-wide',) }>
@@ -230,7 +232,7 @@ export default function TransportationPage() {
             { '1 a 3 horas:' }
             </span>
               {errors.shortFlights && (
-                <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+                <span className="text-xs lg:text-sm font-medium tracking-wide text-strawberry-red">
                   { errors.shortFlights.message }
                 </span>
               )}
@@ -259,7 +261,7 @@ export default function TransportationPage() {
               { '3 a 6 horas:' }
             </span>
               {errors.mediumFlights && (
-                <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+                <span className="text-xs lg:text-sm font-medium tracking-wide text-strawberry-red">
                   { errors.mediumFlights.message }
                 </span>
               )}
@@ -288,7 +290,7 @@ export default function TransportationPage() {
               { '6> horas:' }
             </span>
               {errors.longFlights && (
-                <span className="text-xs lg:text-sm font-medium lg:font-bold tracking-wide text-strawberry-red">
+                <span className="text-xs lg:text-sm font-medium tracking-wide text-strawberry-red">
                   { errors.longFlights.message }
                 </span>
               )}
@@ -316,7 +318,7 @@ export default function TransportationPage() {
       <FormActions>
         <Link
           href="/survey/home"
-          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium text-sm lg:text-base"
           onClick={(e) => setValue('page', 2)}
         >
           Anterior

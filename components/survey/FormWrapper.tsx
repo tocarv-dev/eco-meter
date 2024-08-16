@@ -18,7 +18,9 @@ export default function FormWrapper({
         {heading}
       </h1>
       <p className="text-cool-gray font-light mt-1">{description}</p>
-      {children}
+      <div className="gap-6 mt-2 lg:mt-3 rounded-lg p-2 lg:p-4 bg-white-green">
+        {children}
+      </div>
     </section>
   );
 }

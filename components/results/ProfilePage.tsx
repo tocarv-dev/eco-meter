@@ -61,11 +61,11 @@ export default function ProfilePageClient({ selected, data, id }: ProfilePageCli
           <p className="text-cool-gray text-center mt-2 text-balance">
             { selected === ProfileData.name && <p>Confirma-se, é mesmo um <strong>{ProfileData.displayName}</strong></p> || <p>Afinal não é um <strong>{ profiles[selected].displayName}</strong> mas sim um <strong>{ProfileData.displayName}</strong>!</p>}
           </p>
-          <p className="text-cool-gray text-center">
+          <p className="text-cool-gray text-justify">
             { ProfileData?.description }
           </p>
-      </div>
-      <Image src={ ProfileData?.icon } alt="" className="-mt-4 mb-4 lg:ml-6 w-[150px] lg:w-[150px] lg:h-auto order-1 lg:order-2" />
+        </div>
+        <Image src={ ProfileData?.icon } alt="" className="-mt-4 mb-4 lg:ml-6 w-[150px] lg:w-[150px] lg:h-auto order-1 lg:order-2" />
       </div>
       <ResultActions>
       <button

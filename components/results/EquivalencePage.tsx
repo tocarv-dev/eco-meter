@@ -30,8 +30,8 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
     labels: ['A sua pegada', `Média em Portugal`, 'Média na Índia', 'Média nos EUA'],
     datasets: [{
       data: data,
-      barThickness: 30,
-      borderRadius: 3,
+      barThickness: 15,
+      borderRadius: 5,
       backgroundColor: [
         '#4bb367',
         '#40c97c',
@@ -42,12 +42,8 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
   }
 
   return (
-    <section className="flex flex-col justify-center items-center px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
-      <div className="flex flex-col items-center mx-auto h-[225px] lg:h-[250px] lg:mb-4 mb-16 -mt-16 lg:-mt-8">
-        <p className="mb-4 -mt-4 text-base text-deep-green font-medium tracking-wide">
-          E se todas as pessoas tivessem esta pegada de carbono, seriam necessários <strong>{ results.planets.toFixed(2) }</strong> planetas!
-        </p>
-
+    <section className="flex flex-col px-6 lg:px-[100px] py-20 lg:pt-12 lg:pb-4 w-full h-full">
+      <div className="flex flex-col items-center mx-auto h-[300px] lg:h-[300px] lg:mb-4 ">
         <Bar data={Data} options={{
             indexAxis: 'y',
             plugins: {
@@ -59,7 +55,7 @@ export default function EquivalencePageClient({ results, data, id }: Equivalence
               x: {
                 stacked: true,
                 grid: {
-                  display: true,
+                  display: false,
                 },
                 title: {
                   display: true,

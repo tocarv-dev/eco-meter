@@ -64,10 +64,10 @@ export default function ResidencePage() {
       heading="Habitação"
       description="A habitação contribui significativamente para a sua pegada de carbono de acordo com a sua eficiência energética."
     >
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col">
         <label className="flex flex-col">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="text-xs text-deep-green lg:text-sm font-normal tracking-wide">
               Quantas pessoas moram em sua casa?
             </span>
             {errors.residents && (
@@ -85,7 +85,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none'
             )}
             {...register('residents', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
@@ -96,7 +96,7 @@ export default function ResidencePage() {
         </label>
         <label className="flex flex-col mt-3">
           <div className="flex justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="text-xs text-deep-green lg:text-sm font-normal">
               Qual o custo médio mensal de electricidade em sua casa (€)?
             </span>
             {errors.electricitySpend && (
@@ -114,7 +114,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none'
             )}
             {...register('electricitySpend', { valueAsNumber: true, required: 'Este campo é obrigatório', })}
@@ -123,13 +123,13 @@ export default function ResidencePage() {
             autoComplete="electricitySpend"
           />
         </label>
-        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
+        <div className="flex justify-start items-center mt-3">
           <label>
-            <span className={clsx( 'text-sm lg:text-base font-bold transition duration-300',) }>
+            <span className={clsx( 'text-xs text-deep-green lg:text-sm font-normal tracking-wide transition duration-300',) }>
               Utilizam gás em casa?
             </span>
           </label>
-          <span className="flex gap-2">
+          <span className="flex gap-2 ml-5">
             <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
             <button
               className={clsx('flex',
@@ -146,7 +146,7 @@ export default function ResidencePage() {
         </div>
         <label className={clsx('grid grid-cols-2 gap-2' , usesGas === true ? '' : 'hidden')} >
           <div className="col-span-2 justify-between">
-            <span className="text-xs text-deep-green lg:text-sm font-medium tracking-wide">
+            <span className="text-xs text-deep-green lg:text-sm font-normal tracking-wide">
               Que tipo de gás que utilizam e quanto gastam mensalmente (€)?
             </span>
           </div>
@@ -157,7 +157,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none'
             )}
             { ...register('gasType', {  required: usesGas ? 'Este campo é obrigatório' : false, }) }
@@ -176,7 +176,7 @@ export default function ResidencePage() {
                 ? 'border-strawberry-red'
                 : 'border-light-gray focus:border-purplish-blue',
               'py-1 px-3 rounded-[4px] lg:rounded-lg mt-1',
-              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium lg:font-bold',
+              'text-[15px] h-9 lg:text-base text-deep-green placeholder:text-cool-gray font-medium',
               'focus:outline-none'
             )}
             {...register('gasSpend', { valueAsNumber: true, required: usesGas ? 'Este campo é obrigatório' : false, })}
@@ -185,13 +185,13 @@ export default function ResidencePage() {
             autoComplete="gasSpend"
           />
         </label>
-        <div className="flex justify-start items-center gap-6 bg-alabaster mt-6 lg:mt-8 rounded-lg p-3 lg:p-4 bg-white-green">
+        <div className="flex justify-start items-center mt-3">
           <label>
-            <span className={clsx(' text-sm lg:text-base font-bold transition duration-300',) }>
+            <span className={clsx('text-xs text-deep-green lg:text-sm font-normal tracking-wide transition duration-300',) }>
               Utilizam lenha em casa?
             </span>
           </label>
-          <span className="flex gap-2">
+          <span className="flex gap-2 ml-5">
             <span className="text-xs text-deep-green lg:text-sm font-light">Não</span>
             <button
               className={clsx('flex',
@@ -206,13 +206,13 @@ export default function ResidencePage() {
             <span className="text-xs text-deep-green lg:text-sm font-light">Sim</span>
           </span>
         </div>
-
       </div>
+      
       {/* <div className="mt-auto flex justify-between items-center"> */}
       <FormActions>
         <Link
           href="/survey/info"
-          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium lg:font-bold text-sm lg:text-base"
+          className="text-cool-gray transition duration-300 hover:text-dark-green font-medium text-sm lg:text-base"
           onClick={(e) => setValue('page', 1)}
         >
           Anterior
