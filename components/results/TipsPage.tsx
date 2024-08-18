@@ -90,9 +90,12 @@ export default function TipsPageClient({ id, results }: TipsPageProps) {
                     <ModalHeader className="flex flex-col gap-1">Dicas para { item.title }</ModalHeader>
                     <ModalBody>
                       <p> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nullam pulvinar risus non risus hendrerit venenatis.
-                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                        Substitua lâmpadas incandescentes por LED. 
+                        Desligue os aparelhos elétricos que se encontrem em standby: 
+                        neste modo, os equipamentos ainda se encontram a consumir energia. 
+                        Adote hábitos de poupança de energia, como desligar luzes quando 
+                        sai de uma divisão e equipamentos quando não estiverem em uso. 
+                        Deixe a roupa secar ao ar livre, evitando o uso de máquinas de secar.
                       </p>
                     </ModalBody>
                     <ModalFooter>
